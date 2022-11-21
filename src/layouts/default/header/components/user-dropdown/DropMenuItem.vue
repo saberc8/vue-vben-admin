@@ -11,8 +11,8 @@
 
   import { computed, defineComponent, getCurrentInstance } from 'vue'
 
-  import Icon from '/@/components/Icon/index'
-  import { propTypes } from '/@/utils/propTypes'
+  import Icon from '@/components/Icon/index'
+  import { propTypes } from '@/utils/propTypes'
 
   export default defineComponent({
     name: 'DropdownMenuItem',

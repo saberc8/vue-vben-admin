@@ -61,14 +61,14 @@
   import { computed, unref, ref, watch, nextTick } from 'vue'
   import { SearchOutlined } from '@ant-design/icons-vue'
   import AppSearchFooter from './AppSearchFooter.vue'
-  import Icon from '/@/components/Icon'
+  import Icon from '@/components/Icon'
   // @ts-ignore
-  import vClickOutside from '/@/directives/clickOutside'
-  import { useDesign } from '/@/hooks/web/useDesign'
-  import { useRefs } from '/@/hooks/core/useRefs'
+  import vClickOutside from '@/directives/clickOutside'
+  import { useDesign } from '@/hooks/web/useDesign'
+  import { useRefs } from '@/hooks/core/useRefs'
   import { useMenuSearch } from './useMenuSearch'
-  import { useI18n } from '/@/hooks/web/useI18n'
-  import { useAppInject } from '/@/hooks/web/useAppInject'
+  import { useI18n } from '@/hooks/web/useI18n'
+  import { useAppInject } from '@/hooks/web/useAppInject'
 
   const props = defineProps({
     visible: { type: Boolean },

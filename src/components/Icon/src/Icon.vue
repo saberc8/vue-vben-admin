@@ -13,6 +13,7 @@
     :style="getWrapStyle"
   ></span>
 </template>
+
 <script lang="ts">
   import type { PropType } from 'vue'
   import {
@@ -27,8 +28,8 @@
   } from 'vue'
   import SvgIcon from './SvgIcon.vue'
   import Iconify from '@purge-icons/generated'
-  import { isString } from '/@/utils/is'
-  import { propTypes } from '/@/utils/propTypes'
+  import { isString } from '@/utils/is'
+  import { propTypes } from '@/utils/propTypes'
 
   const SVG_END_WITH_FLAG = '|svg'
   export default defineComponent({

@@ -2,20 +2,20 @@
   import { defineComponent, computed, unref } from 'vue'
   import { BackTop } from 'ant-design-vue'
 
-  import { useRootSetting } from '/@/hooks/setting/useRootSetting'
-  import { useHeaderSetting } from '/@/hooks/setting/useHeaderSetting'
-  import { useDesign } from '/@/hooks/web/useDesign'
-  import { useUserStoreWithOut } from '/@/store/modules/user'
+  import { useRootSetting } from '@/hooks/setting/useRootSetting'
+  import { useHeaderSetting } from '@/hooks/setting/useHeaderSetting'
+  import { useDesign } from '@/hooks/web/useDesign'
+  import { useUserStoreWithOut } from '@/store/modules/user'
 
-  import { SettingButtonPositionEnum } from '/@/enums/appEnum'
-  import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent'
+  import { SettingButtonPositionEnum } from '@/enums/appEnum'
+  import { createAsyncComponent } from '@/utils/factory/createAsyncComponent'
 
-  import SessionTimeoutLogin from '/@/views/sys/login/SessionTimeoutLogin.vue'
+  import SessionTimeoutLogin from '@/views/sys/login/SessionTimeoutLogin.vue'
   export default defineComponent({
     name: 'LayoutFeatures',
     components: {
       BackTop,
-      SettingDrawer: createAsyncComponent(() => import('/@/layouts/default/setting/index.vue')),
+      SettingDrawer: createAsyncComponent(() => import('@/layouts/default/setting/index.vue')),
       SessionTimeoutLogin,
     },
     setup() {

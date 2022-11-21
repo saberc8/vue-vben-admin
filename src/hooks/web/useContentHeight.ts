@@ -1,9 +1,9 @@
 import { ComputedRef, isRef, nextTick, Ref, ref, unref, watch } from 'vue'
-import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated'
-import { useWindowSizeFn } from '/@/hooks/event/useWindowSizeFn'
-import { useLayoutHeight } from '/@/layouts/default/content/useContentViewHeight'
-import { getViewportOffset } from '/@/utils/domUtils'
-import { isNumber, isString } from '/@/utils/is'
+import { onMountedOrActivated } from '@/hooks/core/onMountedOrActivated'
+import { useWindowSizeFn } from '@/hooks/event/useWindowSizeFn'
+import { useLayoutHeight } from '@/layouts/default/content/useContentViewHeight'
+import { getViewportOffset } from '@/utils/domUtils'
+import { isNumber, isString } from '@/utils/is'
 
 export interface CompensationHeight {
   // 使用 layout Footer 高度作为判断补偿高度的条件

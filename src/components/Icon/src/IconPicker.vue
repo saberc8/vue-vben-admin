@@ -66,19 +66,19 @@
 </template>
 <script lang="ts" setup>
   import { ref, watchEffect, watch, unref } from 'vue'
-  import { useDesign } from '/@/hooks/web/useDesign'
-  import { ScrollContainer } from '/@/components/Container'
+  import { useDesign } from '@/hooks/web/useDesign'
+  import { ScrollContainer } from '@/components/Container'
   import { Input, Popover, Pagination, Empty } from 'ant-design-vue'
   import Icon from './Icon.vue'
   import SvgIcon from './SvgIcon.vue'
 
   import iconsData from '../data/icons.data'
-  import { propTypes } from '/@/utils/propTypes'
-  import { usePagination } from '/@/hooks/web/usePagination'
+  import { propTypes } from '@/utils/propTypes'
+  import { usePagination } from '@/hooks/web/usePagination'
   import { useDebounceFn } from '@vueuse/core'
-  import { useI18n } from '/@/hooks/web/useI18n'
-  import { useCopyToClipboard } from '/@/hooks/web/useCopyToClipboard'
-  import { useMessage } from '/@/hooks/web/useMessage'
+  import { useI18n } from '@/hooks/web/useI18n'
+  import { useCopyToClipboard } from '@/hooks/web/useCopyToClipboard'
+  import { useMessage } from '@/hooks/web/useMessage'
   import svgIcons from 'virtual:svg-icons-names'
 
   // 没有使用别名引入，是因为WebStorm当前版本还不能正确识别，会报unused警告
