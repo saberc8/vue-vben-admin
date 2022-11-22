@@ -19,10 +19,13 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue'
-
+  import { Button } from 'ant-design-vue'
   import { basicProps } from '../props'
   export default defineComponent({
     name: 'BasicModalFooter',
+    components: {
+      AButton: Button,
+    },
     props: basicProps,
     emits: ['ok', 'cancel'],
     setup(_, { emit }) {

@@ -28,10 +28,13 @@
   import type { CSSProperties } from 'vue'
   import { defineComponent, computed } from 'vue'
   import { useDesign } from '@/hooks/web/useDesign'
-
+  import { Button } from 'ant-design-vue'
   import { footerProps } from '../props'
   export default defineComponent({
     name: 'BasicDrawerFooter',
+    components: {
+      AButton: Button,
+    },
     props: {
       ...footerProps,
       height: {

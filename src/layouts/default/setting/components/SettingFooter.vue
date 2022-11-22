@@ -30,14 +30,14 @@
   import { useI18n } from '@/hooks/web/useI18n'
   import { useMessage } from '@/hooks/web/useMessage'
   import { useCopyToClipboard } from '@/hooks/web/useCopyToClipboard'
-
+  import { Button } from 'ant-design-vue'
   import { updateColorWeak } from '@/logics/theme/updateColorWeak'
   import { updateGrayMode } from '@/logics/theme/updateGrayMode'
   import defaultSetting from '@/settings/projectSetting'
 
   export default defineComponent({
     name: 'SettingFooter',
-    components: { CopyOutlined, RedoOutlined },
+    components: { CopyOutlined, RedoOutlined, AButton: Button },
     setup() {
       const permissionStore = usePermissionStore()
       const { prefixCls } = useDesign('setting-footer')
