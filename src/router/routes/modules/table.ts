@@ -1,7 +1,6 @@
 import type { AppRouteModule } from '@/router/types'
 
 import { LAYOUT } from '@/router/constant'
-import { t } from '@/hooks/web/useI18n'
 
 const table: AppRouteModule = {
   path: '/table',
@@ -11,7 +10,7 @@ const table: AppRouteModule = {
   meta: {
     orderNo: 10,
     icon: 'ion:grid-outline',
-    title: t('routes.dashboard.table'),
+    title: '表格',
   },
   children: [
     {
@@ -20,7 +19,7 @@ const table: AppRouteModule = {
       component: () => import('@/views/table/tableExample1/index.vue'),
       meta: {
         // affix: true,
-        title: t('routes.dashboard.table'),
+        title: '表格',
       },
     },
   ],
