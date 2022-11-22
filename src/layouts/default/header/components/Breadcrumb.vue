@@ -4,10 +4,10 @@
       <template #itemRender="{ route, routes: routesMatched, paths }">
         <Icon :icon="getIcon(route)" v-if="getShowBreadCrumbIcon && getIcon(route)" />
         <span v-if="!hasRedirect(routesMatched, route)">
-          {{ t(route.name || route.meta.title) }}
+          {{ route.name || route.meta.title }}
         </span>
         <router-link v-else to="" @click="handleClick(route, paths, $event)">
-          {{ t(route.name || route.meta.title) }}
+          {{ route.name || route.meta.title }}
         </router-link>
       </template>
     </a-breadcrumb>
@@ -26,7 +26,6 @@
   import { useDesign } from '@/hooks/web/useDesign'
   import { useRootSetting } from '@/hooks/setting/useRootSetting'
   import { useGo } from '@/hooks/web/usePage'
-  import { useI18n } from '@/hooks/web/useI18n'
 
   import { propTypes } from '@/utils/propTypes'
   import { isString } from '@/utils/is'
@@ -48,8 +47,6 @@
       const { prefixCls } = useDesign('layout-breadcrumb')
       const { getShowBreadCrumbIcon } = useRootSetting()
       const go = useGo()
-
-      const { t } = useI18n()
       watchEffect(async () => {
         if (currentRoute.value.name === REDIRECT_NAME) return
         const menus = await getMenus()
@@ -145,7 +142,7 @@
         return route.icon || route.meta?.icon
       }
 
-      return { routes, t, prefixCls, getIcon, getShowBreadCrumbIcon, handleClick, hasRedirect }
+      return { routes, prefixCls, getIcon, getShowBreadCrumbIcon, handleClick, hasRedirect }
     },
   })
 </script>

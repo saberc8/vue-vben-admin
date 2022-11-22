@@ -8,7 +8,7 @@ import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@/enums/cacheEnum'
 import { getAuthCache, setAuthCache } from '@/utils/auth'
 import { GetUserInfoModel, LoginParams } from '@/api/sys/model/userModel'
 import { doLogout, getUserInfo, loginApi } from '@/api/sys/user'
-import { useI18n } from '@/hooks/web/useI18n'
+
 import { useMessage } from '@/hooks/web/useMessage'
 import { router } from '@/router'
 import { usePermissionStore } from '@/store/modules/permission'
@@ -158,7 +158,7 @@ export const useUserStore = defineStore({
      */
     confirmLoginOut() {
       const { createConfirm } = useMessage()
-      const { t } = useI18n()
+
       createConfirm({
         iconType: 'warning',
         title: () => h('span', t('sys.app.Tip')),

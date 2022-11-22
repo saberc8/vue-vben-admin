@@ -5,10 +5,8 @@
 </template>
 <script lang="ts" setup>
   import { computed, unref } from 'vue'
-  import { useI18n } from '@/hooks/web/useI18n'
-  import { LoginStateEnum, useLoginState } from './useLogin'
 
-  const { t } = useI18n()
+  import { LoginStateEnum, useLoginState } from './useLogin'
 
   const { getLoginState } = useLoginState()
 

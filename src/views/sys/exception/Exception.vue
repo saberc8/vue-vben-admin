@@ -7,7 +7,7 @@
   import netWorkSvg from '@/assets/svg/net-error.svg'
   import { useRoute } from 'vue-router'
   import { useDesign } from '@/hooks/web/useDesign'
-  import { useI18n } from '@/hooks/web/useI18n'
+
   import { useGo, useRedo } from '@/hooks/web/usePage'
   import { PageEnum } from '@/enums/pageEnum'
 
@@ -50,7 +50,7 @@
       const { query } = useRoute()
       const go = useGo()
       const redo = useRedo()
-      const { t } = useI18n()
+
       const { prefixCls } = useDesign('app-exception-page')
 
       const getStatus = computed(() => {

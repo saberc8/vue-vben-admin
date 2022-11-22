@@ -11,24 +11,14 @@
 
     <template #overlay>
       <Menu @click="handleMenuClick">
-        <MenuItem
-          key="doc"
-          :text="t('layout.header.dropdownItemDoc')"
-          icon="ion:document-text-outline"
-          v-if="getShowDoc"
-        />
+        <MenuItem key="doc" text="文档" icon="ion:document-text-outline" v-if="getShowDoc" />
         <MenuDivider v-if="getShowDoc" />
-        <MenuItem
-          key="logout"
-          :text="t('layout.header.dropdownItemLoginOut')"
-          icon="ion:power-outline"
-        />
+        <MenuItem key="logout" text="退出系统" icon="ion:power-outline" />
       </Menu>
     </template>
   </Dropdown>
 </template>
 <script lang="ts">
-  // components
   import { Dropdown, Menu } from 'ant-design-vue'
   import type { MenuInfo } from 'ant-design-vue/lib/menu/src/interface'
 
@@ -38,7 +28,7 @@
 
   import { useUserStore } from '@/store/modules/user'
   import { useHeaderSetting } from '@/hooks/setting/useHeaderSetting'
-  import { useI18n } from '@/hooks/web/useI18n'
+
   import { useDesign } from '@/hooks/web/useDesign'
   import { useModal } from '@/components/Modal'
 
@@ -63,7 +53,7 @@
     },
     setup() {
       const { prefixCls } = useDesign('header-user-dropdown')
-      const { t } = useI18n()
+
       const { getShowDoc } = useHeaderSetting()
       const userStore = useUserStore()
 
@@ -97,7 +87,6 @@
 
       return {
         prefixCls,
-        t,
         getUserInfo,
         handleMenuClick,
         getShowDoc,

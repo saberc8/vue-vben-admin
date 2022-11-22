@@ -1,12 +1,8 @@
 import type { ModalFunc, ModalFuncProps } from 'ant-design-vue/lib/modal/Modal'
-
 import { Modal, message as Message, notification } from 'ant-design-vue'
 import { InfoCircleFilled, CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue'
-
 import { NotificationArgsProps, ConfigProps } from 'ant-design-vue/lib/notification'
-import { useI18n } from './useI18n'
 import { isString } from '@/utils/is'
-
 export interface NotifyApi {
   info(config: NotificationArgsProps): void
   success(config: NotificationArgsProps): void
@@ -70,9 +66,8 @@ function createConfirm(options: ModalOptionsEx): ConfirmOptions {
 }
 
 const getBaseOptions = () => {
-  const { t } = useI18n()
   return {
-    okText: t('common.okText'),
+    okText: '确认',
     centered: true,
   }
 }

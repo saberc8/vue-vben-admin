@@ -13,7 +13,7 @@ import { RequestEnum, ResultEnum, ContentTypeEnum } from '@/enums/httpEnum'
 import { isString } from '@/utils/is'
 import { getToken } from '@/utils/auth'
 import { setObjToUrlParams, deepMerge } from '@/utils'
-import { useI18n } from '@/hooks/web/useI18n'
+
 import { joinTimestamp, formatRequestDate } from './helper'
 import { useUserStoreWithOut } from '@/store/modules/user'
 import { AxiosRetry } from '@/utils/http/axios/axiosRetry'
@@ -30,7 +30,6 @@ const transform: AxiosTransform = {
    * @description: 处理响应数据。如果数据不是预期格式，可直接抛出错误
    */
   transformResponseHook: (res: AxiosResponse<Result>, options: RequestOptions) => {
-    const { t } = useI18n()
     const { isTransformResponse, isReturnNativeResponse } = options
     // 是否返回原生响应头 比如：需要获取响应头时使用该属性
     if (isReturnNativeResponse) {
@@ -76,7 +75,7 @@ const transform: AxiosTransform = {
     // errorMessageMode=‘modal’的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
     // errorMessageMode='none' 一般是调用时明确表示不希望自动弹出错误提示
     if (options.errorMessageMode === 'modal') {
-      createErrorModal({ title: t('sys.api.errorTip'), content: timeoutMsg })
+      createErrorModal({ title: '错误提示', content: timeoutMsg })
     } else if (options.errorMessageMode === 'message') {
       createMessage.error(timeoutMsg)
     }
@@ -163,7 +162,6 @@ const transform: AxiosTransform = {
    * @description: 响应错误处理
    */
   responseInterceptorsCatch: (axiosInstance: AxiosResponse, error: any) => {
-    const { t } = useI18n()
     const { response, code, message, config } = error || {}
     const errorMessageMode = config?.requestOptions?.errorMessageMode || 'none'
     const msg: string = response?.data?.error?.message ?? ''
@@ -180,7 +178,7 @@ const transform: AxiosTransform = {
 
       if (errMessage) {
         if (errorMessageMode === 'modal') {
-          createErrorModal({ title: t('sys.api.errorTip'), content: errMessage })
+          createErrorModal({ title: '错误提示', content: errMessage })
         } else if (errorMessageMode === 'message') {
           createMessage.error(errMessage)
         }

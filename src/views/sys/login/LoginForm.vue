@@ -49,7 +49,6 @@
   import { Checkbox, Form, Input, Row, Col, Button } from 'ant-design-vue'
   import LoginFormTitle from './LoginFormTitle.vue'
 
-  import { useI18n } from '@/hooks/web/useI18n'
   import { useMessage } from '@/hooks/web/useMessage'
 
   import { useUserStore } from '@/store/modules/user'
@@ -61,7 +60,7 @@
   const ARow = Row
   const FormItem = Form.Item
   const InputPassword = Input.Password
-  const { t } = useI18n()
+
   const { notification, createErrorModal } = useMessage()
   const { prefixCls } = useDesign('login')
   const userStore = useUserStore()
@@ -103,7 +102,7 @@
       }
     } catch (error) {
       createErrorModal({
-        title: t('sys.api.errorTip'),
+        title: '错误提示',
         content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
         getContainer: () => document.body.querySelector(`.${prefixCls}`) || document.body,
       })

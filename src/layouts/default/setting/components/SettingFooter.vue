@@ -2,17 +2,17 @@
   <div :class="prefixCls">
     <a-button type="primary" block @click="handleCopy">
       <CopyOutlined class="mr-2" />
-      {{ t('layout.setting.copyBtn') }}
+      拷贝
     </a-button>
 
     <a-button color="warning" block @click="handleResetSetting" class="my-3">
       <RedoOutlined class="mr-2" />
-      {{ t('common.resetText') }}
+      重置
     </a-button>
 
     <a-button color="error" block @click="handleClearAndRedo">
       <RedoOutlined class="mr-2" />
-      {{ t('layout.setting.clearBtn') }}
+      清空并重置
     </a-button>
   </div>
 </template>
@@ -27,7 +27,7 @@
   import { useUserStore } from '@/store/modules/user'
 
   import { useDesign } from '@/hooks/web/useDesign'
-  import { useI18n } from '@/hooks/web/useI18n'
+
   import { useMessage } from '@/hooks/web/useMessage'
   import { useCopyToClipboard } from '@/hooks/web/useCopyToClipboard'
   import { Button } from 'ant-design-vue'
@@ -41,7 +41,6 @@
     setup() {
       const permissionStore = usePermissionStore()
       const { prefixCls } = useDesign('setting-footer')
-      const { t } = useI18n()
       const { createSuccessModal, createMessage } = useMessage()
       const tabStore = useMultipleTabStore()
       const userStore = useUserStore()
@@ -53,8 +52,8 @@
         )
         unref(isSuccessRef) &&
           createSuccessModal({
-            title: t('layout.setting.operatingTitle'),
-            content: t('layout.setting.operatingContent'),
+            title: '拷贝成功',
+            content: '项目配置已拷贝到剪贴板',
           })
       }
       function handleResetSetting() {
@@ -64,7 +63,7 @@
           // updateTheme(themeColor);
           updateColorWeak(colorWeak)
           updateGrayMode(grayMode)
-          createMessage.success(t('layout.setting.resetSuccess'))
+          createMessage.success('重置成功')
         } catch (error: any) {
           createMessage.error(error)
         }
@@ -80,7 +79,6 @@
       }
       return {
         prefixCls,
-        t,
         handleCopy,
         handleResetSetting,
         handleClearAndRedo,

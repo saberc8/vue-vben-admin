@@ -1,7 +1,5 @@
 import type { ValidationRule } from 'ant-design-vue/lib/form/Form'
-import type { RuleObject } from 'ant-design-vue/lib/form/interface'
 import { ref, computed, unref, Ref } from 'vue'
-import { useI18n } from '@/hooks/web/useI18n'
 
 export enum LoginStateEnum {
   LOGIN,
@@ -39,28 +37,10 @@ export function useFormValid<T extends Object = any>(formRef: Ref<any>) {
 }
 
 export function useFormRules(formData?: Recordable) {
-  const { t } = useI18n()
-
-  const getAccountFormRule = computed(() => createRule(t('sys.login.accountPlaceholder')))
-  const getPasswordFormRule = computed(() => createRule(t('sys.login.passwordPlaceholder')))
-  const getSmsFormRule = computed(() => createRule(t('sys.login.smsPlaceholder')))
-  const getMobileFormRule = computed(() => createRule(t('sys.login.mobilePlaceholder')))
-
-  const validatePolicy = async (_: RuleObject, value: boolean) => {
-    return !value ? Promise.reject(t('sys.login.policyPlaceholder')) : Promise.resolve()
-  }
-
-  const validateConfirmPassword = (password: string) => {
-    return async (_: RuleObject, value: string) => {
-      if (!value) {
-        return Promise.reject(t('sys.login.passwordPlaceholder'))
-      }
-      if (value !== password) {
-        return Promise.reject(t('sys.login.diffPwd'))
-      }
-      return Promise.resolve()
-    }
-  }
+  const getAccountFormRule = computed(() => createRule('请输入账号'))
+  const getPasswordFormRule = computed(() => createRule('请输入密码'))
+  const getSmsFormRule = computed(() => createRule('请输入验证码'))
+  const getMobileFormRule = computed(() => createRule('请输入手机号'))
 
   const getFormRules = computed((): { [k: string]: ValidationRule | ValidationRule[] } => {
     const accountFormRule = unref(getAccountFormRule)

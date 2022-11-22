@@ -7,7 +7,6 @@ import { MenuEventEnum } from './types'
 import { useMultipleTabStore } from '@/store/modules/multipleTab'
 import { RouteLocationNormalized, useRouter } from 'vue-router'
 import { useTabs } from '@/hooks/web/useTabs'
-import { useI18n } from '@/hooks/web/useI18n'
 
 export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: ComputedRef<boolean>) {
   const state = reactive({
@@ -15,7 +14,6 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
     currentIndex: 0,
   })
 
-  const { t } = useI18n()
   const tabStore = useMultipleTabStore()
   const { currentRoute } = useRouter()
   const { refreshPage, closeAll, close, closeLeft, closeOther, closeRight } = useTabs()
@@ -53,40 +51,40 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
       {
         icon: 'ion:reload-sharp',
         event: MenuEventEnum.REFRESH_PAGE,
-        text: t('layout.multipleTab.reload'),
+        text: '刷新页面',
         disabled: refreshDisabled,
       },
       {
         icon: 'clarity:close-line',
         event: MenuEventEnum.CLOSE_CURRENT,
-        text: t('layout.multipleTab.close'),
+        text: '关闭当前',
         disabled: !!meta?.affix || disabled,
         divider: true,
       },
       {
         icon: 'line-md:arrow-close-left',
         event: MenuEventEnum.CLOSE_LEFT,
-        text: t('layout.multipleTab.closeLeft'),
+        text: '关闭左侧',
         disabled: closeLeftDisabled,
         divider: false,
       },
       {
         icon: 'line-md:arrow-close-right',
         event: MenuEventEnum.CLOSE_RIGHT,
-        text: t('layout.multipleTab.closeRight'),
+        text: '关闭右侧',
         disabled: closeRightDisabled,
         divider: true,
       },
       {
         icon: 'dashicons:align-center',
         event: MenuEventEnum.CLOSE_OTHER,
-        text: t('layout.multipleTab.closeOther'),
+        text: '关闭其他',
         disabled: disabled || !isCurItem,
       },
       {
         icon: 'clarity:minus-line',
         event: MenuEventEnum.CLOSE_ALL,
-        text: t('layout.multipleTab.closeAll'),
+        text: '关闭所有',
         disabled: disabled,
       },
     ]

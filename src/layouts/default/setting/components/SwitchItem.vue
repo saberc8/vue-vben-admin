@@ -5,8 +5,8 @@
       v-bind="getBindValue"
       @change="handleChange"
       :disabled="disabled"
-      :checkedChildren="t('layout.setting.on')"
-      :unCheckedChildren="t('layout.setting.off')"
+      checkedChildren="开"
+      unCheckedChildren="关"
     />
   </div>
 </template>
@@ -15,7 +15,7 @@
 
   import { Switch } from 'ant-design-vue'
   import { useDesign } from '@/hooks/web/useDesign'
-  import { useI18n } from '@/hooks/web/useI18n'
+
   import { baseHandler } from '../handler'
   import { HandlerEnum } from '../enum'
 
@@ -38,17 +38,14 @@
     },
     setup(props) {
       const { prefixCls } = useDesign('setting-switch-item')
-      const { t } = useI18n()
-
       const getBindValue = computed(() => {
         return props.def ? { checked: props.def } : {}
       })
-      function handleChange(e: ChangeEvent) {
+      function handleChange(e: any) {
         props.event && baseHandler(props.event, e)
       }
       return {
         prefixCls,
-        t,
         handleChange,
         getBindValue,
       }
