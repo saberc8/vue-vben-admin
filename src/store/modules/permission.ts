@@ -169,17 +169,6 @@ export const usePermissionStore = defineStore({
       }
 
       switch (permissionMode) {
-        // 角色权限
-        case PermissionModeEnum.ROLE:
-          // 对非一级路由进行过滤
-          routes = filter(asyncRoutes, routeFilter)
-          // 对一级路由根据角色权限过滤
-          routes = routes.filter(routeFilter)
-          // Convert multi-level routing to level 2 routing
-          // 将多级路由转换为 2 级路由
-          routes = flatMultiLevelRoutes(routes)
-          break
-
         // 路由映射， 默认进入该case
         case PermissionModeEnum.ROUTE_MAPPING:
           // 对非一级路由进行过滤

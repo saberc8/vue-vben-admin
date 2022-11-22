@@ -21,6 +21,7 @@ const dashboard: AppRouteModule = {
       meta: {
         // affix: true,
         title: t('routes.dashboard.analysis'),
+        roles: ['test'],
       },
     },
     {

@@ -29,9 +29,6 @@ export enum SessionTimeoutProcessingEnum {
  * 权限模式
  */
 export enum PermissionModeEnum {
-  // role
-  // 角色权限
-  ROLE = 'ROLE',
   // black
   // 后端
   BACK = 'BACK',
