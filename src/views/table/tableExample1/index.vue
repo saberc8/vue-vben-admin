@@ -1,9 +1,5 @@
 <template>
   <div>
-    <a-space>
-      <a-button>1</a-button>
-      <a-button>2</a-button>
-    </a-space>
     <vxe-grid v-bind="gridOptions1">
       <template #toolbar_buttons>
         <vxe-button @click="gridOptions1.align = 'left'">居左</vxe-button>
@@ -17,7 +13,6 @@
 <script lang="ts" setup>
   import { reactive } from 'vue'
   import { VxeGridProps } from 'vxe-table'
-
   const gridOptions1 = reactive<VxeGridProps>({
     border: true,
     height: 300,

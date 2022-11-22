@@ -5,23 +5,13 @@ const dashboard: AppRouteModule = {
   path: '/dashboard',
   name: 'Dashboard',
   component: LAYOUT,
-  redirect: '/dashboard/analysis',
+  redirect: '/dashboard/workbench',
   meta: {
     orderNo: 10,
     icon: 'ion:grid-outline',
     title: '仪表盘',
   },
   children: [
-    {
-      path: 'analysis',
-      name: 'Analysis',
-      component: () => import('@/views/dashboard/analysis/index.vue'),
-      meta: {
-        // affix: true,
-        title: '分析页',
-        roles: ['test'],
-      },
-    },
     {
       path: 'workbench',
       name: 'Workbench',

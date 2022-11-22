@@ -14,10 +14,6 @@ Object.keys(modules).forEach((key) => {
   menuModules.push(...modList)
 })
 
-// ===========================
-// ==========Helper===========
-// ===========================
-
 const getPermissionMode = () => {
   const appStore = useAppStoreWithOut()
   return appStore.getProjectConfig.permissionMode
