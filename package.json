@@ -1,6 +1,6 @@
 {
-  "name": "vben-thin-next-1122",
-  "version": "0.0.0",
+  "name": "vben-thin-next",
+  "version": "3.0.0",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",

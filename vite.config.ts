@@ -16,7 +16,7 @@ export default defineConfig({
       resolvers: [AntDesignVueResolver()],
     }),
     AutoImport({
-      dts: 'src/auto-imports.d.ts', // 可以自定义文件生成的位置，默认是根目录下
+      dts: 'src/auto-imports.d.ts',
       imports: [
         // 插件预设支持导入的api
         'vue',
