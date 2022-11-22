@@ -81,12 +81,7 @@ export default defineComponent({
       getMixSideFixed,
     } = useMenuSetting()
 
-    const {
-      getShowHeader,
-      getFixed: getHeaderFixed,
-      getHeaderBgColor,
-      getShowSearch,
-    } = useHeaderSetting()
+    const { getShowHeader, getFixed: getHeaderFixed, getHeaderBgColor } = useHeaderSetting()
 
     const { getShowMultipleTab, getShowQuick, getShowRedo, getShowFold } = useMultipleTabSetting()
 
@@ -187,12 +182,6 @@ export default defineComponent({
             event={HandlerEnum.MENU_HAS_DRAG}
             def={unref(getCanDrag)}
             disabled={!unref(getShowMenuRef)}
-          />
-          <SwitchItem
-            title={t('layout.setting.menuSearch')}
-            event={HandlerEnum.HEADER_SEARCH}
-            def={unref(getShowSearch)}
-            disabled={!unref(getShowHeader)}
           />
           <SwitchItem
             title={t('layout.setting.menuAccordion')}

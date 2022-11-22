@@ -52,9 +52,6 @@ export interface HeaderSetting {
   showFullScreen: boolean
   // Show document button
   showDoc: boolean
-  // Show message center button
-  showNotice: boolean
-  showSearch: boolean
 }
 
 export interface LocaleSetting {

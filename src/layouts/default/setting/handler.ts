@@ -156,10 +156,6 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
     case HandlerEnum.HEADER_THEME:
       updateHeaderBgColor(value)
       return { headerSetting: { bgColor: value } }
-
-    case HandlerEnum.HEADER_SEARCH:
-      return { headerSetting: { showSearch: value } }
-
     case HandlerEnum.HEADER_FIXED:
       return { headerSetting: { fixed: value } }
 
