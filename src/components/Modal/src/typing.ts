@@ -27,8 +27,6 @@ export interface ReturnInnerMethods extends ModalMethods {
   redoModalHeight: () => void
 }
 
-export type UseModalInnerReturnType = [RegisterFn, ReturnInnerMethods]
-
 export interface ModalProps {
   minHeight?: number
   height?: number
