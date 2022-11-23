@@ -1,5 +1,5 @@
 <template>
-  <Footer :class="prefixCls" v-if="getShowLayoutFooter" ref="footerRef">
+  <a-footer :class="prefixCls" v-if="getShowLayoutFooter" ref="footerRef">
     <div :class="`${prefixCls}__links`">
       <a @click="openWindow(SITE_URL)">在线预览</a>
 
@@ -8,7 +8,7 @@
       <a @click="openWindow(DOC_URL)">在线文档</a>
     </div>
     <div>Copyright &copy;2020 Vben Admin</div>
-  </Footer>
+  </a-footer>
 </template>
 
 <script lang="ts">
@@ -26,7 +26,7 @@
 
   export default defineComponent({
     name: 'LayoutFooter',
-    components: { Footer: Layout.Footer, GithubFilled },
+    components: { AFooter: Layout.Footer, GithubFilled },
     setup() {
       const { getShowFooter } = useRootSetting()
       const { currentRoute } = useRouter()
@@ -57,35 +57,3 @@
     },
   })
 </script>
-<style lang="less" scoped>
-  @prefix-cls: 'vben-layout-footer';
-
-  @normal-color: rgba(0, 0, 0, 0.45);
-
-  @hover-color: rgba(0, 0, 0, 0.85);
-
-  .@{prefix-cls} {
-    color: @normal-color;
-    text-align: center;
-
-    &__links {
-      margin-bottom: 8px;
-
-      a {
-        color: @normal-color;
-
-        &:hover {
-          color: @hover-color;
-        }
-      }
-    }
-
-    &__github {
-      margin: 0 30px;
-
-      &:hover {
-        color: @hover-color;
-      }
-    }
-  }
-</style>

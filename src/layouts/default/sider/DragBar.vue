@@ -40,27 +40,3 @@
     },
   })
 </script>
-<style lang="less" scoped>
-  @prefix-cls: 'vben-darg-bar';
-
-  .@{prefix-cls} {
-    position: absolute;
-    top: 0;
-    right: -2px;
-    z-index: 999;
-    width: 2px;
-    height: 100%;
-    cursor: col-resize;
-    border-top: none;
-    border-bottom: none;
-
-    &--hide {
-      display: none;
-    }
-
-    &:hover {
-      background-color: #0960bd;
-      box-shadow: 0 0 4px 0 rgb(28 36 56 / 15%);
-    }
-  }
-</style>

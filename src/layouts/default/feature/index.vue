@@ -55,27 +55,3 @@
   <SettingDrawer v-if="getIsFixedSettingDrawer" :class="prefixCls" />
   <SessionTimeoutLogin v-if="getIsSessionTimeout" />
 </template>
-
-<style lang="less">
-  @prefix-cls: 'vben-setting-drawer-feature';
-
-  .@{prefix-cls} {
-    position: absolute;
-    top: 45%;
-    right: 0;
-    z-index: 10;
-    display: flex;
-    padding: 10px;
-    color: #fff;
-    cursor: pointer;
-    background-color: #0960bd;
-    border-radius: 6px 0 0 6px;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-      width: 1em;
-      height: 1em;
-    }
-  }
-</style>

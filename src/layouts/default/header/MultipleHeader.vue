@@ -96,18 +96,3 @@
     },
   })
 </script>
-<style lang="less" scoped>
-  @prefix-cls: 'vben-layout-multiple-header';
-
-  .@{prefix-cls} {
-    transition: width 0.2s;
-    flex: 0 0 auto;
-
-    &--fixed {
-      position: fixed;
-      top: 0;
-      z-index: 999;
-      width: 100%;
-    }
-  }
-</style>

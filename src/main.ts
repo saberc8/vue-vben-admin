@@ -1,7 +1,3 @@
-import 'virtual:windi-base.css'
-import 'virtual:windi-components.css'
-import 'virtual:windi-utilities.css'
-// Register icon sprite
 import 'virtual:svg-icons-register'
 import App from './App.vue'
 import { createApp } from 'vue'
@@ -11,18 +7,15 @@ import { setupRouterGuard } from '@/router/guard'
 import { setupStore } from '@/store'
 import { setupGlobDirectives } from '@/directives'
 import Antd from 'ant-design-vue'
-// import { isDevMode } from './utils/env'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
 import 'ant-design-vue/dist/antd.css'
-// if (isDevMode()) {
-//   import('ant-design-vue/es/style')
-// }
 
 async function bootstrap() {
   const app = createApp(App)
   // 引入vxe-table
   app.use(VXETable)
+
   app.use(Antd)
   // Configure store
   // 配置 store

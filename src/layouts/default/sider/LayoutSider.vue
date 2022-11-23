@@ -128,32 +128,3 @@
     },
   })
 </script>
-<style lang="less">
-  @prefix-cls: 'vben-layout-sideBar';
-
-  .@{prefix-cls} {
-    z-index: 999;
-
-    &--fixed {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-    }
-
-    &--mix {
-      top: 60px;
-      height: calc(100% - 60px);
-    }
-
-    .ant-layout-sider-zero-width-trigger {
-      top: 40%;
-      z-index: 10;
-    }
-
-    & .ant-layout-sider-trigger {
-      height: 36px;
-      line-height: 36px;
-    }
-  }
-</style>

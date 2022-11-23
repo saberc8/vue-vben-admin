@@ -1,7 +1,6 @@
 <template>
-  <LoginFormTitle v-show="getShow" class="enter-x" />
   <Form
-    class="p-4 enter-x"
+    class="w-90"
     :model="formData"
     :rules="getFormRules"
     ref="formRef"
@@ -35,25 +34,18 @@
     </ARow>
 
     <FormItem class="enter-x">
-      <Button type="primary" size="large" block @click="handleLogin" :loading="loading">
+      <a-button type="primary" size="large" block @click="handleLogin" :loading="loading">
         登录
-      </Button>
+      </a-button>
     </FormItem>
   </Form>
 </template>
 <script lang="ts" setup>
-  import { reactive, ref, unref, computed } from 'vue'
-
-  import { Checkbox, Form, Input, Row, Col, Button } from 'ant-design-vue'
-  import LoginFormTitle from './LoginFormTitle.vue'
-
+  import { Checkbox, Form, Input, Row, Col } from 'ant-design-vue'
   import { useMessage } from '@/hooks/web/useMessage'
-
   import { useUserStore } from '@/store/modules/user'
   import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './useLogin'
   import { useDesign } from '@/hooks/web/useDesign'
-  //import { onKeyStroke } from '@vueuse/core';
-
   const ACol = Col
   const ARow = Row
   const FormItem = Form.Item
