@@ -1,7 +1,7 @@
 <template>
   <div :class="prefixCls">
     <span> {{ title }}</span>
-    <Select
+    <a-select
       v-bind="getBindValue"
       :class="`${prefixCls}-select`"
       @change="handleChange"
@@ -21,7 +21,7 @@
 
   export default defineComponent({
     name: 'SelectItem',
-    components: { Select },
+    components: { ASelect: Select },
     props: {
       event: {
         type: Number as PropType<HandlerEnum>,
@@ -49,7 +49,7 @@
         return props.def ? { value: props.def, defaultValue: props.initValue || props.def } : {}
       })
 
-      function handleChange(e: ChangeEvent) {
+      function handleChange(e: any) {
         props.event && baseHandler(props.event, e)
       }
       return {

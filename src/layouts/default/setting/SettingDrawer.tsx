@@ -1,32 +1,23 @@
 import { defineComponent, unref } from 'vue'
 import { BasicDrawer } from '@/components/Drawer/index'
 import { Divider } from 'ant-design-vue'
-import { TypePicker, ThemeColorPicker, SettingFooter, SwitchItem, SelectItem } from './components'
-import { AppDarkModeToggle } from '@/components/Application'
+import { TypePicker, SettingFooter, SwitchItem, SelectItem } from './components'
+
 import { useRootSetting } from '@/hooks/setting/useRootSetting'
 import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
-import { useHeaderSetting } from '@/hooks/setting/useHeaderSetting'
 import { useTransitionSetting } from '@/hooks/setting/useTransitionSetting'
 import { baseHandler } from './handler'
 import { HandlerEnum, routerTransitionOptions, menuTypeList } from './enum'
-import {
-  HEADER_PRESET_BG_COLOR_LIST,
-  SIDE_BAR_BG_COLOR_LIST,
-  APP_PRESET_COLOR_LIST,
-} from '@/settings/designSetting'
 
 export default defineComponent({
   name: 'SettingDrawer',
   setup(_, { attrs }) {
-    const { getShowFooter, getColorWeak, getGrayMode, getShowDarkModeToggle, getThemeColor } =
-      useRootSetting()
+    const { getShowFooter, getColorWeak, getGrayMode } = useRootSetting()
 
     const { getOpenPageLoading, getBasicTransition, getEnableTransition, getOpenNProgress } =
       useTransitionSetting()
 
-    const { getMenuType, getMenuBgColor } = useMenuSetting()
-
-    const { getHeaderBgColor } = useHeaderSetting()
+    const { getMenuType } = useMenuSetting()
 
     function renderSidebar() {
       return (
@@ -44,37 +35,6 @@ export default defineComponent({
         </>
       )
     }
-
-    function renderHeaderTheme() {
-      return (
-        <ThemeColorPicker
-          colorList={HEADER_PRESET_BG_COLOR_LIST}
-          def={unref(getHeaderBgColor)}
-          event={HandlerEnum.HEADER_THEME}
-        />
-      )
-    }
-
-    function renderSiderTheme() {
-      return (
-        <ThemeColorPicker
-          colorList={SIDE_BAR_BG_COLOR_LIST}
-          def={unref(getMenuBgColor)}
-          event={HandlerEnum.MENU_THEME}
-        />
-      )
-    }
-
-    function renderMainTheme() {
-      return (
-        <ThemeColorPicker
-          colorList={APP_PRESET_COLOR_LIST}
-          def={unref(getThemeColor)}
-          event={HandlerEnum.CHANGE_THEME_COLOR}
-        />
-      )
-    }
-
     function renderContent() {
       return (
         <>
@@ -116,16 +76,8 @@ export default defineComponent({
 
     return () => (
       <BasicDrawer {...attrs} title="项目配置" width={330} class="setting-drawer">
-        {unref(getShowDarkModeToggle) && <Divider>{() => '主题'}</Divider>}
-        {unref(getShowDarkModeToggle) && <AppDarkModeToggle class="mx-auto" />}
         <Divider>{() => '导航栏模式'}</Divider>
         {renderSidebar()}
-        <Divider>{() => '系统主题'}</Divider>
-        {renderMainTheme()}
-        <Divider>{() => '顶栏主题'}</Divider>
-        {renderHeaderTheme()}
-        <Divider>{() => '菜单主题'}</Divider>
-        {renderSiderTheme()}
         <Divider>{() => '界面显示'}</Divider>
         {renderContent()}
         <Divider>{() => '动画'}</Divider>

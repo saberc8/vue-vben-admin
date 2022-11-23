@@ -5,9 +5,6 @@ import { updateGrayMode } from '@/logics/theme/updateGrayMode'
 
 import { useAppStore } from '@/store/modules/app'
 import { ProjectConfig } from '/#/config'
-import { changeTheme } from '@/logics/theme'
-import { updateDarkTheme } from '@/logics/theme/dark'
-import { useRootSetting } from '@/hooks/setting/useRootSetting'
 
 export function baseHandler(event: HandlerEnum, value: any) {
   const appStore = useAppStore()
@@ -22,11 +19,9 @@ export function baseHandler(event: HandlerEnum, value: any) {
 export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConfig> {
   const appStore = useAppStore()
 
-  const { getThemeColor, getDarkMode } = useRootSetting()
   switch (event) {
     case HandlerEnum.CHANGE_LAYOUT:
       const { mode, type } = value
-
       return {
         menuSetting: {
           mode,
@@ -36,22 +31,6 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
           hidden: false,
         },
       }
-
-    case HandlerEnum.CHANGE_THEME_COLOR:
-      if (getThemeColor.value === value) {
-        return {}
-      }
-      changeTheme(value)
-
-      return { themeColor: value }
-
-    case HandlerEnum.CHANGE_THEME:
-      if (getDarkMode.value === value) {
-        return {}
-      }
-      updateDarkTheme(value)
-
-      return {}
 
     case HandlerEnum.MENU_HAS_DRAG:
       return { menuSetting: { canDrag: value } }

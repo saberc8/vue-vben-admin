@@ -12,19 +12,20 @@ import { setupRouterGuard } from '@/router/guard'
 import { setupStore } from '@/store'
 import { setupGlobDirectives } from '@/directives'
 import { registerGlobComp } from '@/components/registerGlobComp'
-
-import { isDevMode } from './utils/env'
+import Antd from 'ant-design-vue'
+// import { isDevMode } from './utils/env'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
-
-if (isDevMode()) {
-  import('ant-design-vue/es/style')
-}
+import 'ant-design-vue/dist/antd.css'
+// if (isDevMode()) {
+//   import('ant-design-vue/es/style')
+// }
 
 async function bootstrap() {
   const app = createApp(App)
   // 引入vxe-table
   app.use(VXETable)
+  app.use(Antd)
   // Configure store
   // 配置 store
   setupStore(app)
