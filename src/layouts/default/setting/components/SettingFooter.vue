@@ -31,8 +31,6 @@
   import { useMessage } from '@/hooks/web/useMessage'
   import { useCopyToClipboard } from '@/hooks/web/useCopyToClipboard'
   import { Button } from 'ant-design-vue'
-  import { updateColorWeak } from '@/logics/theme/updateColorWeak'
-  import { updateGrayMode } from '@/logics/theme/updateGrayMode'
   import defaultSetting from '@/settings/projectSetting'
 
   export default defineComponent({
@@ -59,10 +57,6 @@
       function handleResetSetting() {
         try {
           appStore.setProjectConfig(defaultSetting)
-          const { colorWeak, grayMode } = defaultSetting
-          // updateTheme(themeColor);
-          updateColorWeak(colorWeak)
-          updateGrayMode(grayMode)
           createMessage.success('重置成功')
         } catch (error: any) {
           createMessage.error(error)
@@ -87,7 +81,7 @@
   })
 </script>
 <style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-setting-footer';
+  @prefix-cls: 'vben-setting-footer';
 
   .@{prefix-cls} {
     display: flex;

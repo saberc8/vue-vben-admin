@@ -12,7 +12,6 @@ import { configMockPlugin } from './mock'
 import { configCompressPlugin } from './compress'
 // import { configStyleImportPlugin } from './styleImport'
 import { configVisualizerConfig } from './visualizer'
-import { configThemePlugin } from './theme'
 import { configImageminPlugin } from './imagemin'
 import { configSvgIconsPlugin } from './svgSprite'
 
@@ -55,15 +54,8 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   // vite-plugin-purge-icons
   vitePlugins.push(purgeIcons())
 
-  // vite-plugin-style-import
-  // vitePlugins.push(configStyleImportPlugin(isBuild))
-
   // rollup-plugin-visualizer
   vitePlugins.push(configVisualizerConfig())
-
-  // vite-plugin-theme
-  vitePlugins.push(configThemePlugin(isBuild))
-
   // The following plugins only work in the production environment
   if (isBuild) {
     // vite-plugin-imagemin

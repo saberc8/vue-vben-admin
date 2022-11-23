@@ -6,28 +6,21 @@
       <AppLogo
         v-if="getShowHeaderLogo || getIsMobile"
         :class="`${prefixCls}-logo`"
-        :theme="getHeaderTheme"
         :style="getLogoWidth"
       />
       <LayoutTrigger
         v-if="
           (getShowContent && getShowHeaderTrigger && !getSplit && !getIsMixSidebar) || getIsMobile
         "
-        :theme="getHeaderTheme"
         :sider="false"
       />
-      <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getHeaderTheme" />
+      <LayoutBreadcrumb v-if="getShowContent && getShowBread" />
     </div>
     <!-- left end -->
 
     <!-- menu start -->
     <div :class="`${prefixCls}-menu`" v-if="getShowTopMenu && !getIsMobile">
-      <LayoutMenu
-        :isHorizontal="true"
-        :theme="getHeaderTheme"
-        :splitType="getSplitType"
-        :menuMode="getMenuMode"
-      />
+      <LayoutMenu :isHorizontal="true" :splitType="getSplitType" :menuMode="getMenuMode" />
     </div>
     <!-- menu-end -->
 
@@ -35,7 +28,7 @@
     <div :class="`${prefixCls}-action`">
       <FullScreen v-if="getShowFullScreen" :class="`${prefixCls}-action__item fullscreen-item`" />
 
-      <UserDropDown :theme="getHeaderTheme" />
+      <UserDropDown />
 
       <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
     </div>
@@ -67,6 +60,7 @@
   export default defineComponent({
     name: 'LayoutHeader',
     components: {
+      // eslint-disable-next-line vue/no-reserved-component-names
       Header: Layout.Header,
       AppLogo,
       LayoutTrigger,
@@ -93,25 +87,17 @@
       } = useMenuSetting()
       const { getUseErrorHandle, getShowSettingButton, getSettingButtonPosition } = useRootSetting()
 
-      const {
-        getHeaderTheme,
-        getShowFullScreen,
-        getShowContent,
-        getShowBread,
-        getShowHeaderLogo,
-        getShowHeader,
-      } = useHeaderSetting()
+      const { getShowFullScreen, getShowContent, getShowBread, getShowHeaderLogo, getShowHeader } =
+        useHeaderSetting()
 
       const { getIsMobile } = useAppInject()
 
       const getHeaderClass = computed(() => {
-        const theme = unref(getHeaderTheme)
         return [
           prefixCls,
           {
             [`${prefixCls}--fixed`]: props.fixed,
             [`${prefixCls}--mobile`]: unref(getIsMobile),
-            [`${prefixCls}--${theme}`]: theme,
           },
         ]
       })
@@ -148,7 +134,6 @@
         prefixCls,
         getHeaderClass,
         getShowHeaderLogo,
-        getHeaderTheme,
         getShowHeaderTrigger,
         getIsMobile,
         getShowBread,

@@ -1,14 +1,6 @@
-@prefix-cls: ~'@{namespace}-multiple-tabs';
+@prefix-cls: 'vben-multiple-tabs';
 
-html[data-theme='dark'] {
-  .@{prefix-cls} {
-    .ant-tabs-tab {
-      border-bottom: 1px solid @border-color-base;
-    }
-  }
-}
-
-html[data-theme='light'] {
+html {
   .@{prefix-cls} {
     .ant-tabs-tab:not(.ant-tabs-tab-active) {
       border: 1px solid #d9d9d9 !important;
@@ -18,35 +10,35 @@ html[data-theme='light'] {
 
 .@{prefix-cls} {
   z-index: 10;
-  height: @multiple-height + 2;
-  line-height: @multiple-height + 2;
-  background-color: @component-background;
-  border-bottom: 1px solid @border-color-base;
+  height: 32px;
+  line-height: 32px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
 
   .ant-tabs-small {
-    height: @multiple-height;
+    height: 30px;
   }
 
   .ant-tabs.ant-tabs-card {
     .ant-tabs-nav {
       padding-top: 2px;
-      height: @multiple-height;
+      height: 30px;
       margin: 0;
-      background-color: @component-background;
+      background-color: #fff;
       border: 0;
       box-shadow: none;
 
       .ant-tabs-nav-container {
-        height: @multiple-height;
+        height: 30px;
         padding-top: 2px;
       }
 
       .ant-tabs-tab {
-        height: calc(@multiple-height - 2px);
+        height: calc(30px - 2px);
         padding-right: 12px;
-        line-height: calc(@multiple-height - 2px);
-        color: @text-color-base;
-        background-color: @component-background;
+        line-height: calc(30px - 2px);
+        color: #000;
+        background-color: #fff;
         transition: none;
 
         &:hover {
@@ -79,25 +71,25 @@ html[data-theme='light'] {
         // }
 
         svg {
-          fill: @text-color-base;
+          fill: #000;
         }
       }
 
       .ant-tabs-tab:not(.ant-tabs-tab-active) {
         &:hover {
-          color: @primary-color;
+          color: #0960bd;
         }
       }
 
       .ant-tabs-tab-active {
         position: relative;
         padding-left: 18px;
-        background: @primary-color;
+        background: #0960bd;
         border: 0;
         transition: none;
 
         span {
-          color: @white !important;
+          color: #fff !important;
         }
 
         .ant-tabs-tab-remove {
@@ -106,7 +98,7 @@ html[data-theme='light'] {
 
         svg {
           width: 0.7em;
-          fill: @white;
+          fill: #fff;
         }
       }
     }
@@ -146,15 +138,15 @@ html[data-theme='light'] {
     &__extra-fold {
       display: inline-block;
       width: 36px;
-      height: @multiple-height;
-      line-height: @multiple-height;
-      color: @text-color-secondary;
+      height: 30px;
+      line-height: 30px;
+      color: #f00;
       text-align: center;
       cursor: pointer;
-      border-left: 1px solid @border-color-base;
+      border-left: 1px solid #eee;
 
       &:hover {
-        color: @text-color-base;
+        color: #000;
       }
 
       span[role='img'] {
@@ -171,7 +163,7 @@ html[data-theme='light'] {
     &__info {
       display: inline-block;
       width: 100%;
-      height: @multiple-height - 2;
+      height: 30px - 2;
       padding-left: 0;
       margin-left: -10px;
       font-size: 12px;

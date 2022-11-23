@@ -1,5 +1,5 @@
 <template>
-  <ul :class="getClass">
+  <ul>
     <slot></slot>
   </ul>
 </template>
@@ -10,7 +10,6 @@
   import {
     defineComponent,
     ref,
-    computed,
     onMounted,
     watchEffect,
     watch,
@@ -19,14 +18,13 @@
     provide,
   } from 'vue'
 
-  import { useDesign } from '@/hooks/web/useDesign'
   import { propTypes } from '@/utils/propTypes'
   import { createSimpleRootMenuContext } from './useSimpleMenuContext'
   import mitt from '@/utils/mitt'
   export default defineComponent({
+    // eslint-disable-next-line vue/no-reserved-component-names
     name: 'Menu',
     props: {
-      theme: propTypes.oneOf(['light', 'dark']).def('light'),
       activeName: propTypes.oneOfType([propTypes.string, propTypes.number]),
       openNames: {
         type: Array as PropType<string[]>,
@@ -50,25 +48,11 @@
       const currentActiveName = ref<string | number>('')
       const openedNames = ref<string[]>([])
 
-      const { prefixCls } = useDesign('menu')
-
       const isRemoveAllPopup = ref(false)
 
       createSimpleRootMenuContext({
         rootMenuEmitter: rootMenuEmitter,
         activeName: currentActiveName,
-      })
-
-      const getClass = computed(() => {
-        const { theme } = props
-        return [
-          prefixCls,
-          `${prefixCls}-${theme}`,
-          `${prefixCls}-vertical`,
-          {
-            [`${prefixCls}-collapse`]: props.collapse,
-          },
-        ]
       })
 
       watchEffect(() => {
@@ -149,10 +133,7 @@
         })
       })
 
-      return { getClass, openedNames }
+      return { openedNames }
     },
   })
 </script>
-<style lang="less">
-  @import './menu.less';
-</style>

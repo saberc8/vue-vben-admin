@@ -53,7 +53,7 @@
   })
 </script>
 <style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-setting-switch-item';
+  @prefix-cls: 'vben-setting-switch-item';
 
   .@{prefix-cls} {
     display: flex;

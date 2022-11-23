@@ -1,7 +1,4 @@
 import { HandlerEnum } from './enum'
-import { updateHeaderBgColor, updateSidebarBgColor } from '@/logics/theme/updateBackground'
-import { updateColorWeak } from '@/logics/theme/updateColorWeak'
-import { updateGrayMode } from '@/logics/theme/updateGrayMode'
 
 import { useAppStore } from '@/store/modules/app'
 import { ProjectConfig } from '/#/config'
@@ -10,10 +7,6 @@ export function baseHandler(event: HandlerEnum, value: any) {
   const appStore = useAppStore()
   const config = handler(event, value)
   appStore.setProjectConfig(config)
-  if (event === HandlerEnum.CHANGE_THEME) {
-    updateHeaderBgColor()
-    updateSidebarBgColor()
-  }
 }
 
 export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConfig> {
@@ -52,10 +45,6 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
 
     case HandlerEnum.MENU_SHOW_SIDEBAR:
       return { menuSetting: { show: value } }
-
-    case HandlerEnum.MENU_THEME:
-      updateSidebarBgColor(value)
-      return { menuSetting: { bgColor: value } }
 
     case HandlerEnum.MENU_CLOSE_MIX_SIDEBAR_ON_CHANGE:
       return { menuSetting: { closeMixSidebarOnChange: value } }
@@ -96,16 +85,8 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
     case HandlerEnum.SHOW_BREADCRUMB_ICON:
       return { showBreadCrumbIcon: value }
 
-    case HandlerEnum.GRAY_MODE:
-      updateGrayMode(value)
-      return { grayMode: value }
-
     case HandlerEnum.SHOW_FOOTER:
       return { showFooter: value }
-
-    case HandlerEnum.COLOR_WEAK:
-      updateColorWeak(value)
-      return { colorWeak: value }
 
     case HandlerEnum.SHOW_LOGO:
       return { showLogo: value }
@@ -123,10 +104,6 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
     case HandlerEnum.TABS_SHOW_FOLD:
       return { multiTabsSetting: { showFold: value } }
 
-    // ============header==================
-    case HandlerEnum.HEADER_THEME:
-      updateHeaderBgColor(value)
-      return { headerSetting: { bgColor: value } }
     case HandlerEnum.HEADER_FIXED:
       return { headerSetting: { fixed: value } }
 

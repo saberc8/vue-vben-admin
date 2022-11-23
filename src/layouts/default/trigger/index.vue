@@ -1,6 +1,6 @@
 <template>
   <SiderTrigger v-if="sider" />
-  <HeaderTrigger v-else :theme="theme" />
+  <HeaderTrigger v-else />
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue'
@@ -16,7 +16,6 @@
     },
     props: {
       sider: propTypes.bool.def(true),
-      theme: propTypes.oneOf(['light', 'dark']),
     },
   })
 </script>

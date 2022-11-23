@@ -30,7 +30,7 @@
   })
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-layout-content';
+  @prefix-cls: 'vben-layout-content';
 
   .@{prefix-cls} {
     position: relative;
@@ -45,7 +45,7 @@
     &-loading {
       position: absolute;
       top: 200px;
-      z-index: @page-loading-z-index;
+      z-index: 999;
     }
   }
 </style>

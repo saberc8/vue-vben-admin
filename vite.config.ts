@@ -3,7 +3,6 @@ import pkg from './package.json'
 import dayjs from 'dayjs'
 import { loadEnv } from 'vite'
 import { resolve } from 'path'
-import { generateModifyVars } from './build/generate/generateModifyVars'
 import { createProxy } from './build/vite/proxy'
 import { wrapperEnv } from './build/utils'
 import { createVitePlugins } from './build/vite/plugin'
@@ -88,7 +87,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     css: {
       preprocessorOptions: {
         less: {
-          modifyVars: generateModifyVars(),
+          modifyVars: {
+            'primary-color': '#1DA57A',
+            'link-color': '#1DA57A',
+            'border-radius-base': '2px',
+          },
           javascriptEnabled: true,
         },
       },

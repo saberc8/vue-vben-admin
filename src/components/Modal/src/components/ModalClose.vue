@@ -60,7 +60,7 @@
   })
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-modal-close';
+  @prefix-cls: 'vben-basic-modal-close';
   .@{prefix-cls} {
     display: flex;
     height: 95%;
@@ -90,13 +90,13 @@
       padding: 10px;
 
       &:hover {
-        color: @primary-color;
+        color: #0960bd;
       }
     }
 
     & span:last-child {
       &:hover {
-        color: @error-color;
+        color: #f00;
       }
     }
   }

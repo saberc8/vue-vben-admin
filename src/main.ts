@@ -1,6 +1,5 @@
 import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
-import '@/design/index.less'
 import 'virtual:windi-utilities.css'
 // Register icon sprite
 import 'virtual:svg-icons-register'
@@ -11,7 +10,6 @@ import { router, setupRouter } from '@/router'
 import { setupRouterGuard } from '@/router/guard'
 import { setupStore } from '@/store'
 import { setupGlobDirectives } from '@/directives'
-import { registerGlobComp } from '@/components/registerGlobComp'
 import Antd from 'ant-design-vue'
 // import { isDevMode } from './utils/env'
 import VXETable from 'vxe-table'
@@ -33,10 +31,6 @@ async function bootstrap() {
   // Initialize internal system configuration
   // 初始化内部系统配置
   initAppConfigStore()
-
-  // Register global components
-  // 注册全局组件
-  registerGlobComp(app)
 
   // Configure routing
   // 配置路由

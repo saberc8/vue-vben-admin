@@ -1,7 +1,3 @@
-<!--
- * @Author: Vben
- * @Description: logo component
--->
 <template>
   <div class="anticon" :class="getAppLogoClass" @click="goHome">
     <img src="../../../assets/images/logo.png" />
@@ -21,10 +17,6 @@
 
   const props = defineProps({
     /**
-     * The theme of the current parent component
-     */
-    theme: { type: String, validator: (v: string) => ['light', 'dark'].includes(v) },
-    /**
      * Whether to show title
      */
     showTitle: { type: Boolean, default: true },
@@ -42,7 +34,6 @@
 
   const getAppLogoClass = computed(() => [
     prefixCls,
-    props.theme,
     { 'collapsed-show-title': unref(getCollapsedShowTitle) },
   ])
 
@@ -58,7 +49,7 @@
   }
 </script>
 <style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-app-logo';
+  @prefix-cls: 'vben-app-logo';
 
   .@{prefix-cls} {
     display: flex;
@@ -68,7 +59,7 @@
     transition: all 0.2s ease;
 
     &.light {
-      border-bottom: 1px solid @border-color-base;
+      border-bottom: 1px solid #eee;
     }
 
     &.collapsed-show-title {
@@ -76,11 +67,7 @@
     }
 
     &.light &__title {
-      color: @primary-color;
-    }
-
-    &.dark &__title {
-      color: @white;
+      color: #0960bd;
     }
 
     &__title {

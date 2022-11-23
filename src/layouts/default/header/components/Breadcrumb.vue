@@ -1,5 +1,5 @@
 <template>
-  <div :class="[prefixCls, `${prefixCls}--${theme}`]">
+  <div :class="[prefixCls, `${prefixCls}--light`]">
     <a-breadcrumb :routes="routes">
       <template #itemRender="{ route, routes: routesMatched, paths }">
         <Icon :icon="getIcon(route)" v-if="getShowBreadCrumbIcon && getIcon(route)" />
@@ -26,8 +26,6 @@
   import { useDesign } from '@/hooks/web/useDesign'
   import { useRootSetting } from '@/hooks/setting/useRootSetting'
   import { useGo } from '@/hooks/web/usePage'
-
-  import { propTypes } from '@/utils/propTypes'
   import { isString } from '@/utils/is'
   import { filter } from '@/utils/helper/treeHelper'
   import { getMenus } from '@/router/menus'
@@ -38,9 +36,6 @@
   export default defineComponent({
     name: 'LayoutBreadcrumb',
     components: { Icon, [Breadcrumb.name]: Breadcrumb },
-    props: {
-      theme: propTypes.oneOf(['dark', 'light']),
-    },
     setup() {
       const routes = ref<RouteLocationMatched[]>([])
       const { currentRoute } = useRouter()
@@ -147,7 +142,7 @@
   })
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-layout-breadcrumb';
+  @prefix-cls: 'vben-layout-breadcrumb';
 
   .@{prefix-cls} {
     display: flex;
@@ -163,38 +158,19 @@
 
     &--light {
       .ant-breadcrumb-link {
-        color: @breadcrumb-item-normal-color;
+        color: #999;
 
         a {
           color: rgb(0 0 0 / 65%);
 
           &:hover {
-            color: @primary-color;
+            color: #0960bd;
           }
         }
       }
 
       .ant-breadcrumb-separator {
-        color: @breadcrumb-item-normal-color;
-      }
-    }
-
-    &--dark {
-      .ant-breadcrumb-link {
-        color: rgb(255 255 255 / 60%);
-
-        a {
-          color: rgb(255 255 255 / 80%);
-
-          &:hover {
-            color: @white;
-          }
-        }
-      }
-
-      .ant-breadcrumb-separator,
-      .anticon {
-        color: rgb(255 255 255 / 80%);
+        color: #999;
       }
     }
   }

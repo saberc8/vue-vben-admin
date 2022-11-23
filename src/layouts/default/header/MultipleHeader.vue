@@ -31,13 +31,8 @@
 
       const { getCalcContentWidth, getSplit } = useMenuSetting()
       const { getIsMobile } = useAppInject()
-      const {
-        getFixed,
-        getShowInsetHeaderRef,
-        getShowFullHeaderRef,
-        getHeaderTheme,
-        getShowHeader,
-      } = useHeaderSetting()
+      const { getFixed, getShowInsetHeaderRef, getShowFullHeaderRef, getShowHeader } =
+        useHeaderSetting()
 
       const { getFullContent } = useFullContent()
 
@@ -85,11 +80,7 @@
       })
 
       const getClass = computed(() => {
-        return [
-          prefixCls,
-          `${prefixCls}--${unref(getHeaderTheme)}`,
-          { [`${prefixCls}--fixed`]: unref(getIsFixed) },
-        ]
+        return [prefixCls, { [`${prefixCls}--fixed`]: unref(getIsFixed) }]
       })
 
       return {
@@ -106,20 +97,16 @@
   })
 </script>
 <style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-layout-multiple-header';
+  @prefix-cls: 'vben-layout-multiple-header';
 
   .@{prefix-cls} {
     transition: width 0.2s;
     flex: 0 0 auto;
 
-    &--dark {
-      margin-left: -1px;
-    }
-
     &--fixed {
       position: fixed;
       top: 0;
-      z-index: @multiple-tab-fixed-z-index;
+      z-index: 999;
       width: 100%;
     }
   }

@@ -67,7 +67,7 @@
 </script>
 
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-drawer-footer';
+  @prefix-cls: 'vben-basic-drawer-footer';
   @footer-height: 60px;
   .@{prefix-cls} {
     position: absolute;
@@ -75,8 +75,8 @@
     width: 100%;
     padding: 0 12px 0 20px;
     text-align: right;
-    background-color: @component-background;
-    border-top: 1px solid @border-color-base;
+    background-color: #fff;
+    border-top: 1px solid #eee;
 
     > * {
       margin-right: 8px;

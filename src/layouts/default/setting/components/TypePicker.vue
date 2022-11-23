@@ -31,7 +31,7 @@
     props: {
       menuTypeList: {
         type: Array as PropType<typeof menuTypeList>,
-        defualt: () => [],
+        default: () => [],
       },
       handler: {
         type: Function as PropType<Fn>,
@@ -52,7 +52,7 @@
   })
 </script>
 <style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-setting-menu-type-picker';
+  @prefix-cls: 'vben-setting-menu-type-picker';
 
   .@{prefix-cls} {
     display: flex;
@@ -125,10 +125,6 @@
         }
       }
 
-      &--dark {
-        background-color: #273352;
-      }
-
       &--mix-sidebar {
         &::before {
           top: 0;
@@ -160,7 +156,7 @@
       &:hover,
       &--active {
         padding: 12px;
-        border: 2px solid @primary-color;
+        border: 2px solid #0960bd;
 
         &::before,
         &::after {

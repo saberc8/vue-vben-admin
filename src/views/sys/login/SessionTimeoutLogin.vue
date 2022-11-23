@@ -41,13 +41,13 @@
   })
 </script>
 <style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-st-login';
+  @prefix-cls: 'vben-st-login';
 
   .@{prefix-cls} {
     position: fixed;
     z-index: 9999999;
     width: 100%;
     height: 100%;
-    background: @component-background;
+    background: #fff;
   }
 </style>

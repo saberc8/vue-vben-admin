@@ -3,7 +3,7 @@ import type { ProjectConfig } from '/#/config'
 import { computed } from 'vue'
 
 import { useAppStore } from '@/store/modules/app'
-import { ContentEnum, ThemeEnum } from '@/enums/appEnum'
+import { ContentEnum } from '@/enums/appEnum'
 
 type RootSetting = Omit<ProjectConfig, 'headerSetting' | 'menuSetting' | 'multiTabsSetting'>
 
@@ -33,20 +33,9 @@ export function useRootSetting() {
   const getShowFooter = computed(() => appStore.getProjectConfig.showFooter)
 
   const getShowBreadCrumb = computed(() => appStore.getProjectConfig.showBreadCrumb)
-
-  const getThemeColor = computed(() => appStore.getProjectConfig.themeColor)
-
   const getShowBreadCrumbIcon = computed(() => appStore.getProjectConfig.showBreadCrumbIcon)
 
   const getFullContent = computed(() => appStore.getProjectConfig.fullContent)
-
-  const getColorWeak = computed(() => appStore.getProjectConfig.colorWeak)
-
-  const getGrayMode = computed(() => appStore.getProjectConfig.grayMode)
-
-  const getShowDarkModeToggle = computed(() => appStore.getProjectConfig.showDarkModeToggle)
-
-  const getDarkMode = computed(() => appStore.getDarkMode)
 
   const getLayoutContentMode = computed(() =>
     appStore.getProjectConfig.contentMode === ContentEnum.FULL
@@ -58,16 +47,10 @@ export function useRootSetting() {
     appStore.setProjectConfig(setting)
   }
 
-  function setDarkMode(mode: ThemeEnum) {
-    appStore.setDarkMode(mode)
-  }
   return {
     setRootSetting,
-
     getSettingButtonPosition,
     getFullContent,
-    getColorWeak,
-    getGrayMode,
     getLayoutContentMode,
     getPageLoading,
     getOpenKeepAlive,
@@ -81,9 +64,5 @@ export function useRootSetting() {
     getShowSettingButton,
     getShowFooter,
     getContentMode,
-    getThemeColor,
-    getDarkMode,
-    setDarkMode,
-    getShowDarkModeToggle,
   }
 }

@@ -1,15 +1,6 @@
-// import { ComputedRef } from 'vue';
-// import { ThemeEnum } from '@/enums/appEnum';
-// import { MenuModeEnum } from '@/enums/menuEnum';
 export interface MenuState {
   // 默认选中的列表
   defaultSelectedKeys: string[]
-
-  // 模式
-  // mode: MenuModeEnum;
-
-  // // 主题
-  // theme: ComputedRef<ThemeEnum> | ThemeEnum;
 
   // 缩进
   inlineIndent?: number

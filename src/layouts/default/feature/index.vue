@@ -57,7 +57,7 @@
 </template>
 
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-setting-drawer-feature';
+  @prefix-cls: 'vben-setting-drawer-feature';
 
   .@{prefix-cls} {
     position: absolute;
@@ -66,9 +66,9 @@
     z-index: 10;
     display: flex;
     padding: 10px;
-    color: @white;
+    color: #fff;
     cursor: pointer;
-    background-color: @primary-color;
+    background-color: #0960bd;
     border-radius: 6px 0 0 6px;
     justify-content: center;
     align-items: center;

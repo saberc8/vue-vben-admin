@@ -40,7 +40,7 @@
   ])
 </script>
 <style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-basic-title';
+  @prefix-cls: 'vben-basic-title';
 
   .@{prefix-cls} {
     position: relative;
@@ -49,7 +49,7 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
-    color: @text-color-base;
+    color: #000;
     cursor: pointer;
     user-select: none;
 
@@ -65,7 +65,7 @@
       width: 3px;
       height: 16px;
       margin-right: 4px;
-      background-color: @primary-color;
+      background-color: #0960bd;
       content: '';
     }
 

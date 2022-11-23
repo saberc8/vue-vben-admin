@@ -8,12 +8,6 @@ export enum ContentEnum {
   FIXED = 'fixed',
 }
 
-// menu theme enum
-export enum ThemeEnum {
-  DARK = 'dark',
-  LIGHT = 'light',
-}
-
 export enum SettingButtonPositionEnum {
   AUTO = 'auto',
   HEADER = 'header',

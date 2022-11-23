@@ -2,9 +2,7 @@ import type { Menu } from '@/router/types'
 import type { PropType } from 'vue'
 
 import { MenuModeEnum, MenuTypeEnum } from '@/enums/menuEnum'
-import { ThemeEnum } from '@/enums/appEnum'
 import { propTypes } from '@/utils/propTypes'
-import type { MenuTheme } from 'ant-design-vue'
 import type { MenuMode } from 'ant-design-vue/lib/menu/src/interface'
 export const basicProps = {
   items: {
@@ -24,10 +22,6 @@ export const basicProps = {
     type: String as PropType<MenuTypeEnum>,
     default: MenuTypeEnum.MIX,
   },
-  theme: {
-    type: String as PropType<MenuTheme>,
-    default: ThemeEnum.DARK,
-  },
   inlineCollapsed: propTypes.bool,
   mixSider: propTypes.bool,
 
@@ -44,7 +38,6 @@ export const itemProps = {
     default: {},
   },
   level: propTypes.number,
-  theme: propTypes.oneOf(['dark', 'light']),
   showTitle: propTypes.bool,
   isHorizontal: propTypes.bool,
 }

@@ -1,6 +1,4 @@
 import { defineConfig } from 'vite-plugin-windicss'
-import { primaryColor } from './build/config/themeConfig'
-
 export default defineConfig({
   plugins: [createEnterPlugin()],
   theme: {
@@ -9,7 +7,7 @@ export default defineConfig({
         '-1': '-1',
       },
       colors: {
-        primary: primaryColor,
+        primary: '#1890ff',
       },
       screens: {
         sm: '576px',

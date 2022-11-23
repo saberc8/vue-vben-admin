@@ -1,22 +1,7 @@
-@simple-prefix-cls: ~'@{namespace}-simple-menu';
-@prefix-cls: ~'@{namespace}-menu';
+@simple-prefix-cls: 'vben-simple-menu';
+@prefix-cls: 'vben-menu';
 
 .@{prefix-cls} {
-  &-dark&-vertical .@{simple-prefix-cls}__parent {
-    background-color: @sider-dark-bg-color;
-    > .@{prefix-cls}-submenu-title {
-      background-color: @sider-dark-bg-color;
-    }
-  }
-
-  &-dark&-vertical .@{simple-prefix-cls}__children,
-  &-dark&-popup .@{simple-prefix-cls}__children {
-    background-color: @sider-dark-lighten-bg-color;
-    > .@{prefix-cls}-submenu-title {
-      background-color: @sider-dark-lighten-bg-color;
-    }
-  }
-
   .collapse-title {
     overflow: hidden;
     font-size: 12px;
@@ -59,19 +44,19 @@
     }
 
     &--primary {
-      background-color: @primary-color;
+      background-color: #0960bd;
     }
 
     &--error {
-      background-color: @error-color;
+      background-color: #f00;
     }
 
     &--success {
-      background-color: @success-color;
+      background-color: #f00;
     }
 
     &--warn {
-      background-color: @warning-color;
+      background-color: #ff0;
     }
   }
 }

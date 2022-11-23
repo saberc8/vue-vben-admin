@@ -19,7 +19,7 @@
   <SubMenu
     :name="item.path"
     v-if="menuHasChildren(item) && getShowMenu"
-    :class="[getLevelClass, theme]"
+    :class="[getLevelClass]"
     :collapsedShowTitle="collapsedShowTitle"
   >
     <template #title>
@@ -71,7 +71,6 @@
       parent: propTypes.bool,
       collapsedShowTitle: propTypes.bool,
       collapse: propTypes.bool,
-      theme: propTypes.oneOf(['dark', 'light']),
     },
     setup(props) {
       const { prefixCls } = useDesign('simple-menu')

@@ -36,6 +36,7 @@
   export default defineComponent({
     name: 'SimpleMenu',
     components: {
+      // eslint-disable-next-line vue/no-reserved-component-names
       Menu,
       SimpleSubMenu,
     },
@@ -47,7 +48,6 @@
       },
       collapse: propTypes.bool,
       mixSider: propTypes.bool,
-      theme: propTypes.string,
       accordion: propTypes.bool.def(true),
       collapsedShowTitle: propTypes.bool,
       beforeClickFn: {

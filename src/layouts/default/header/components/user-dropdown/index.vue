@@ -1,6 +1,6 @@
 <template>
   <Dropdown placement="bottomLeft" :overlayClassName="`${prefixCls}-dropdown-overlay`">
-    <span :class="[prefixCls, `${prefixCls}--${theme}`]" class="flex">
+    <span :class="[prefixCls, `${prefixCls}--light`]" class="flex">
       <img :class="`${prefixCls}__header`" :src="getUserInfo.avatar" />
       <span :class="`${prefixCls}__info hidden md:block`">
         <span :class="`${prefixCls}__name  `" class="truncate">
@@ -33,7 +33,6 @@
   import { useModal } from '@/components/Modal'
 
   import headerImg from '@/assets/images/header.jpg'
-  import { propTypes } from '@/utils/propTypes'
   import { openWindow } from '@/utils'
 
   import { createAsyncComponent } from '@/utils/factory/createAsyncComponent'
@@ -44,12 +43,10 @@
     name: 'UserDropdown',
     components: {
       Dropdown,
+      // eslint-disable-next-line vue/no-reserved-component-names
       Menu,
       MenuItem: createAsyncComponent(() => import('./DropMenuItem.vue')),
       MenuDivider: Menu.Divider,
-    },
-    props: {
-      theme: propTypes.oneOf(['dark', 'light']),
     },
     setup() {
       const { prefixCls } = useDesign('header-user-dropdown')
@@ -96,10 +93,10 @@
   })
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-header-user-dropdown';
+  @prefix-cls: 'vben-header-user-dropdown';
 
   .@{prefix-cls} {
-    height: @header-height;
+    height: 60px;
     padding: 0 0 0 10px;
     padding-right: 10px;
     overflow: hidden;
@@ -121,23 +118,17 @@
       font-size: 14px;
     }
 
-    &--dark {
-      &:hover {
-        background-color: @header-dark-bg-hover-color;
-      }
-    }
-
     &--light {
       &:hover {
-        background-color: @header-light-bg-hover-color;
+        background-color: #f6f6f6;
       }
 
       .@{prefix-cls}__name {
-        color: @text-color-base;
+        color: #000;
       }
 
       .@{prefix-cls}__desc {
-        color: @header-light-desc-color;
+        color: #000;
       }
     }
 

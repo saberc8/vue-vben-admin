@@ -66,13 +66,13 @@
   })
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-default-layout';
+  @prefix-cls: 'vben-default-layout';
 
   .@{prefix-cls} {
     display: flex;
     width: 100%;
     min-height: 100%;
-    background-color: @content-bg;
+    background-color: #f4f7f9;
     flex-direction: column;
 
     > .ant-layout {

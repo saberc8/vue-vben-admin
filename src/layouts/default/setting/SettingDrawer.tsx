@@ -12,7 +12,7 @@ import { HandlerEnum, routerTransitionOptions, menuTypeList } from './enum'
 export default defineComponent({
   name: 'SettingDrawer',
   setup(_, { attrs }) {
-    const { getShowFooter, getColorWeak, getGrayMode } = useRootSetting()
+    const { getShowFooter } = useRootSetting()
 
     const { getOpenPageLoading, getBasicTransition, getEnableTransition, getOpenNProgress } =
       useTransitionSetting()
@@ -39,8 +39,6 @@ export default defineComponent({
       return (
         <>
           <SwitchItem title={'页脚'} event={HandlerEnum.SHOW_FOOTER} def={unref(getShowFooter)} />
-          <SwitchItem title={'灰色模式'} event={HandlerEnum.GRAY_MODE} def={unref(getGrayMode)} />
-          <SwitchItem title={'色弱模式'} event={HandlerEnum.COLOR_WEAK} def={unref(getColorWeak)} />
         </>
       )
     }

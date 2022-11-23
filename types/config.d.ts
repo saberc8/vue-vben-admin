@@ -2,7 +2,6 @@ import { MenuTypeEnum, MenuModeEnum, TriggerEnum, MixSidebarTriggerEnum } from '
 import {
   ContentEnum,
   PermissionModeEnum,
-  ThemeEnum,
   RouterTransitionEnum,
   SettingButtonPositionEnum,
   SessionTimeoutProcessingEnum,
@@ -22,7 +21,6 @@ export interface MenuSetting {
   menuWidth: number
   mode: MenuModeEnum
   type: MenuTypeEnum
-  theme: ThemeEnum
   topMenuAlign: 'start' | 'center' | 'end'
   trigger: TriggerEnum
   accordion: boolean
@@ -45,7 +43,6 @@ export interface HeaderSetting {
   bgColor: string
   fixed: boolean
   show: boolean
-  theme: ThemeEnum
   // Turn on full screen
   showFullScreen: boolean
   // Show document button
@@ -68,20 +65,12 @@ export interface ProjectConfig {
   permissionCacheType: CacheTypeEnum
   // Whether to show the configuration button
   showSettingButton: boolean
-  // Whether to show the theme switch button
-  showDarkModeToggle: boolean
   // Configure where the button is displayed
   settingButtonPosition: SettingButtonPositionEnum
   // Permission mode
   permissionMode: PermissionModeEnum
   // Session timeout processing
   sessionTimeoutProcessing: SessionTimeoutProcessingEnum
-  // Website gray mode, open for possible mourning dates
-  grayMode: boolean
-  // Whether to turn on the color weak mode
-  colorWeak: boolean
-  // Theme color
-  themeColor: string
 
   // The main interface is displayed in full screen, the menu is not displayed, and the top
   fullContent: boolean

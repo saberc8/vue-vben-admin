@@ -6,5 +6,4 @@ export interface LoadingProps {
   absolute: boolean
   loading: boolean
   background: string
-  theme: 'dark' | 'light'
 }

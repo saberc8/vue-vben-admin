@@ -58,7 +58,7 @@
   })
 </script>
 <style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-layout-footer';
+  @prefix-cls: 'vben-layout-footer';
 
   @normal-color: rgba(0, 0, 0, 0.45);
 

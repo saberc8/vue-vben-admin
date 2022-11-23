@@ -13,7 +13,6 @@
     :width="getMenuWidth"
     :collapsed="getCollapsed"
     :collapsedWidth="getCollapsedWidth"
-    :theme="getMenuTheme"
     @breakpoint="onBreakpointChange"
     :trigger="getTrigger"
     v-bind="getTriggerAttr"
@@ -21,7 +20,7 @@
     <template #trigger v-if="getShowTrigger">
       <LayoutTrigger />
     </template>
-    <LayoutMenu :theme="getMenuTheme" :menuMode="getMode" :splitType="getSplitType" />
+    <LayoutMenu :menuMode="getMode" :splitType="getSplitType" />
     <DragBar ref="dragBarRef" />
   </Sider>
 </template>
@@ -51,7 +50,6 @@
         getCollapsed,
         getMenuWidth,
         getSplit,
-        getMenuTheme,
         getRealWidth,
         getMenuHidden,
         getMenuFixed,
@@ -121,7 +119,6 @@
         showClassSideBarRef,
         getMenuWidth,
         getCollapsed,
-        getMenuTheme,
         onBreakpointChange,
         getMode,
         getSplitType,
@@ -132,10 +129,10 @@
   })
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-layout-sideBar';
+  @prefix-cls: 'vben-layout-sideBar';
 
   .@{prefix-cls} {
-    z-index: @layout-sider-fixed-z-index;
+    z-index: 999;
 
     &--fixed {
       position: fixed;
@@ -145,31 +142,8 @@
     }
 
     &--mix {
-      top: @header-height;
-      height: calc(100% - @header-height);
-    }
-
-    &.ant-layout-sider-dark {
-      background-color: @sider-dark-bg-color;
-
-      .ant-layout-sider-trigger {
-        color: darken(@white, 25%);
-        background-color: @trigger-dark-bg-color;
-
-        &:hover {
-          color: @white;
-          background-color: @trigger-dark-hover-bg-color;
-        }
-      }
-    }
-
-    &:not(.ant-layout-sider-dark) {
-      // box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
-
-      .ant-layout-sider-trigger {
-        color: @text-color-base;
-        border-top: 1px solid @border-color-light;
-      }
+      top: 60px;
+      height: calc(100% - 60px);
     }
 
     .ant-layout-sider-zero-width-trigger {

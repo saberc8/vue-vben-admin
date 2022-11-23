@@ -2,7 +2,6 @@
   <BasicMenuItem v-if="!menuHasChildren(item) && getShowMenu" v-bind="$props" />
   <SubMenu
     v-if="menuHasChildren(item) && getShowMenu"
-    :class="[theme]"
     :key="`submenu-${item.path}`"
     popupClassName="app-top-menu-popup"
   >

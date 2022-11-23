@@ -48,8 +48,6 @@ export function useHeaderSetting() {
 
   const getShowDoc = computed(() => appStore.getHeaderSetting.showDoc)
 
-  const getHeaderTheme = computed(() => appStore.getHeaderSetting.theme)
-
   const getShowHeader = computed(() => appStore.getHeaderSetting.show)
 
   const getFixed = computed(() => appStore.getHeaderSetting.fixed)
@@ -79,7 +77,6 @@ export function useHeaderSetting() {
   return {
     setHeaderSetting,
     getShowDoc,
-    getHeaderTheme,
     getShowFullScreen,
     getShowBread,
     getShowContent,

@@ -46,7 +46,7 @@
       <!-- eslint-disable-next-line -->
       <template #content v-show="opened">
         <div v-bind="getEvents(true)">
-          <ul :class="[prefixCls, `${prefixCls}-${getTheme}`, `${prefixCls}-popup`]">
+          <ul :class="[prefixCls, `${prefixCls}-light`, `${prefixCls}-popup`]">
             <slot></slot>
           </ul>
         </div>
@@ -144,8 +144,6 @@
 
       const getAccordion = computed(() => rootProps.accordion)
       const getCollapse = computed(() => rootProps.collapse)
-      const getTheme = computed(() => rootProps.theme)
-
       const getOverlayStyle = computed((): CSSProperties => {
         return {
           minWidth: '200px',
@@ -321,7 +319,6 @@
         handleVisibleChange,
         getParentSubMenu,
         getOverlayStyle,
-        getTheme,
         getIsOpend,
         getEvents,
         getSubClass,

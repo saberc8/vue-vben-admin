@@ -95,7 +95,7 @@
   })
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-app-exception-page';
+  @prefix-cls: 'vben-app-exception-page';
 
   .@{prefix-cls} {
     display: flex;

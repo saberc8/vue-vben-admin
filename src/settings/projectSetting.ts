@@ -4,22 +4,14 @@ import { CacheTypeEnum } from '@/enums/cacheEnum'
 import {
   ContentEnum,
   PermissionModeEnum,
-  ThemeEnum,
   RouterTransitionEnum,
   SettingButtonPositionEnum,
   SessionTimeoutProcessingEnum,
 } from '@/enums/appEnum'
-import { SIDE_BAR_BG_COLOR_LIST, HEADER_PRESET_BG_COLOR_LIST } from './designSetting'
-import { primaryColor } from '../../build/config/themeConfig'
-
 // ! You need to clear the browser cache after the change
 const setting: ProjectConfig = {
   // Whether to show the configuration button
   showSettingButton: true,
-
-  // Whether to show the theme switch button
-  showDarkModeToggle: true,
-
   // `Settings` button position
   settingButtonPosition: SettingButtonPositionEnum.AUTO,
 
@@ -31,15 +23,6 @@ const setting: ProjectConfig = {
 
   // Session timeout processing
   sessionTimeoutProcessing: SessionTimeoutProcessingEnum.ROUTE_JUMP,
-
-  // color
-  themeColor: primaryColor,
-
-  // Website gray mode, open for possible mourning dates
-  grayMode: false,
-
-  // Color Weakness Mode
-  colorWeak: false,
 
   // Whether to cancel the menu, the top, the multi-tab page display, for possible embedded in other systems
   fullContent: false,
@@ -56,13 +39,11 @@ const setting: ProjectConfig = {
   // Header configuration
   headerSetting: {
     // header bg color
-    bgColor: HEADER_PRESET_BG_COLOR_LIST[0],
+    bgColor: '#001529',
     // Fixed at the top
     fixed: true,
     // Whether to show top
     show: true,
-    // theme
-    theme: ThemeEnum.LIGHT,
     // Whether to show the full screen button
     showFullScreen: true,
     // Whether to show the document button
@@ -72,7 +53,7 @@ const setting: ProjectConfig = {
   // Menu configuration
   menuSetting: {
     // sidebar menu bg color
-    bgColor: SIDE_BAR_BG_COLOR_LIST[0],
+    bgColor: '#001529',
     //  Whether to fix the left menu
     fixed: true,
     // Menu collapse
@@ -94,8 +75,6 @@ const setting: ProjectConfig = {
     mode: MenuModeEnum.INLINE,
     // Menu type
     type: MenuTypeEnum.SIDEBAR,
-    // Menu theme
-    theme: ThemeEnum.DARK,
     // Split menu
     split: false,
     // Top menu layout

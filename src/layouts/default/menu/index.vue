@@ -23,8 +23,6 @@
   export default defineComponent({
     name: 'LayoutMenu',
     props: {
-      theme: propTypes.oneOf(['light', 'dark']),
-
       splitType: {
         type: Number as PropType<MenuSplitTyeEnum>,
         default: MenuSplitTyeEnum.NONE,
@@ -43,7 +41,6 @@
       const {
         getMenuMode,
         getMenuType,
-        getMenuTheme,
         getCollapsed,
         getCollapsedShowTitle,
         getAccordion,
@@ -62,9 +59,6 @@
       const getComputedMenuMode = computed(() =>
         unref(getIsMobile) ? MenuModeEnum.INLINE : props.menuMode || unref(getMenuMode),
       )
-
-      const getComputedMenuTheme = computed(() => props.theme || unref(getMenuTheme))
-
       const getIsShowLogo = computed(() => unref(getShowLogo) && unref(getIsSidebarType))
 
       const getUseScroll = computed(() => {
@@ -85,7 +79,6 @@
       const getLogoClass = computed(() => {
         return [
           `${prefixCls}-logo`,
-          unref(getComputedMenuTheme),
           {
             [`${prefixCls}--mobile`]: unref(getIsMobile),
           },
@@ -98,7 +91,6 @@
           menus,
           beforeClickFn: beforeMenuClickFn,
           items: menus,
-          theme: unref(getComputedMenuTheme),
           accordion: unref(getAccordion),
           collapse: unref(getCollapsed),
           collapsedShowTitle: unref(getCollapsedShowTitle),
@@ -129,13 +121,7 @@
       function renderHeader() {
         if (!unref(getIsShowLogo) && !unref(getIsMobile)) return null
 
-        return (
-          <AppLogo
-            showTitle={!unref(getCollapsed)}
-            class={unref(getLogoClass)}
-            theme={unref(getComputedMenuTheme)}
-          />
-        )
+        return <AppLogo showTitle={!unref(getCollapsed)} class={unref(getLogoClass)} />
       }
 
       function renderMenu() {
@@ -172,17 +158,17 @@
   })
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-layout-menu';
-  @logo-prefix-cls: ~'@{namespace}-app-logo';
+  @prefix-cls: 'vben-layout-menu';
+  @logo-prefix-cls: 'vben-app-logo';
 
   .@{prefix-cls} {
     &-logo {
-      height: @header-height;
+      height: 60px;
       padding: 10px 4px 10px 10px;
 
       img {
-        width: @logo-width;
-        height: @logo-width;
+        width: 32px;
+        height: 32px;
       }
     }
 

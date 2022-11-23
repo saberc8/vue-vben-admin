@@ -5,7 +5,6 @@
     :style="getWrapStyle"
     :class="[
       prefixCls,
-      getMenuTheme,
       {
         open: openMenu,
         mini: getCollapsed,
@@ -37,7 +36,7 @@
             :icon="item.icon || (item.meta && item.meta.icon)"
           />
           <p :class="`${prefixCls}-module__name`">
-            {{ t(item.name) }}
+            {{ item.name }}
           </p>
         </li>
       </ul>
@@ -62,12 +61,7 @@
         />
       </div>
       <ScrollContainer :class="`${prefixCls}-menu-list__content`">
-        <SimpleMenu
-          :items="childrenMenus"
-          :theme="getMenuTheme"
-          mixSider
-          @menu-click="handleMenuClick"
-        />
+        <SimpleMenu :items="childrenMenus" mixSider @menu-click="handleMenuClick" />
       </ScrollContainer>
       <div
         v-show="getShowDragBar && openMenu"
@@ -128,7 +122,6 @@
         getMenuWidth,
         getCanDrag,
         getCloseMixSidebarOnChange,
-        getMenuTheme,
         getMixSideTrigger,
         getRealWidth,
         getMixSideFixed,
@@ -328,7 +321,6 @@
         dragBarRef,
         title,
         openMenu,
-        getMenuTheme,
         getItemEvents,
         getMenuEvents,
         getDomStyle,
@@ -341,16 +333,16 @@
   })
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-layout-mix-sider';
+  @prefix-cls: 'vben-layout-mix-sider';
   @width: 80px;
   .@{prefix-cls} {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: @layout-mix-sider-fixed-z-index;
+    z-index: 999;
     height: 100%;
     overflow: hidden;
-    background-color: @sider-dark-bg-color;
+    background-color: #273352;
     transition: all 0.2s ease 0s;
 
     &-dom {
@@ -361,13 +353,13 @@
 
     &-logo {
       display: flex;
-      height: @header-height;
+      height: 60px;
       padding-left: 0 !important;
       justify-content: center;
 
       img {
-        width: @logo-width;
-        height: @logo-width;
+        width: 32px;
+        height: 32px;
       }
     }
 
@@ -388,7 +380,7 @@
           color: rgb(0 0 0 / 65%);
 
           &--active {
-            color: @primary-color;
+            color: #0960bd;
             background-color: unset;
           }
         }
@@ -409,31 +401,9 @@
         }
       }
     }
-    @border-color: @sider-dark-lighten-bg-color;
-
-    &.dark {
-      &.open {
-        .@{prefix-cls}-logo {
-          border-bottom: 1px solid @border-color;
-        }
-
-        > .scrollbar {
-          border-right: 1px solid @border-color;
-        }
-      }
-      .@{prefix-cls}-menu-list {
-        background-color: @sider-dark-bg-color;
-
-        &__title {
-          color: @white;
-          border-bottom: none;
-          border-bottom: 1px solid @border-color;
-        }
-      }
-    }
 
     > .scrollbar {
-      height: calc(100% - @header-height - 38px);
+      height: calc(100% - 60px - 38px);
     }
 
     &.mini &-module {
@@ -459,13 +429,13 @@
         transition: all 0.3s ease;
 
         &:hover {
-          color: @white;
+          color: #fff;
         }
         // &:hover,
         &--active {
           font-weight: 700;
-          color: @white;
-          background-color: @sider-dark-darken-bg-color;
+          color: #fff;
+          background-color: #1a2a4a;
 
           &::before {
             position: absolute;
@@ -473,7 +443,7 @@
             left: 0;
             width: 3px;
             height: 100%;
-            background-color: @primary-color;
+            background-color: #0960bd;
             content: '';
           }
         }
@@ -501,7 +471,7 @@
       color: rgb(255 255 255 / 65%);
       text-align: center;
       cursor: pointer;
-      background-color: @trigger-dark-bg-color;
+      background-color: #1a2a4a;
       height: 36px;
       line-height: 36px;
     }
@@ -522,10 +492,10 @@
 
       &__title {
         display: flex;
-        height: @header-height;
+        height: 60px;
         // margin-left: -6px;
         font-size: 18px;
-        color: @primary-color;
+        color: #0960bd;
         border-bottom: 1px solid rgb(238 238 238);
         opacity: 0%;
         transition: unset;
@@ -550,7 +520,7 @@
       }
 
       &__content {
-        height: calc(100% - @header-height) !important;
+        height: calc(100% - 60px) !important;
 
         .scrollbar__wrap {
           height: 100%;

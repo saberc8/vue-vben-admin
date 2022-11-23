@@ -191,8 +191,8 @@
 <style lang="less">
   @header-height: 60px;
   @detail-header-height: 40px;
-  @prefix-cls: ~'@{namespace}-basic-drawer';
-  @prefix-cls-detail: ~'@{namespace}-basic-drawer__detail';
+  @prefix-cls: 'vben-basic-drawer';
+  @prefix-cls-detail: 'vben-basic-drawer__detail';
 
   .@{prefix-cls} {
     .ant-drawer-wrapper-body {
@@ -201,14 +201,14 @@
 
     .ant-drawer-close {
       &:hover {
-        color: @error-color;
+        color: #f00;
       }
     }
 
     .ant-drawer-body {
       height: calc(100% - @header-height);
       padding: 0;
-      background-color: @component-background;
+      background-color: #b7eb8f;
 
       .scrollbar__wrap {
         padding: 16px !important;
@@ -228,7 +228,7 @@
       width: 100%;
       height: @detail-header-height;
       padding: 0;
-      border-top: 1px solid @border-color-base;
+      border-top: 1px solid #eee;
       box-sizing: border-box;
     }
 

@@ -47,7 +47,7 @@
 </script>
 
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-drawer-header';
+  @prefix-cls: 'vben-basic-drawer-header';
   @footer-height: 60px;
   .@{prefix-cls} {
     display: flex;
@@ -59,7 +59,7 @@
       cursor: pointer;
 
       &:hover {
-        color: @primary-color;
+        color: #0960bd;
       }
     }
 

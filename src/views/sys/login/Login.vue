@@ -49,49 +49,16 @@
   const title = computed(() => globSetting?.title ?? '')
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-login';
-  @logo-prefix-cls: ~'@{namespace}-app-logo';
-  @countdown-prefix-cls: ~'@{namespace}-countdown-input';
+  @prefix-cls: 'vben-login';
+  @logo-prefix-cls: 'vben-app-logo';
+  @countdown-prefix-cls: 'vben-countdown-input';
   @dark-bg: #293146;
-
-  html[data-theme='dark'] {
-    .@{prefix-cls} {
-      background-color: @dark-bg;
-
-      &::before {
-        background-image: url(@/assets/svg/login-bg-dark.svg);
-      }
-
-      .ant-input,
-      .ant-input-password {
-        background-color: #232a3b;
-      }
-
-      .ant-btn:not(.ant-btn-link):not(.ant-btn-primary) {
-        border: 1px solid #4a5569;
-      }
-
-      &-form {
-        background: transparent !important;
-      }
-
-      .app-iconify {
-        color: #fff;
-      }
-    }
-
-    input.fix-auto-fill,
-    .fix-auto-fill input {
-      -webkit-text-fill-color: #c9d1d9 !important;
-      box-shadow: inherit !important;
-    }
-  }
 
   .@{prefix-cls} {
     min-height: 100%;
     overflow: hidden;
 
-    @media (max-width: @screen-xl) {
+    @media (max-width: 1200px) {
       background-color: #293146;
 
       .@{prefix-cls}-form {
@@ -112,7 +79,7 @@
       background-size: auto 100%;
       content: '';
 
-      @media (max-width: @screen-xl) {
+      @media (max-width: 1200px) {
         display: none;
       }
     }
@@ -156,7 +123,7 @@
         cursor: pointer;
 
         &:hover {
-          color: @primary-color;
+          color: #0960bd;
         }
       }
     }
@@ -164,19 +131,19 @@
     input:not([type='checkbox']) {
       min-width: 360px;
 
-      @media (max-width: @screen-xl) {
+      @media (max-width: 1200px) {
         min-width: 320px;
       }
 
-      @media (max-width: @screen-lg) {
+      @media (max-width: 992px) {
         min-width: 260px;
       }
 
-      @media (max-width: @screen-md) {
+      @media (max-width: 768px) {
         min-width: 240px;
       }
 
-      @media (max-width: @screen-sm) {
+      @media (max-width: 576px) {
         min-width: 160px;
       }
     }
@@ -187,7 +154,7 @@
 
     .ant-divider-inner-text {
       font-size: 12px;
-      color: @text-color-secondary;
+      color: #f00;
     }
   }
 </style>

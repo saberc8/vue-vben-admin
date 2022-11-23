@@ -1,9 +1,9 @@
 // copy from element-plus
 
 import { warn } from 'vue'
-import { isObject } from '@vue/shared'
+import { isObject } from 'vue'
 import { fromPairs } from 'lodash-es'
-import type { ExtractPropTypes, PropType } from '@vue/runtime-core'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type { Mutable } from './types'
 
 const wrapperKey = Symbol()
@@ -70,26 +70,6 @@ export type BuildPropReturn<T, D, R, V, C> = {
   [propKey]: true
 } & BuildPropDefault<BuildPropType<T, V, C>, IfUnknown<D, never>, IfUnknown<R, false>>
 
-/**
- * @description Build prop. It can better optimize prop types
- * @description 生成 prop，能更好地优化类型
- * @example
-  // limited options
-  // the type will be PropType<'light' | 'dark'>
-  buildProp({
-    type: String,
-    values: ['light', 'dark'],
-  } as const)
-  * @example
-  // limited options and other types
-  // the type will be PropType<'small' | 'medium' | number>
-  buildProp({
-    type: [String, Number],
-    values: ['small', 'medium'],
-    validator: (val: unknown): val is number => typeof val === 'number',
-  } as const)
-  @link see more: https://github.com/element-plus/element-plus/pull/3341
- */
 export function buildProp<
   T = never,
   D extends BuildPropType<T, V, C> = never,
@@ -167,7 +147,6 @@ export const buildProps = <
       : O[K] extends BuildPropOption<
           infer T,
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          infer _D,
           infer R,
           infer V,
           infer C

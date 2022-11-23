@@ -5,7 +5,6 @@
     :mode="mode"
     :openKeys="getOpenKeys"
     :inlineIndent="inlineIndent"
-    :theme="theme"
     @open-change="handleOpenChange"
     :class="getMenuClass"
     @click="handleMenuClick"
@@ -13,7 +12,7 @@
     v-bind="getInlineCollapseOptions"
   >
     <template v-for="item in items" :key="item.path">
-      <BasicSubMenuItem :item="item" :theme="theme" :isHorizontal="isHorizontal" />
+      <BasicSubMenuItem :item="item" :isHorizontal="isHorizontal" />
     </template>
   </Menu>
 </template>
@@ -37,6 +36,7 @@
   export default defineComponent({
     name: 'BasicMenu',
     components: {
+      // eslint-disable-next-line vue/no-reserved-component-names
       Menu,
       BasicSubMenuItem,
     },

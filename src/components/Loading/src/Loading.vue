@@ -1,7 +1,7 @@
 <template>
   <section
     class="full-loading"
-    :class="{ absolute, [theme]: !!theme }"
+    :class="{ absolute }"
     :style="[background ? `background-color: ${background}` : '']"
     v-show="loading"
   >
@@ -40,9 +40,6 @@
       background: {
         type: String as PropType<string>,
       },
-      theme: {
-        type: String as PropType<any>,
-      },
     },
   })
 </script>
@@ -65,15 +62,5 @@
       left: 0;
       z-index: 300;
     }
-  }
-
-  html[data-theme='dark'] {
-    .full-loading:not(.light) {
-      background-color: @modal-mask-bg;
-    }
-  }
-
-  .full-loading.dark {
-    background-color: @modal-mask-bg;
   }
 </style>
