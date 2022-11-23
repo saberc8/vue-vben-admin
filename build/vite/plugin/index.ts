@@ -14,7 +14,9 @@ import { configCompressPlugin } from './compress'
 import { configVisualizerConfig } from './visualizer'
 import { configImageminPlugin } from './imagemin'
 import { configSvgIconsPlugin } from './svgSprite'
-
+import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import AutoImport from 'unplugin-auto-import/vite'
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   const {
     VITE_USE_IMAGEMIN,
@@ -33,6 +35,18 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
     //vueSetupExtend(),
     VitePluginCertificate({
       source: 'coding',
+    }),
+    Components({
+      resolvers: [AntDesignVueResolver()],
+    }),
+    AutoImport({
+      dts: 'src/auto-imports.d.ts',
+      imports: [
+        // 插件预设支持导入的api
+        'vue',
+        'vue-router',
+        'pinia',
+      ],
     }),
   ]
 
