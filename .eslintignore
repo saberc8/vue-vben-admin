@@ -13,3 +13,5 @@ dist
 .local
 /bin
 Dockerfile
+components.d.ts
+/src/auto-imports.d.ts
