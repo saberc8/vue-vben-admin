@@ -5,10 +5,7 @@ import { computed } from 'vue'
 import { useAppStore } from '@/store/modules/app'
 import { ContentEnum, ThemeEnum } from '@/enums/appEnum'
 
-type RootSetting = Omit<
-  ProjectConfig,
-  'locale' | 'headerSetting' | 'menuSetting' | 'multiTabsSetting'
->
+type RootSetting = Omit<ProjectConfig, 'headerSetting' | 'menuSetting' | 'multiTabsSetting'>
 
 export function useRootSetting() {
   const appStore = useAppStore()

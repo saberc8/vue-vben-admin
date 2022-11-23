@@ -7,11 +7,11 @@
   >
     <Icon v-if="getIcon" :icon="getIcon" :size="16" />
     <div v-if="collapsedShowTitle && getIsCollapseParent" class="mt-1 collapse-title">
-      {{ getI18nName }}
+      {{ getName }}
     </div>
     <template #title>
       <span :class="['ml-2', `${prefixCls}-sub-title`]">
-        {{ getI18nName }}
+        {{ getName }}
       </span>
       <SimpleMenuTag :item="item" :collapseParent="getIsCollapseParent" />
     </template>
@@ -26,11 +26,11 @@
       <Icon v-if="getIcon" :icon="getIcon" :size="16" />
 
       <div v-if="collapsedShowTitle && getIsCollapseParent" class="mt-2 collapse-title">
-        {{ getI18nName }}
+        {{ getName }}
       </div>
 
       <span v-show="getShowSubTitle" :class="['ml-2', `${prefixCls}-sub-title`]">
-        {{ getI18nName }}
+        {{ getName }}
       </span>
       <SimpleMenuTag :item="item" :collapseParent="!!collapse && !!parent" />
     </template>
@@ -77,7 +77,7 @@
       const { prefixCls } = useDesign('simple-menu')
       const getShowMenu = computed(() => !props.item?.meta?.hideMenu)
       const getIcon = computed(() => props.item?.icon)
-      const getI18nName = computed(() => props.item?.name)
+      const getName = computed(() => props.item?.name)
       const getShowSubTitle = computed(() => !props.collapse || !props.parent)
       const getIsCollapseParent = computed(() => !!props.collapse && !!props.parent)
       const getLevelClass = computed(() => {
@@ -103,7 +103,7 @@
         menuHasChildren,
         getShowMenu,
         getIcon,
-        getI18nName,
+        getName,
         getShowSubTitle,
         getLevelClass,
         getIsCollapseParent,

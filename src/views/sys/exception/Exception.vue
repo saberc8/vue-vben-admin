@@ -59,14 +59,14 @@
         return unref(statusMapRef).get(unref(getStatus)) as MapValue
       })
 
-      const backLoginI18n = '返回登录'
-      const backHomeI18n = '返回首页'
+      const backLogin = '返回登录'
+      const backHome = '返回首页'
 
       unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_ACCESS, {
         title: '400',
         status: `${ExceptionEnum.PAGE_NOT_ACCESS}`,
         subTitle: '异常',
-        btnText: props.full ? backLoginI18n : backHomeI18n,
+        btnText: props.full ? backLogin : backHome,
         handler: () => (props.full ? go(PageEnum.BASE_LOGIN) : go()),
       })
 

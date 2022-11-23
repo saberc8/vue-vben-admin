@@ -35,13 +35,6 @@
     <div :class="`${prefixCls}-action`">
       <FullScreen v-if="getShowFullScreen" :class="`${prefixCls}-action__item fullscreen-item`" />
 
-      <AppLocalePicker
-        v-if="getShowLocalePicker"
-        :reload="true"
-        :showText="false"
-        :class="`${prefixCls}-action__item`"
-      />
-
       <UserDropDown :theme="getHeaderTheme" />
 
       <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
@@ -64,14 +57,12 @@
 
   import { MenuModeEnum, MenuSplitTyeEnum } from '@/enums/menuEnum'
   import { SettingButtonPositionEnum } from '@/enums/appEnum'
-  import { AppLocalePicker } from '@/components/Application'
 
   import { UserDropDown, LayoutBreadcrumb, FullScreen } from './components'
   import { useAppInject } from '@/hooks/web/useAppInject'
   import { useDesign } from '@/hooks/web/useDesign'
 
   import { createAsyncComponent } from '@/utils/factory/createAsyncComponent'
-  import { useLocale } from '@/locales/useLocale'
 
   export default defineComponent({
     name: 'LayoutHeader',
@@ -82,7 +73,6 @@
       LayoutBreadcrumb,
       LayoutMenu,
       UserDropDown,
-      AppLocalePicker,
       FullScreen,
       SettingDrawer: createAsyncComponent(() => import('@/layouts/default/setting/index.vue'), {
         loading: true,
@@ -111,8 +101,6 @@
         getShowHeaderLogo,
         getShowHeader,
       } = useHeaderSetting()
-
-      const { getShowLocalePicker } = useLocale()
 
       const { getIsMobile } = useAppInject()
 
@@ -169,7 +157,6 @@
         getSplit,
         getMenuMode,
         getShowTopMenu,
-        getShowLocalePicker,
         getShowFullScreen,
         getUseErrorHandle,
         getLogoWidth,

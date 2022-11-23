@@ -1,7 +1,7 @@
 <template>
   <span :class="`${prefixCls}- flex items-center `">
     <Icon v-if="getIcon" :icon="getIcon" :size="18" :class="`${prefixCls}-wrapper__icon mr-2`" />
-    {{ getI18nName }}
+    {{ getName }}
   </span>
 </template>
 <script lang="ts">
@@ -20,12 +20,12 @@
     props: contentProps,
     setup(props) {
       const { prefixCls } = useDesign('basic-menu-item-content')
-      const getI18nName = computed(() => props.item?.name)
+      const getName = computed(() => props.item?.name)
       const getIcon = computed(() => props.item?.icon)
 
       return {
         prefixCls,
-        getI18nName,
+        getName,
         getIcon,
       }
     },
