@@ -25,8 +25,7 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
   const { getThemeColor, getDarkMode } = useRootSetting()
   switch (event) {
     case HandlerEnum.CHANGE_LAYOUT:
-      const { mode, type, split } = value
-      const splitOpt = split === undefined ? { split } : {}
+      const { mode, type } = value
 
       return {
         menuSetting: {
@@ -35,7 +34,6 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
           collapsed: false,
           show: true,
           hidden: false,
-          ...splitOpt,
         },
       }
 
@@ -76,15 +74,9 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
     case HandlerEnum.MENU_SHOW_SIDEBAR:
       return { menuSetting: { show: value } }
 
-    case HandlerEnum.MENU_COLLAPSED_SHOW_TITLE:
-      return { menuSetting: { collapsedShowTitle: value } }
-
     case HandlerEnum.MENU_THEME:
       updateSidebarBgColor(value)
       return { menuSetting: { bgColor: value } }
-
-    case HandlerEnum.MENU_SPLIT:
-      return { menuSetting: { split: value } }
 
     case HandlerEnum.MENU_CLOSE_MIX_SIDEBAR_ON_CHANGE:
       return { menuSetting: { closeMixSidebarOnChange: value } }

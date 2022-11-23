@@ -37,7 +37,6 @@ export function configThemePlugin(isBuild: boolean): PluginOption[] {
             return s
           default:
             if (s.indexOf('.ant-btn') >= -1) {
-              // 按钮被重新定制过，需要过滤掉class防止覆盖
               return s
             }
         }
