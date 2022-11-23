@@ -95,6 +95,7 @@
   .@{prefix-cls} {
     min-height: 100%;
     overflow: hidden;
+
     @media (max-width: @screen-xl) {
       background-color: #293146;
 
@@ -115,6 +116,7 @@
       background-repeat: no-repeat;
       background-size: auto 100%;
       content: '';
+
       @media (max-width: @screen-xl) {
         display: none;
       }
