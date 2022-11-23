@@ -45,7 +45,7 @@ const transform: AxiosTransform = {
     const { data } = res
     if (!data) {
       // return '[HTTP] Request has no return value';
-      throw new Error(t('sys.api.apiRequestFailed'))
+      throw new Error('请求异常，请重试')
     }
     //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
     const { code, result, message } = data
@@ -61,7 +61,7 @@ const transform: AxiosTransform = {
     let timeoutMsg = ''
     switch (code) {
       case ResultEnum.TIMEOUT:
-        timeoutMsg = t('sys.api.timeoutMessage')
+        timeoutMsg = '登录超时，请重新登录'
         const userStore = useUserStoreWithOut()
         userStore.setToken(undefined)
         userStore.logout(true)
@@ -80,7 +80,7 @@ const transform: AxiosTransform = {
       createMessage.error(timeoutMsg)
     }
 
-    throw new Error(timeoutMsg || t('sys.api.apiRequestFailed'))
+    throw new Error(timeoutMsg || 'Error')
   },
 
   // 请求之前处理config
@@ -170,10 +170,10 @@ const transform: AxiosTransform = {
 
     try {
       if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
-        errMessage = t('sys.api.apiTimeoutMessage')
+        errMessage = '接口请求超时，请刷新重试'
       }
       if (err?.includes('Network Error')) {
-        errMessage = t('sys.api.networkExceptionMsg')
+        errMessage = '网络异常，请检查您的网络是否正常！'
       }
 
       if (errMessage) {

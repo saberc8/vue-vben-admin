@@ -6,7 +6,6 @@ import type { LocaleType } from '/#/config'
 import { i18n } from './setupI18n'
 import { useLocaleStoreWithOut } from '@/store/modules/locale'
 import { unref, computed } from 'vue'
-import { loadLocalePool, setHtmlPageLang } from './helper'
 
 interface LangModule {
   message: Recordable
@@ -23,7 +22,6 @@ function setI18nLanguage(locale: LocaleType) {
     ;(i18n.global.locale as any).value = locale
   }
   localeStore.setLocaleInfo({ locale })
-  setHtmlPageLang(locale)
 }
 
 export function useLocale() {

@@ -12,10 +12,7 @@
 
   const getFormTitle = computed(() => {
     const titleObj = {
-      [LoginStateEnum.RESET_PASSWORD]: t('sys.login.forgetFormTitle'),
-      [LoginStateEnum.LOGIN]: t('sys.login.signInFormTitle'),
-      [LoginStateEnum.REGISTER]: t('sys.login.signUpFormTitle'),
-      [LoginStateEnum.MOBILE]: t('sys.login.mobileSignInFormTitle'),
+      [LoginStateEnum.LOGIN]: '登录',
     }
     return titleObj[unref(getLoginState)]
   })

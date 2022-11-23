@@ -12,7 +12,7 @@
       <Input
         size="large"
         v-model:value="formData.account"
-        :placeholder="t('sys.login.userName')"
+        placeholder="账号"
         class="fix-auto-fill"
       />
     </FormItem>
@@ -21,7 +21,7 @@
         size="large"
         visibilityToggle
         v-model:value="formData.password"
-        :placeholder="t('sys.login.password')"
+        placeholder="密码"
       />
     </FormItem>
 
@@ -29,16 +29,14 @@
       <ACol :span="12">
         <FormItem>
           <!-- No logic, you need to deal with it yourself -->
-          <Checkbox v-model:checked="rememberMe" size="small">
-            {{ t('sys.login.rememberMe') }}
-          </Checkbox>
+          <Checkbox v-model:checked="rememberMe" size="small"> 记住我 </Checkbox>
         </FormItem>
       </ACol>
     </ARow>
 
     <FormItem class="enter-x">
       <Button type="primary" size="large" block @click="handleLogin" :loading="loading">
-        {{ t('sys.login.loginButton') }}
+        登录
       </Button>
     </FormItem>
   </Form>
@@ -95,15 +93,15 @@
       })
       if (userInfo) {
         notification.success({
-          message: t('sys.login.loginSuccessTitle'),
-          description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
+          message: '登录成功',
+          description: `用户名: ${userInfo.realName}`,
           duration: 3,
         })
       }
     } catch (error) {
       createErrorModal({
         title: '错误提示',
-        content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
+        content: (error as unknown as Error).message || '登录失败',
         getContainer: () => document.body.querySelector(`.${prefixCls}`) || document.body,
       })
     } finally {

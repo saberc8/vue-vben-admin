@@ -148,72 +148,72 @@ export default defineComponent({
       return (
         <>
           <SwitchItem
-            title={t('layout.setting.splitMenu')}
+            title={'分割菜单'}
             event={HandlerEnum.MENU_SPLIT}
             def={unref(getSplit)}
             disabled={!unref(getShowMenuRef) || unref(getMenuType) !== MenuTypeEnum.MIX}
           />
           <SwitchItem
-            title={t('layout.setting.mixSidebarFixed')}
+            title={'固定展开菜单'}
             event={HandlerEnum.MENU_FIXED_MIX_SIDEBAR}
             def={unref(getMixSideFixed)}
             disabled={!unref(getIsMixSidebar)}
           />
 
           <SwitchItem
-            title={t('layout.setting.closeMixSidebarOnChange')}
+            title={'切换页面关闭菜单'}
             event={HandlerEnum.MENU_CLOSE_MIX_SIDEBAR_ON_CHANGE}
             def={unref(getCloseMixSidebarOnChange)}
             disabled={!unref(getIsMixSidebar)}
           />
           <SwitchItem
-            title={t('layout.setting.menuCollapse')}
+            title={'折叠菜单'}
             event={HandlerEnum.MENU_COLLAPSED}
             def={unref(getCollapsed)}
             disabled={!unref(getShowMenuRef)}
           />
 
           <SwitchItem
-            title={t('layout.setting.menuDrag')}
+            title={'侧边菜单拖拽'}
             event={HandlerEnum.MENU_HAS_DRAG}
             def={unref(getCanDrag)}
             disabled={!unref(getShowMenuRef)}
           />
           <SwitchItem
-            title={t('layout.setting.menuAccordion')}
+            title={'侧边菜单手风琴模式'}
             event={HandlerEnum.MENU_ACCORDION}
             def={unref(getAccordion)}
             disabled={!unref(getShowMenuRef)}
           />
 
           <SwitchItem
-            title={t('layout.setting.collapseMenuDisplayName')}
+            title={'侧边菜单折叠时显示标题'}
             event={HandlerEnum.MENU_COLLAPSED_SHOW_TITLE}
             def={unref(getCollapsedShowTitle)}
             disabled={!unref(getShowMenuRef) || !unref(getCollapsed) || unref(getIsMixSidebar)}
           />
 
           <SwitchItem
-            title={t('layout.setting.fixedHeader')}
+            title={'固定header'}
             event={HandlerEnum.HEADER_FIXED}
             def={unref(getHeaderFixed)}
             disabled={!unref(getShowHeader)}
           />
           <SwitchItem
-            title={t('layout.setting.fixedSideBar')}
+            title={'固定Sidebar'}
             event={HandlerEnum.MENU_FIXED}
             def={unref(getMenuFixed)}
             disabled={!unref(getShowMenuRef) || unref(getIsMixSidebar)}
           />
           <SelectItem
-            title={t('layout.setting.mixSidebarTrigger')}
+            title={'混合菜单触发方式'}
             event={HandlerEnum.MENU_TRIGGER_MIX_SIDEBAR}
             def={unref(getMixSideTrigger)}
             options={mixSidebarTriggerOptions}
             disabled={!unref(getIsMixSidebar)}
           />
           <SelectItem
-            title={t('layout.setting.topMenuLayout')}
+            title={'顶部菜单布局'}
             event={HandlerEnum.MENU_TOP_ALIGN}
             def={unref(getTopMenuAlign)}
             options={topMenuAlignOptions}
@@ -225,20 +225,20 @@ export default defineComponent({
             }
           />
           <SelectItem
-            title={t('layout.setting.menuCollapseButton')}
+            title={'菜单折叠按钮'}
             event={HandlerEnum.MENU_TRIGGER}
             def={triggerDef}
             options={triggerOptions}
             disabled={!unref(getShowMenuRef) || unref(getIsMixSidebar)}
           />
           <SelectItem
-            title={t('layout.setting.contentMode')}
+            title={'内容区域宽度'}
             event={HandlerEnum.CONTENT_MODE}
             def={unref(getContentMode)}
             options={contentModeOptions}
           />
           <InputNumberItem
-            title={t('layout.setting.expandedMenuWidth')}
+            title={'菜单宽度'}
             max={600}
             min={100}
             step={10}
@@ -255,54 +255,54 @@ export default defineComponent({
       return (
         <>
           <SwitchItem
-            title={t('layout.setting.breadcrumb')}
+            title={'显示面包屑'}
             event={HandlerEnum.SHOW_BREADCRUMB}
             def={unref(getShowBreadCrumb)}
             disabled={!unref(getShowHeader)}
           />
 
           <SwitchItem
-            title={t('layout.setting.breadcrumbIcon')}
+            title={'显示面包屑图标'}
             event={HandlerEnum.SHOW_BREADCRUMB_ICON}
             def={unref(getShowBreadCrumbIcon)}
             disabled={!unref(getShowHeader)}
           />
 
           <SwitchItem
-            title={t('layout.setting.tabs')}
+            title={'面包屑快捷菜单'}
             event={HandlerEnum.TABS_SHOW}
             def={unref(getShowMultipleTab)}
           />
 
           <SwitchItem
-            title={t('layout.setting.tabsRedoBtn')}
+            title={'标签页刷新按钮'}
             event={HandlerEnum.TABS_SHOW_REDO}
             def={unref(getShowRedo)}
             disabled={!unref(getShowMultipleTab)}
           />
 
           <SwitchItem
-            title={t('layout.setting.tabsQuickBtn')}
+            title={'标签页快捷按钮'}
             event={HandlerEnum.TABS_SHOW_QUICK}
             def={unref(getShowQuick)}
             disabled={!unref(getShowMultipleTab)}
           />
           <SwitchItem
-            title={t('layout.setting.tabsFoldBtn')}
+            title={'标签页折叠按钮'}
             event={HandlerEnum.TABS_SHOW_FOLD}
             def={unref(getShowFold)}
             disabled={!unref(getShowMultipleTab)}
           />
 
           <SwitchItem
-            title={t('layout.setting.sidebar')}
+            title={'左侧菜单'}
             event={HandlerEnum.MENU_SHOW_SIDEBAR}
             def={unref(getShowMenu)}
             disabled={unref(getIsHorizontal)}
           />
 
           <SwitchItem
-            title={t('layout.setting.header')}
+            title={'顶部菜单'}
             event={HandlerEnum.HEADER_SHOW}
             def={unref(getShowHeader)}
           />
@@ -312,28 +312,16 @@ export default defineComponent({
             def={unref(getShowLogo)}
             disabled={unref(getIsMixSidebar)}
           />
+          <SwitchItem title={'页脚'} event={HandlerEnum.SHOW_FOOTER} def={unref(getShowFooter)} />
           <SwitchItem
-            title={t('layout.setting.footer')}
-            event={HandlerEnum.SHOW_FOOTER}
-            def={unref(getShowFooter)}
-          />
-          <SwitchItem
-            title={t('layout.setting.fullContent')}
+            title={'全屏按钮'}
             event={HandlerEnum.FULL_CONTENT}
             def={unref(getFullContent)}
           />
 
-          <SwitchItem
-            title={t('layout.setting.grayMode')}
-            event={HandlerEnum.GRAY_MODE}
-            def={unref(getGrayMode)}
-          />
+          <SwitchItem title={'灰色模式'} event={HandlerEnum.GRAY_MODE} def={unref(getGrayMode)} />
 
-          <SwitchItem
-            title={t('layout.setting.colorWeak')}
-            event={HandlerEnum.COLOR_WEAK}
-            def={unref(getColorWeak)}
-          />
+          <SwitchItem title={'色弱模式'} event={HandlerEnum.COLOR_WEAK} def={unref(getColorWeak)} />
         </>
       )
     }
@@ -342,24 +330,24 @@ export default defineComponent({
       return (
         <>
           <SwitchItem
-            title={t('layout.setting.progress')}
+            title="顶部进度条"
             event={HandlerEnum.OPEN_PROGRESS}
             def={unref(getOpenNProgress)}
           />
           <SwitchItem
-            title={t('layout.setting.switchLoading')}
+            title="页面loading"
             event={HandlerEnum.OPEN_PAGE_LOADING}
             def={unref(getOpenPageLoading)}
           />
 
           <SwitchItem
-            title={t('layout.setting.switchAnimation')}
+            title="页面切换动画"
             event={HandlerEnum.OPEN_ROUTE_TRANSITION}
             def={unref(getEnableTransition)}
           />
 
           <SelectItem
-            title={t('layout.setting.animationType')}
+            title="动画类型"
             event={HandlerEnum.ROUTER_TRANSITION}
             def={unref(getBasicTransition)}
             options={routerTransitionOptions}
@@ -370,27 +358,22 @@ export default defineComponent({
     }
 
     return () => (
-      <BasicDrawer
-        {...attrs}
-        title={t('layout.setting.drawerTitle')}
-        width={330}
-        class="setting-drawer"
-      >
-        {unref(getShowDarkModeToggle) && <Divider>{() => t('layout.setting.darkMode')}</Divider>}
+      <BasicDrawer {...attrs} title="项目配置" width={330} class="setting-drawer">
+        {unref(getShowDarkModeToggle) && <Divider>{() => '主题'}</Divider>}
         {unref(getShowDarkModeToggle) && <AppDarkModeToggle class="mx-auto" />}
-        <Divider>{() => t('layout.setting.navMode')}</Divider>
+        <Divider>{() => '导航栏模式'}</Divider>
         {renderSidebar()}
-        <Divider>{() => t('layout.setting.sysTheme')}</Divider>
+        <Divider>{() => '系统主题'}</Divider>
         {renderMainTheme()}
-        <Divider>{() => t('layout.setting.headerTheme')}</Divider>
+        <Divider>{() => '顶栏主题'}</Divider>
         {renderHeaderTheme()}
-        <Divider>{() => t('layout.setting.sidebarTheme')}</Divider>
+        <Divider>{() => '菜单主题'}</Divider>
         {renderSiderTheme()}
-        <Divider>{() => t('layout.setting.interfaceFunction')}</Divider>
+        <Divider>{() => '界面功能'}</Divider>
         {renderFeatures()}
-        <Divider>{() => t('layout.setting.interfaceDisplay')}</Divider>
+        <Divider>{() => '界面显示'}</Divider>
         {renderContent()}
-        <Divider>{() => t('layout.setting.animation')}</Divider>
+        <Divider>{() => '动画'}</Divider>
         {renderTransition()}
         <Divider />
         <SettingFooter />
