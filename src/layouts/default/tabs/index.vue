@@ -1,5 +1,5 @@
 <template>
-  <div :class="getWrapClass">
+  <div style="margin-top: 20px">
     <Tabs
       type="editable-card"
       size="small"

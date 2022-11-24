@@ -11,7 +11,7 @@
     v-bind="getInlineCollapseOptions"
   >
     <template v-for="item in items" :key="item.path">
-      <BasicSubMenuItem :item="item" :isHorizontal="isHorizontal" />
+      <BasicSubMenuItem :item="item" />
     </template>
   </Menu>
 </template>

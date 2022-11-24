@@ -6,9 +6,7 @@
 <script lang="ts">
   import { defineComponent, unref, computed } from 'vue'
   import { Icon } from '@/components/Icon'
-
   import { useDesign } from '@/hooks/web/useDesign'
-  import { useHeaderSetting } from '@/hooks/setting/useHeaderSetting'
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { triggerWindowResize } from '@/utils/event'
 
@@ -18,9 +16,7 @@
     setup() {
       const { prefixCls } = useDesign('multiple-tabs-content')
       const { getShowMenu, setMenuSetting } = useMenuSetting()
-      const { getShowHeader, setHeaderSetting } = useHeaderSetting()
-
-      const getIsUnFold = computed(() => !unref(getShowMenu) && !unref(getShowHeader))
+      const getIsUnFold = computed(() => !unref(getShowMenu))
 
       const getIcon = computed(() =>
         unref(getIsUnFold) ? 'codicon:screen-normal' : 'codicon:screen-full',
@@ -32,7 +28,6 @@
           show: isUnFold,
           hidden: !isUnFold,
         })
-        setHeaderSetting({ show: isUnFold })
         triggerWindowResize()
       }
 

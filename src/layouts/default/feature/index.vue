@@ -1,13 +1,8 @@
 <script lang="ts">
-  import { defineComponent, computed, unref } from 'vue'
   import { BackTop } from 'ant-design-vue'
-
-  import { useRootSetting } from '@/hooks/setting/useRootSetting'
-  import { useHeaderSetting } from '@/hooks/setting/useHeaderSetting'
   import { useDesign } from '@/hooks/web/useDesign'
   import { useUserStoreWithOut } from '@/store/modules/user'
 
-  import { SettingButtonPositionEnum } from '@/enums/appEnum'
   import { createAsyncComponent } from '@/utils/factory/createAsyncComponent'
 
   import SessionTimeoutLogin from '@/views/sys/login/SessionTimeoutLogin.vue'
@@ -19,30 +14,12 @@
       SessionTimeoutLogin,
     },
     setup() {
-      const { getUseOpenBackTop, getShowSettingButton, getSettingButtonPosition, getFullContent } =
-        useRootSetting()
       const userStore = useUserStoreWithOut()
       const { prefixCls } = useDesign('setting-drawer-feature')
-      const { getShowHeader } = useHeaderSetting()
-
       const getIsSessionTimeout = computed(() => userStore.getSessionTimeout)
-
-      const getIsFixedSettingDrawer = computed(() => {
-        if (!unref(getShowSettingButton)) {
-          return false
-        }
-        const settingButtonPosition = unref(getSettingButtonPosition)
-
-        if (settingButtonPosition === SettingButtonPositionEnum.AUTO) {
-          return !unref(getShowHeader) || unref(getFullContent)
-        }
-        return settingButtonPosition === SettingButtonPositionEnum.FIXED
-      })
 
       return {
         getTarget: () => document.body,
-        getUseOpenBackTop,
-        getIsFixedSettingDrawer,
         prefixCls,
         getIsSessionTimeout,
       }
@@ -51,7 +28,7 @@
 </script>
 
 <template>
-  <BackTop v-if="getUseOpenBackTop" :target="getTarget" />
-  <SettingDrawer v-if="getIsFixedSettingDrawer" :class="prefixCls" />
+  <BackTop :target="getTarget" />
+  <SettingDrawer :class="prefixCls" />
   <SessionTimeoutLogin v-if="getIsSessionTimeout" />
 </template>

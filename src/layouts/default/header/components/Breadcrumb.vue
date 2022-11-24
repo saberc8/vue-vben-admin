@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="breadcrumb">
     <a-breadcrumb :routes="routes">
       <template #itemRender="{ route, routes: routesMatched, paths }">
         <Icon :icon="getIcon(route)" v-if="getShowBreadCrumbIcon && getIcon(route)" />
@@ -141,3 +141,5 @@
     },
   })
 </script>
+
+<style lang="less" scoped></style>

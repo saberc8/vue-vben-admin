@@ -1,5 +1,6 @@
 <template>
   <Sider
+    v-show="showClassSideBarRef"
     ref="sideRef"
     breakpoint="lg"
     collapsible
@@ -13,7 +14,7 @@
     <template #trigger v-if="getShowTrigger">
       <LayoutTrigger />
     </template>
-    <LayoutMenu :menuMode="getMode" :splitType="getSplitType" />
+    <LayoutMenu />
   </Sider>
 </template>
 <script lang="ts">
@@ -28,7 +29,6 @@
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { useTrigger, useSiderEvent } from './useLayoutSider'
   import { useAppInject } from '@/hooks/web/useAppInject'
-  import { useDesign } from '@/hooks/web/useDesign'
 
   export default defineComponent({
     name: 'LayoutSideBar',
@@ -43,11 +43,8 @@
         getRealWidth,
         getMenuHidden,
         getMenuFixed,
-        getIsMixMode,
         toggleCollapsed,
       } = useMenuSetting()
-
-      const { prefixCls } = useDesign('layout-sideBar')
 
       const { getIsMobile } = useAppInject()
 
@@ -67,16 +64,6 @@
         return unref(getSplit) ? !unref(getMenuHidden) : true
       })
 
-      const getSiderClass = computed(() => {
-        return [
-          prefixCls,
-          {
-            [`${prefixCls}--fixed`]: unref(getMenuFixed),
-            [`${prefixCls}--mix`]: unref(getIsMixMode) && !unref(getIsMobile),
-          },
-        ]
-      })
-
       const getHiddenDomStyle = computed((): CSSProperties => {
         const width = `${unref(getRealWidth)}px`
         return {
@@ -94,11 +81,9 @@
       const getTrigger = h(LayoutTrigger)
 
       return {
-        prefixCls,
         sideRef,
         getIsMobile,
         getHiddenDomStyle,
-        getSiderClass,
         getTrigger,
         getTriggerAttr,
         getCollapsedWidth,

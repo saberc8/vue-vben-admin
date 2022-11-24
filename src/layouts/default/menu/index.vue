@@ -40,7 +40,6 @@
         getCollapsed,
         getCollapsedShowTitle,
         getAccordion,
-        getIsHorizontal,
         getIsSidebarType,
       } = useMenuSetting()
       const { getShowLogo } = useRootSetting()
@@ -53,15 +52,6 @@
         unref(getIsMobile) ? MenuModeEnum.INLINE : props.menuMode || unref(getMenuMode),
       )
       const getIsShowLogo = computed(() => unref(getShowLogo) && unref(getIsSidebarType))
-
-      const getUseScroll = computed(() => {
-        return (
-          !unref(getIsHorizontal) &&
-          (unref(getIsSidebarType) ||
-            props.splitType === MenuSplitTyeEnum.LEFT ||
-            props.splitType === MenuSplitTyeEnum.NONE)
-        )
-      })
 
       const getCommonProps = computed(() => {
         const menus = unref(menusRef)
@@ -80,8 +70,9 @@
        * @param menu
        */
 
-      function handleMenuClick(path: string) {
-        go(path)
+      function handleMenuClick(path: any) {
+        console.log(path, 111)
+        go(path.key)
       }
 
       /**
@@ -116,11 +107,7 @@
       return () => {
         return (
           <>
-            {unref(getUseScroll) ? (
-              <ScrollContainer>{() => renderMenu()}</ScrollContainer>
-            ) : (
-              renderMenu()
-            )}
+            <ScrollContainer>{() => renderMenu()}</ScrollContainer>
           </>
         )
       }

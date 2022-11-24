@@ -45,8 +45,3 @@ export function buildBEM(name: string) {
 export function createBEM(name: string) {
   return [buildBEM(`${prefixCls}-${name}`)]
 }
-
-export function createNamespace(name: string) {
-  const prefixedName = `${prefixCls}-${name}`
-  return [prefixedName, buildBEM(prefixedName)] as const
-}

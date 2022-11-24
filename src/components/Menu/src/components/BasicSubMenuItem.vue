@@ -1,5 +1,6 @@
 <template>
   <BasicMenuItem v-if="!menuHasChildren(item) && getShowMenu" v-bind="$props" />
+  333
   <SubMenu
     v-if="menuHasChildren(item) && getShowMenu"
     :key="`submenu-${item.path}`"

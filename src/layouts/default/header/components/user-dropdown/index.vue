@@ -1,5 +1,5 @@
 <template>
-  <Dropdown placement="bottomLeft" :overlayClassName="`${prefixCls}-dropdown-overlay`">
+  <Dropdown placement="bottomLeft" overlayClassName="userdrop">
     <span :class="[prefixCls, `${prefixCls}--light`]" class="flex">
       <img :class="`${prefixCls}__header`" :src="getUserInfo.avatar" />
       <span :class="`${prefixCls}__info hidden md:block`">
@@ -11,8 +11,8 @@
 
     <template #overlay>
       <Menu @click="handleMenuClick">
-        <MenuItem key="doc" text="文档" icon="ion:document-text-outline" v-if="getShowDoc" />
-        <MenuDivider v-if="getShowDoc" />
+        <MenuItem key="doc" text="文档" icon="ion:document-text-outline" />
+        <MenuDivider />
         <MenuItem key="logout" text="退出系统" icon="ion:power-outline" />
       </Menu>
     </template>
@@ -27,8 +27,6 @@
   import { DOC_URL } from '@/settings/siteSetting'
 
   import { useUserStore } from '@/store/modules/user'
-  import { useHeaderSetting } from '@/hooks/setting/useHeaderSetting'
-
   import { useDesign } from '@/hooks/web/useDesign'
   import { useModal } from '@/components/Modal'
 
@@ -50,8 +48,6 @@
     },
     setup() {
       const { prefixCls } = useDesign('header-user-dropdown')
-
-      const { getShowDoc } = useHeaderSetting()
       const userStore = useUserStore()
 
       const getUserInfo = computed(() => {
@@ -86,14 +82,13 @@
         prefixCls,
         getUserInfo,
         handleMenuClick,
-        getShowDoc,
         register,
       }
     },
   })
 </script>
 <style lang="less">
-  @prefix-cls: 'vben-header-user-dropdown';
+  @prefix-cls: 'user-dropdown';
 
   .@{prefix-cls} {
     height: 60px;

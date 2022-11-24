@@ -1,5 +1,6 @@
 <template>
   <MenuItem :key="item.path">
+    444
     <MenuItemContent v-bind="$props" :item="item" />
   </MenuItem>
 </template>
