@@ -6,14 +6,15 @@
     overlayClassName="multiple-tabs__dropdown"
     @menu-event="handleMenuEvent"
   >
-    <div :class="`${prefixCls}__info`" @contextmenu="handleContext" v-if="getIsTabs">
+    <div @contextmenu="handleContext" v-if="getIsTabs">
       <span class="ml-1">{{ getTitle }}</span>
     </div>
-    <span :class="`${prefixCls}__extra-quick`" v-else @click="handleContext">
+    <span v-else @click="handleContext">
       <Icon icon="ion:chevron-down" />
     </span>
   </Dropdown>
 </template>
+
 <script lang="ts">
   import type { PropType } from 'vue'
   import type { RouteLocationNormalized } from 'vue-router'

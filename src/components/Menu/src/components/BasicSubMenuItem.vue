@@ -1,6 +1,5 @@
 <template>
   <BasicMenuItem v-if="!menuHasChildren(item) && getShowMenu" v-bind="$props" />
-  333
   <SubMenu
     v-if="menuHasChildren(item) && getShowMenu"
     :key="`submenu-${item.path}`"
@@ -9,7 +8,6 @@
     <template #title>
       <MenuItemContent v-bind="$props" :item="item" />
     </template>
-
     <template v-for="childrenItem in item.children || []" :key="childrenItem.path">
       <BasicSubMenuItem v-bind="$props" :item="childrenItem" />
     </template>

@@ -1,6 +1,5 @@
 <template>
   <MenuItem :key="item.path">
-    444
     <MenuItemContent v-bind="$props" :item="item" />
   </MenuItem>
 </template>
@@ -8,7 +7,6 @@
   import { defineComponent } from 'vue'
   import { Menu } from 'ant-design-vue'
   import { itemProps } from '../props'
-
   import MenuItemContent from './MenuItemContent.vue'
   export default defineComponent({
     name: 'BasicMenuItem',

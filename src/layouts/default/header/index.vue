@@ -1,18 +1,11 @@
 <template>
   <Header class="header111">
-    <!-- left start -->
     <div>
-      <!-- logo -->
       <LayoutTrigger />
       <LayoutBreadcrumb />
     </div>
-    <!-- left end -->
-
     <FullScreen />
-
     <UserDropDown />
-
-    <SettingDrawer />
   </Header>
 </template>
 <script lang="ts">
@@ -21,8 +14,6 @@
   import { useRootSetting } from '@/hooks/setting/useRootSetting'
   import { UserDropDown, LayoutBreadcrumb, FullScreen } from './components'
   import { useDesign } from '@/hooks/web/useDesign'
-
-  import { createAsyncComponent } from '@/utils/factory/createAsyncComponent'
 
   export default defineComponent({
     name: 'LayoutHeader',
@@ -33,9 +24,6 @@
       LayoutBreadcrumb,
       UserDropDown,
       FullScreen,
-      SettingDrawer: createAsyncComponent(() => import('@/layouts/default/setting/index.vue'), {
-        loading: true,
-      }),
     },
     setup() {
       const { prefixCls } = useDesign('layout-header')

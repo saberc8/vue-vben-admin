@@ -6,8 +6,6 @@
   import { MenuModeEnum, MenuSplitTyeEnum } from '@/enums/menuEnum'
 
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
-  import { ScrollContainer } from '@/components/Container'
-
   import { useGo } from '@/hooks/web/usePage'
   import { useSplitMenu } from './useLayoutMenu'
   import { openWindow } from '@/utils'
@@ -89,7 +87,7 @@
 
       function renderMenu() {
         const { menus, ...menuProps } = unref(getCommonProps)
-        // console.log(menus);
+        console.log(menus)
         if (!menus || !menus.length) return null
         console.log(menus)
         return (
@@ -105,11 +103,7 @@
       }
 
       return () => {
-        return (
-          <>
-            <ScrollContainer>{() => renderMenu()}</ScrollContainer>
-          </>
-        )
+        return <>{renderMenu()}</>
       }
     },
   })
