@@ -36,6 +36,9 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
     VitePluginCertificate({
       source: 'coding',
     }),
+    // Components({
+    //   resolvers: [AntDesignVueResolver()],
+    // }),
     AutoImport({
       dts: 'src/auto-imports.d.ts',
       imports: [

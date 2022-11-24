@@ -1,5 +1,5 @@
 <template>
-  <div :class="[prefixCls, `${prefixCls}--light`]">
+  <div>
     <a-breadcrumb :routes="routes">
       <template #itemRender="{ route, routes: routesMatched, paths }">
         <Icon :icon="getIcon(route)" v-if="getShowBreadCrumbIcon && getIcon(route)" />
@@ -141,37 +141,3 @@
     },
   })
 </script>
-<style lang="less">
-  @prefix-cls: 'vben-layout-breadcrumb';
-
-  .@{prefix-cls} {
-    display: flex;
-    padding: 0 8px;
-    align-items: center;
-
-    .ant-breadcrumb-link {
-      .anticon {
-        margin-right: 4px;
-        margin-bottom: 2px;
-      }
-    }
-
-    &--light {
-      .ant-breadcrumb-link {
-        color: #999;
-
-        a {
-          color: rgb(0 0 0 / 65%);
-
-          &:hover {
-            color: #0960bd;
-          }
-        }
-      }
-
-      .ant-breadcrumb-separator {
-        color: #999;
-      }
-    }
-  }
-</style>

@@ -1,10 +1,8 @@
 <script lang="tsx">
-  import type { PropType, CSSProperties } from 'vue'
+  import type { PropType } from 'vue'
 
   import { computed, defineComponent, unref, toRef } from 'vue'
   import { BasicMenu } from '@/components/Menu'
-  import { SimpleMenu } from '@/components/SimpleMenu'
-
   import { MenuModeEnum, MenuSplitTyeEnum } from '@/enums/menuEnum'
 
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
@@ -44,7 +42,6 @@
         getAccordion,
         getIsHorizontal,
         getIsSidebarType,
-        getSplit,
       } = useMenuSetting()
       const { getShowLogo } = useRootSetting()
 
@@ -64,12 +61,6 @@
             props.splitType === MenuSplitTyeEnum.LEFT ||
             props.splitType === MenuSplitTyeEnum.NONE)
         )
-      })
-
-      const getWrapperStyle = computed((): CSSProperties => {
-        return {
-          height: `calc(100% - ${unref(getIsShowLogo) ? '48px' : '0px'})`,
-        }
       })
 
       const getCommonProps = computed(() => {
@@ -110,9 +101,7 @@
         // console.log(menus);
         if (!menus || !menus.length) return null
         console.log(menus)
-        return !props.isHorizontal ? (
-          <SimpleMenu {...menuProps} isSplitMenu={unref(getSplit)} items={menus} />
-        ) : (
+        return (
           <BasicMenu
             {...(menuProps as any)}
             isHorizontal={props.isHorizontal}
@@ -128,7 +117,7 @@
         return (
           <>
             {unref(getUseScroll) ? (
-              <ScrollContainer style={unref(getWrapperStyle)}>{() => renderMenu()}</ScrollContainer>
+              <ScrollContainer>{() => renderMenu()}</ScrollContainer>
             ) : (
               renderMenu()
             )}

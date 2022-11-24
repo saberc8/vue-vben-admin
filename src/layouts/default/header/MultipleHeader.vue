@@ -1,9 +1,6 @@
 <template>
-  <div :style="getPlaceholderDomStyle" v-if="getIsShowPlaceholderDom"></div>
-  <div :style="getWrapStyle" :class="getClass">
-    <LayoutHeader v-if="getShowInsetHeaderRef" />
-    <MultipleTabs v-if="getShowTabs" />
-  </div>
+  <LayoutHeader v-if="getShowInsetHeaderRef" />
+  <MultipleTabs v-if="getShowTabs" />
 </template>
 <script lang="ts">
   import { defineComponent, unref, computed, CSSProperties } from 'vue'

@@ -1,6 +1,6 @@
 <template>
   <Form
-    class="w-90"
+    class="login-form"
     :model="formData"
     :rules="getFormRules"
     ref="formRef"
@@ -101,3 +101,9 @@
     }
   }
 </script>
+
+<style lang="less" scoped>
+  .login-form {
+    width: 328px;
+  }
+</style>

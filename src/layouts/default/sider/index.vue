@@ -1,16 +1,5 @@
 <template>
-  <Drawer
-    v-if="getIsMobile"
-    placement="left"
-    :class="prefixCls"
-    :width="getMenuWidth"
-    :getContainer="null"
-    :visible="!getCollapsed"
-    @close="handleClose"
-  >
-    <Sider />
-  </Drawer>
-  <MixSider v-else-if="getIsMixSidebar" />
+  <MixSider v-if="getIsMixSidebar" />
   <Sider v-else />
 </template>
 <script lang="ts">
@@ -18,14 +7,13 @@
 
   import Sider from './LayoutSider.vue'
   import MixSider from './MixSider.vue'
-  import { Drawer } from 'ant-design-vue'
 
   import { useAppInject } from '@/hooks/web/useAppInject'
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { useDesign } from '@/hooks/web/useDesign'
   export default defineComponent({
     name: 'SiderWrapper',
-    components: { Sider, Drawer, MixSider },
+    components: { Sider, MixSider },
     setup() {
       const { prefixCls } = useDesign('layout-sider-wrapper')
       const { getIsMobile } = useAppInject()
@@ -41,17 +29,4 @@
     },
   })
 </script>
-<style lang="less">
-  @prefix-cls: 'vben-layout-sider-wrapper';
-
-  .@{prefix-cls} {
-    .ant-drawer-body {
-      height: 100vh;
-      padding: 0;
-    }
-
-    .ant-drawer-header-no-title {
-      display: none;
-    }
-  }
-</style>
+<style lang="less"></style>

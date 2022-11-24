@@ -1,5 +1,5 @@
 <template>
-  <Layout :class="prefixCls">
+  <Layout>
     <LayoutFeatures />
     <LayoutHeader fixed v-if="getShowFullHeaderRef" />
     <Layout :class="[layoutClass]">

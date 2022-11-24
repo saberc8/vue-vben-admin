@@ -1,40 +1,13 @@
 <template>
-  <div :class="`${prefixCls}-dom`" :style="getDomStyle"></div>
-  <div
-    v-click-outside="handleClickOutside"
-    :style="getWrapStyle"
-    :class="[
-      prefixCls,
-      {
-        open: openMenu,
-        mini: getCollapsed,
-      },
-    ]"
-    v-bind="getMenuEvents"
-  >
-    <AppLogo :showTitle="false" :class="`${prefixCls}-logo`" />
+  <div v-click-outside="handleClickOutside" v-bind="getMenuEvents">
+    <AppLogo :showTitle="false" />
 
-    <LayoutTrigger :class="`${prefixCls}-trigger`" />
+    <LayoutTrigger />
 
     <ScrollContainer>
-      <ul :class="`${prefixCls}-module`">
-        <li
-          :class="[
-            `${prefixCls}-module__item `,
-            {
-              [`${prefixCls}-module__item--active`]: item.path === activePath,
-            },
-          ]"
-          v-bind="getItemEvents(item)"
-          v-for="item in menuModules"
-          :key="item.path"
-        >
-          <SimpleMenuTag :item="item" collapseParent dot />
-          <Icon
-            :class="`${prefixCls}-module__icon`"
-            :size="getCollapsed ? 16 : 20"
-            :icon="item.icon || (item.meta && item.meta.icon)"
-          />
+      <ul>
+        <li v-bind="getItemEvents(item)" v-for="item in menuModules" :key="item.path">
+          <Icon :size="getCollapsed ? 16 : 20" :icon="item.icon || (item.meta && item.meta.icon)" />
           <p :class="`${prefixCls}-module__name`">
             {{ item.name }}
           </p>
@@ -42,32 +15,15 @@
       </ul>
     </ScrollContainer>
 
-    <div :class="`${prefixCls}-menu-list`" ref="sideRef" :style="getMenuStyle">
-      <div
-        v-show="openMenu"
-        :class="[
-          `${prefixCls}-menu-list__title`,
-          {
-            show: openMenu,
-          },
-        ]"
-      >
-        <span class="text"> {{ title }}</span>
+    <div ref="sideRef">
+      <div v-show="openMenu">
+        <span> {{ title }}</span>
         <Icon
           :size="16"
           :icon="getMixSideFixed ? 'ri:pushpin-2-fill' : 'ri:pushpin-2-line'"
-          class="pushpin"
           @click="handleFixedMenu"
         />
       </div>
-      <ScrollContainer :class="`${prefixCls}-menu-list__content`">
-        <SimpleMenu :items="childrenMenus" mixSider @menu-click="handleMenuClick" />
-      </ScrollContainer>
-      <div
-        v-show="getShowDragBar && openMenu"
-        :class="`${prefixCls}-drag-bar`"
-        ref="dragBarRef"
-      ></div>
     </div>
   </div>
 </template>
@@ -77,12 +33,10 @@
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue'
   import type { RouteLocationNormalized } from 'vue-router'
   import { ScrollContainer } from '@/components/Container'
-  import { SimpleMenu, SimpleMenuTag } from '@/components/SimpleMenu'
   import { Icon } from '@/components/Icon'
   import { AppLogo } from '@/components/Application'
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { usePermissionStore } from '@/store/modules/permission'
-  import { useDragLine } from './useLayoutSider'
   import { useGlobSetting } from '@/hooks/setting'
   import { useDesign } from '@/hooks/web/useDesign'
 
@@ -98,10 +52,8 @@
     components: {
       ScrollContainer,
       AppLogo,
-      SimpleMenu,
       Icon,
       LayoutTrigger,
-      SimpleMenuTag,
     },
     directives: {
       clickOutside,
@@ -111,7 +63,6 @@
       const activePath = ref('')
       const childrenMenus = ref<Menu[]>([])
       const openMenu = ref(false)
-      const dragBarRef = ref<ElRef>(null)
       const sideRef = ref<ElRef>(null)
       const currentRoute = ref<Nullable<RouteLocationNormalized>>(null)
 
@@ -120,7 +71,6 @@
 
       const {
         getMenuWidth,
-        getCanDrag,
         getCloseMixSidebarOnChange,
         getMixSideTrigger,
         getRealWidth,
@@ -133,8 +83,6 @@
 
       const { title } = useGlobSetting()
       const permissionStore = usePermissionStore()
-
-      useDragLine(sideRef, dragBarRef, true)
 
       const getMenuStyle = computed((): CSSProperties => {
         return {
@@ -179,8 +127,6 @@
             }
           : {}
       })
-
-      const getShowDragBar = computed(() => unref(getCanDrag))
 
       onMounted(async () => {
         menuModules.value = await getShallowMenus()
@@ -313,12 +259,10 @@
         handleModuleClick: handleModuleClick,
         activePath,
         childrenMenus: childrenMenus,
-        getShowDragBar,
         handleMenuClick,
         getMenuStyle,
         handleClickOutside,
         sideRef,
-        dragBarRef,
         title,
         openMenu,
         getItemEvents,

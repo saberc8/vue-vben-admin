@@ -39,7 +39,7 @@ const setting: ProjectConfig = {
   // Header configuration
   headerSetting: {
     // header bg color
-    bgColor: '#001529',
+    bgColor: '#000',
     // Fixed at the top
     fixed: true,
     // Whether to show top
@@ -53,7 +53,7 @@ const setting: ProjectConfig = {
   // Menu configuration
   menuSetting: {
     // sidebar menu bg color
-    bgColor: '#001529',
+    bgColor: '#fff',
     //  Whether to fix the left menu
     fixed: true,
     // Menu collapse

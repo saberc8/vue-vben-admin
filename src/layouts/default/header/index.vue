@@ -3,31 +3,20 @@
     <!-- left start -->
     <div>
       <!-- logo -->
-      <LayoutTrigger
-        v-if="
-          (getShowContent && getShowHeaderTrigger && !getSplit && !getIsMixSidebar) || getIsMobile
-        "
-        :sider="false"
-      />
-      21332313
+      <LayoutTrigger />
       <LayoutBreadcrumb v-if="getShowContent && getShowBread" />
     </div>
     <!-- left end -->
 
     <!-- menu start -->
-    <div :class="`${prefixCls}-menu`" v-if="getShowTopMenu && !getIsMobile">
-      <LayoutMenu :isHorizontal="true" :splitType="getSplitType" :menuMode="getMenuMode" />
-    </div>
+    <LayoutMenu :isHorizontal="true" :splitType="getSplitType" mode="horizontal" />
     <!-- menu-end -->
 
-    <!-- action  -->
-    <div :class="`${prefixCls}-action`">
-      <FullScreen v-if="getShowFullScreen" :class="`${prefixCls}-action__item fullscreen-item`" />
+    <FullScreen v-if="getShowFullScreen" />
 
-      <UserDropDown />
+    <UserDropDown />
 
-      <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
-    </div>
+    <SettingDrawer v-if="getShowSetting" />
   </Header>
 </template>
 <script lang="ts">

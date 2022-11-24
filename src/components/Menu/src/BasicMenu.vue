@@ -6,7 +6,6 @@
     :openKeys="getOpenKeys"
     :inlineIndent="inlineIndent"
     @open-change="handleOpenChange"
-    :class="getMenuClass"
     @click="handleMenuClick"
     :subMenuOpenDelay="0.2"
     v-bind="getInlineCollapseOptions"
