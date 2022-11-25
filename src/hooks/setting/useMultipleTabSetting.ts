@@ -9,14 +9,11 @@ export function useMultipleTabSetting() {
 
   const getShowMultipleTab = computed(() => appStore.getMultiTabsSetting.show)
 
-  const getShowQuick = computed(() => appStore.getMultiTabsSetting.showQuick)
-
   function setMultipleTabSetting(multiTabsSetting: Partial<MultiTabsSetting>) {
     appStore.setProjectConfig({ multiTabsSetting })
   }
   return {
     setMultipleTabSetting,
     getShowMultipleTab,
-    getShowQuick,
   }
 }

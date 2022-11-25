@@ -22,8 +22,6 @@ export function useRootSetting() {
 
   const getContentMode = computed(() => appStore.getProjectConfig.contentMode)
 
-  const getUseOpenBackTop = computed(() => appStore.getProjectConfig.useOpenBackTop)
-
   const getShowSettingButton = computed(() => appStore.getProjectConfig.showSettingButton)
 
   const getUseErrorHandle = computed(() => appStore.getProjectConfig.useErrorHandle)
@@ -53,7 +51,6 @@ export function useRootSetting() {
     getPermissionMode,
     getUseErrorHandle,
     getShowBreadCrumb,
-    getUseOpenBackTop,
     getShowSettingButton,
     getContentMode,
   }

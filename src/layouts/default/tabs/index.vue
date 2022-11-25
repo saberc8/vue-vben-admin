@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 20px">
+  <div>
     <Tabs
       type="editable-card"
       size="small"
@@ -13,26 +13,21 @@
       <template v-for="item in getTabsState" :key="item.query ? item.fullPath : item.path">
         <TabPane :closable="!(item && item.meta && item.meta.affix)">
           <template #tab>
-            <TabContent :tabItem="item" />
+            <div>{{ item.meta?.title }}</div>
           </template>
         </TabPane>
       </template>
     </Tabs>
   </div>
 </template>
+
 <script lang="ts">
   import type { RouteLocationNormalized, RouteMeta } from 'vue-router'
   import { Tabs } from 'ant-design-vue'
-  import TabContent from './components/TabContent.vue'
   import { useGo } from '@/hooks/web/usePage'
-
   import { useMultipleTabStore } from '@/store/modules/multipleTab'
   import { useUserStore } from '@/store/modules/user'
-
   import { initAffixTabs, useTabsDrag } from './useMultipleTabs'
-
-  import { useMultipleTabSetting } from '@/hooks/setting/useMultipleTabSetting'
-
   import { REDIRECT_NAME } from '@/router/constant'
   import { listenerRouteChange } from '@/logics/mitt/routeChange'
 
@@ -43,19 +38,15 @@
     components: {
       Tabs,
       TabPane: Tabs.TabPane,
-      TabContent,
     },
     setup() {
       const affixTextList = initAffixTabs()
       const activeKeyRef = ref('')
-
       useTabsDrag(affixTextList)
       const tabStore = useMultipleTabStore()
       const userStore = useUserStore()
       const router = useRouter()
       const go = useGo()
-      const { getShowQuick } = useMultipleTabSetting()
-
       const getTabsState = computed(() => {
         return tabStore.getTabList.filter((item) => !item.meta?.hideTab)
       })
@@ -78,7 +69,6 @@
 
         if (isHide) {
           const findParentRoute = router.getRoutes().find((item) => item.path === currentActiveMenu)
-
           findParentRoute && tabStore.addTab(findParentRoute as unknown as RouteLocationNormalized)
         } else {
           tabStore.addTab(unref(route))
@@ -96,7 +86,6 @@
         if (unref(unClose)) {
           return
         }
-
         tabStore.closeTabByKey(targetKey, router)
       }
       return {
@@ -104,7 +93,6 @@
         handleChange,
         activeKeyRef,
         getTabsState,
-        getShowQuick,
       }
     },
   })

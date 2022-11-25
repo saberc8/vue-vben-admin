@@ -22,7 +22,6 @@ export function useTransitionSetting() {
   }
   return {
     setTransitionSetting,
-
     getEnableTransition,
     getOpenNProgress,
     getOpenPageLoading,

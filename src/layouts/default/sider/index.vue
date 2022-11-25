@@ -1,23 +1,37 @@
 <template>
-  <Sider />
+  <Sider
+    ref="sideRef"
+    collapsible
+    :collapsed="getCollapsed"
+    :collapsedWidth="getCollapsedWidth"
+    @breakpoint="onBreakpointChange"
+    v-bind="getTriggerAttr"
+  >
+    <LayoutMenu />
+  </Sider>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue'
-  import Sider from './LayoutSider.vue'
+  import { Layout } from 'ant-design-vue'
+  import LayoutMenu from '../menu/index.vue'
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
+  import { useTrigger, useSiderEvent } from './useLayoutSider'
+
   export default defineComponent({
     name: 'SiderWrapper',
-    components: { Sider },
+    components: { Sider: Layout.Sider, LayoutMenu },
     setup() {
-      const { setMenuSetting, getCollapsed, getMenuWidth } = useMenuSetting()
-
-      function handleClose() {
-        setMenuSetting({
-          collapsed: true,
-        })
+      const sideRef = ref<ElRef>(null)
+      const { getCollapsed } = useMenuSetting()
+      const { getTriggerAttr, getShowTrigger } = useTrigger()
+      const { getCollapsedWidth, onBreakpointChange } = useSiderEvent()
+      return {
+        sideRef,
+        getTriggerAttr,
+        getCollapsedWidth,
+        getCollapsed,
+        onBreakpointChange,
+        getShowTrigger,
       }
-
-      return { getCollapsed, handleClose, getMenuWidth }
     },
   })
 </script>
