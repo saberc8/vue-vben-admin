@@ -5,12 +5,10 @@ import { computed, unref, ref } from 'vue'
 import { useAppStore } from '@/store/modules/app'
 
 import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from '@/enums/appEnum'
-import { useFullContent } from '@/hooks/web/useFullContent'
 
 const mixSideHasChildren = ref(false)
 
 export function useMenuSetting() {
-  const { getFullContent: fullContent } = useFullContent()
   const appStore = useAppStore()
 
   const getShowSidebar = computed(() => {

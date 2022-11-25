@@ -4,7 +4,7 @@ import { toRaw, unref } from 'vue'
 import { defineStore } from 'pinia'
 import { store } from '@/store'
 
-import { useGo, useRedo } from '@/hooks/web/usePage'
+import { useGo } from '@/hooks/web/usePage'
 import { Persistent } from '@/utils/cache/persistent'
 
 import { PageEnum } from '@/enums/pageEnum'
@@ -76,22 +76,6 @@ export const useMultipleTabStore = defineStore({
         cacheMap.add(name)
       }
       this.cacheTabList = cacheMap
-    },
-
-    /**
-     * Refresh tabs
-     */
-    async refreshPage(router: Router) {
-      const { currentRoute } = router
-      const route = unref(currentRoute)
-      const name = route.name
-
-      const findTab = this.getCachedTabList.find((item) => item === name)
-      if (findTab) {
-        this.cacheTabList.delete(findTab)
-      }
-      const redo = useRedo(router)
-      await redo()
     },
     clearCacheTabs(): void {
       this.cacheTabList = new Set()

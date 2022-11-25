@@ -27,9 +27,6 @@ export function useRootSetting() {
   const getUseErrorHandle = computed(() => appStore.getProjectConfig.useErrorHandle)
 
   const getShowBreadCrumb = computed(() => appStore.getProjectConfig.showBreadCrumb)
-
-  const getFullContent = computed(() => appStore.getProjectConfig.fullContent)
-
   const getLayoutContentMode = computed(() =>
     appStore.getProjectConfig.contentMode === ContentEnum.FULL
       ? ContentEnum.FULL
@@ -43,7 +40,6 @@ export function useRootSetting() {
   return {
     setRootSetting,
     getSettingButtonPosition,
-    getFullContent,
     getLayoutContentMode,
     getPageLoading,
     getOpenKeepAlive,

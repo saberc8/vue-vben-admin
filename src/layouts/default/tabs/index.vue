@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tabs">
     <Tabs
       type="editable-card"
       size="small"
@@ -97,4 +97,8 @@
     },
   })
 </script>
-<style lang="less"></style>
+<style lang="less" scoped>
+  .tabs {
+    z-index: 999;
+  }
+</style>
