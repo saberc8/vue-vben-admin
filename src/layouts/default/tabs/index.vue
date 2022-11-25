@@ -42,7 +42,7 @@
   import { useUserStore } from '@/store/modules/user'
 
   import { initAffixTabs, useTabsDrag } from './useMultipleTabs'
-  import { useDesign } from '@/hooks/web/useDesign'
+
   import { useMultipleTabSetting } from '@/hooks/setting/useMultipleTabSetting'
 
   import { REDIRECT_NAME } from '@/router/constant'
@@ -67,8 +67,6 @@
       const tabStore = useMultipleTabStore()
       const userStore = useUserStore()
       const router = useRouter()
-
-      const { prefixCls } = useDesign('multiple-tabs')
       const go = useGo()
       const { getShowQuick, getShowRedo, getShowFold } = useMultipleTabSetting()
 
@@ -77,15 +75,6 @@
       })
 
       const unClose = computed(() => unref(getTabsState).length === 1)
-
-      const getWrapClass = computed(() => {
-        return [
-          prefixCls,
-          {
-            [`${prefixCls}--hide-close`]: unref(unClose),
-          },
-        ]
-      })
 
       listenerRouteChange((route) => {
         const { name } = route
@@ -125,7 +114,6 @@
         tabStore.closeTabByKey(targetKey, router)
       }
       return {
-        getWrapClass,
         handleEdit,
         handleChange,
         activeKeyRef,

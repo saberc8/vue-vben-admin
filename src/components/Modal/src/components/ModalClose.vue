@@ -1,5 +1,5 @@
 <template>
-  <div :class="getClass">
+  <div>
     <template v-if="canFullscreen">
       <Tooltip title="还原" placement="bottom" v-if="fullScreen">
         <FullscreenExitOutlined role="full" @click="handleFullScreen" />
@@ -14,9 +14,8 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, computed } from 'vue'
   import { FullscreenExitOutlined, FullscreenOutlined, CloseOutlined } from '@ant-design/icons-vue'
-  import { useDesign } from '@/hooks/web/useDesign'
+
   import { Tooltip } from 'ant-design-vue'
 
   export default defineComponent({
@@ -27,19 +26,7 @@
       fullScreen: { type: Boolean },
     },
     emits: ['cancel', 'fullscreen'],
-    setup(props, { emit }) {
-      const { prefixCls } = useDesign('basic-modal-close')
-
-      const getClass = computed(() => {
-        return [
-          prefixCls,
-          `${prefixCls}--custom`,
-          {
-            [`${prefixCls}--can-full`]: props.canFullscreen,
-          },
-        ]
-      })
-
+    setup(_, { emit }) {
       function handleCancel(e: Event) {
         emit('cancel', e)
       }
@@ -51,8 +38,6 @@
       }
 
       return {
-        getClass,
-        prefixCls,
         handleCancel,
         handleFullScreen,
       }

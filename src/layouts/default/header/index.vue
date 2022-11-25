@@ -13,7 +13,6 @@
   import LayoutTrigger from '../trigger/index.vue'
   import { useRootSetting } from '@/hooks/setting/useRootSetting'
   import { UserDropDown, LayoutBreadcrumb, FullScreen } from './components'
-  import { useDesign } from '@/hooks/web/useDesign'
 
   export default defineComponent({
     name: 'LayoutHeader',
@@ -26,12 +25,9 @@
       FullScreen,
     },
     setup() {
-      const { prefixCls } = useDesign('layout-header')
-
       const { getUseErrorHandle, getShowSettingButton } = useRootSetting()
 
       return {
-        prefixCls,
         getUseErrorHandle,
         getShowSettingButton,
       }

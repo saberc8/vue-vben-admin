@@ -4,7 +4,6 @@
   import { defineComponent, ref, computed, unref } from 'vue'
   import { ExceptionEnum } from '@/enums/exceptionEnum'
   import { useRoute } from 'vue-router'
-  import { useDesign } from '@/hooks/web/useDesign'
 
   import { useGo } from '@/hooks/web/usePage'
   import { PageEnum } from '@/enums/pageEnum'
@@ -47,8 +46,6 @@
 
       const { query } = useRoute()
       const go = useGo()
-      const { prefixCls } = useDesign('app-exception-page')
-
       const getStatus = computed(() => {
         const { status: routeStatus } = query
         const { status } = props
@@ -74,7 +71,6 @@
         const { title, subTitle, btnText, icon, handler, status } = unref(getMapValue) || {}
         return (
           <Result
-            class={prefixCls}
             status={status as any}
             title={props.title || title}
             sub-title={props.subTitle || subTitle}

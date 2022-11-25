@@ -23,7 +23,6 @@
   import { Breadcrumb } from 'ant-design-vue'
   import Icon from '@/components/Icon'
 
-  import { useDesign } from '@/hooks/web/useDesign'
   import { useRootSetting } from '@/hooks/setting/useRootSetting'
   import { useGo } from '@/hooks/web/usePage'
   import { isString } from '@/utils/is'
@@ -39,7 +38,6 @@
     setup() {
       const routes = ref<RouteLocationMatched[]>([])
       const { currentRoute } = useRouter()
-      const { prefixCls } = useDesign('layout-breadcrumb')
       const { getShowBreadCrumbIcon } = useRootSetting()
       const go = useGo()
       watchEffect(async () => {
@@ -137,7 +135,7 @@
         return route.icon || route.meta?.icon
       }
 
-      return { routes, prefixCls, getIcon, getShowBreadCrumbIcon, handleClick, hasRedirect }
+      return { routes, getIcon, getShowBreadCrumbIcon, handleClick, hasRedirect }
     },
   })
 </script>

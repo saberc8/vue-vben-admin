@@ -33,17 +33,13 @@ export function useSiderEvent() {
 /**
  * Handle related operations of menu folding
  */
-export function useTrigger(getIsMobile: Ref<boolean>) {
+export function useTrigger() {
   const { getTrigger, getSplit } = useMenuSetting()
 
   const getShowTrigger = computed(() => {
     const trigger = unref(getTrigger)
 
-    return (
-      trigger !== TriggerEnum.NONE &&
-      !unref(getIsMobile) &&
-      (trigger === TriggerEnum.FOOTER || unref(getSplit))
-    )
+    return trigger !== TriggerEnum.NONE && (trigger === TriggerEnum.FOOTER || unref(getSplit))
   })
 
   const getTriggerAttr = computed(() => {

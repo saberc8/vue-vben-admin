@@ -1,12 +1,12 @@
 <template>
-  <span :class="`${prefixCls}__extra-fold`" @click="handleFold">
+  <span @click="handleFold">
     <Icon :icon="getIcon" />
   </span>
 </template>
 <script lang="ts">
   import { defineComponent, unref, computed } from 'vue'
   import { Icon } from '@/components/Icon'
-  import { useDesign } from '@/hooks/web/useDesign'
+
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { triggerWindowResize } from '@/utils/event'
 
@@ -14,7 +14,6 @@
     name: 'FoldButton',
     components: { Icon },
     setup() {
-      const { prefixCls } = useDesign('multiple-tabs-content')
       const { getShowMenu, setMenuSetting } = useMenuSetting()
       const getIsUnFold = computed(() => !unref(getShowMenu))
 
@@ -31,7 +30,7 @@
         triggerWindowResize()
       }
 
-      return { prefixCls, getIcon, handleFold }
+      return { getIcon, handleFold }
     },
   })
 </script>

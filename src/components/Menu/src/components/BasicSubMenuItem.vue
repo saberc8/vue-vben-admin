@@ -17,7 +17,7 @@
   import type { Menu as MenuType } from '@/router/types'
   import { defineComponent, computed } from 'vue'
   import { Menu } from 'ant-design-vue'
-  import { useDesign } from '@/hooks/web/useDesign'
+
   import { itemProps } from '../props'
   import BasicMenuItem from './BasicMenuItem.vue'
   import MenuItemContent from './MenuItemContent.vue'
@@ -32,8 +32,6 @@
     },
     props: itemProps,
     setup(props) {
-      const { prefixCls } = useDesign('basic-menu-item')
-
       const getShowMenu = computed(() => !props.item.meta?.hideMenu)
       function menuHasChildren(menuTreeItem: MenuType): boolean {
         return (
@@ -44,7 +42,6 @@
         )
       }
       return {
-        prefixCls,
         menuHasChildren,
         getShowMenu,
       }

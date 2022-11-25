@@ -25,8 +25,6 @@
 
   import { TabContentProps } from '../types'
 
-  import { useDesign } from '@/hooks/web/useDesign'
-
   import { useTabDropdown } from '../useTabDropdown'
 
   export default defineComponent({
@@ -40,8 +38,6 @@
       isExtra: Boolean,
     },
     setup(props) {
-      const { prefixCls } = useDesign('multiple-tabs-content')
-
       const getTitle = computed(() => {
         const { tabItem: { meta } = {} } = props
         return meta && meta.title
@@ -63,7 +59,6 @@
       }
 
       return {
-        prefixCls,
         getDropMenuList,
         handleMenuEvent,
         handleContext,

@@ -45,14 +45,12 @@
   import { useMessage } from '@/hooks/web/useMessage'
   import { useUserStore } from '@/store/modules/user'
   import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './useLogin'
-  import { useDesign } from '@/hooks/web/useDesign'
   const ACol = Col
   const ARow = Row
   const FormItem = Form.Item
   const InputPassword = Input.Password
 
   const { notification, createErrorModal } = useMessage()
-  const { prefixCls } = useDesign('login')
   const userStore = useUserStore()
 
   const { getLoginState } = useLoginState()
@@ -94,7 +92,7 @@
       createErrorModal({
         title: '错误提示',
         content: (error as unknown as Error).message || '登录失败',
-        getContainer: () => document.body.querySelector(`.${prefixCls}`) || document.body,
+        getContainer: () => document.body,
       })
     } finally {
       loading.value = false

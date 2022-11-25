@@ -28,7 +28,6 @@
 
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { useTrigger, useSiderEvent } from './useLayoutSider'
-  import { useAppInject } from '@/hooks/web/useAppInject'
 
   export default defineComponent({
     name: 'LayoutSideBar',
@@ -46,9 +45,7 @@
         toggleCollapsed,
       } = useMenuSetting()
 
-      const { getIsMobile } = useAppInject()
-
-      const { getTriggerAttr, getShowTrigger } = useTrigger(getIsMobile)
+      const { getTriggerAttr, getShowTrigger } = useTrigger()
 
       const { getCollapsedWidth, onBreakpointChange } = useSiderEvent()
 
@@ -78,7 +75,6 @@
 
       return {
         sideRef,
-        getIsMobile,
         getHiddenDomStyle,
         getTrigger,
         getTriggerAttr,

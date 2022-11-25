@@ -1,6 +1,6 @@
 <script lang="ts">
   import { BackTop } from 'ant-design-vue'
-  import { useDesign } from '@/hooks/web/useDesign'
+
   import { useUserStoreWithOut } from '@/store/modules/user'
 
   import SessionTimeoutLogin from '@/views/sys/login/SessionTimeoutLogin.vue'
@@ -12,12 +12,10 @@
     },
     setup() {
       const userStore = useUserStoreWithOut()
-      const { prefixCls } = useDesign('setting-drawer-feature')
       const getIsSessionTimeout = computed(() => userStore.getSessionTimeout)
 
       return {
         getTarget: () => document.body,
-        prefixCls,
         getIsSessionTimeout,
       }
     },

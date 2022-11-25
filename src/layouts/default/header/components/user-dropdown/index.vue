@@ -1,9 +1,9 @@
 <template>
   <Dropdown placement="bottomLeft" overlayClassName="userdrop">
-    <span :class="[prefixCls, `${prefixCls}--light`]" class="flex">
-      <img :class="`${prefixCls}__header`" :src="getUserInfo.avatar" />
-      <span :class="`${prefixCls}__info hidden md:block`">
-        <span :class="`${prefixCls}__name  `" class="truncate">
+    <span>
+      <img :src="getUserInfo.avatar" />
+      <span>
+        <span>
           {{ getUserInfo.realName }}
         </span>
       </span>
@@ -27,7 +27,7 @@
   import { DOC_URL } from '@/settings/siteSetting'
 
   import { useUserStore } from '@/store/modules/user'
-  import { useDesign } from '@/hooks/web/useDesign'
+
   import { useModal } from '@/components/Modal'
 
   import headerImg from '@/assets/images/header.jpg'
@@ -47,7 +47,6 @@
       MenuDivider: Menu.Divider,
     },
     setup() {
-      const { prefixCls } = useDesign('header-user-dropdown')
       const userStore = useUserStore()
 
       const getUserInfo = computed(() => {
@@ -79,7 +78,6 @@
       }
 
       return {
-        prefixCls,
         getUserInfo,
         handleMenuClick,
         register,
@@ -87,50 +85,3 @@
     },
   })
 </script>
-<style lang="less">
-  @prefix-cls: 'user-dropdown';
-
-  .@{prefix-cls} {
-    height: 60px;
-    padding: 0 0 0 10px;
-    padding-right: 10px;
-    overflow: hidden;
-    font-size: 12px;
-    cursor: pointer;
-    align-items: center;
-
-    img {
-      width: 24px;
-      height: 24px;
-      margin-right: 12px;
-    }
-
-    &__header {
-      border-radius: 50%;
-    }
-
-    &__name {
-      font-size: 14px;
-    }
-
-    &--light {
-      &:hover {
-        background-color: #f6f6f6;
-      }
-
-      .@{prefix-cls}__name {
-        color: #000;
-      }
-
-      .@{prefix-cls}__desc {
-        color: #000;
-      }
-    }
-
-    &-dropdown-overlay {
-      .ant-dropdown-menu-item {
-        min-width: 160px;
-      }
-    }
-  }
-</style>
