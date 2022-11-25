@@ -3,7 +3,6 @@
     :dropMenuList="getDropMenuList"
     :trigger="getTrigger"
     placement="bottom"
-    overlayClassName="multiple-tabs__dropdown"
     @menu-event="handleMenuEvent"
   >
     <div @contextmenu="handleContext" v-if="getIsTabs">

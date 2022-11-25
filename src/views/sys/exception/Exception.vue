@@ -90,19 +90,3 @@
     },
   })
 </script>
-<style lang="less">
-  @prefix-cls: 'vben-app-exception-page';
-
-  .@{prefix-cls} {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    .ant-result-icon {
-      img {
-        max-width: 400px;
-        max-height: 300px;
-      }
-    }
-  }
-</style>
