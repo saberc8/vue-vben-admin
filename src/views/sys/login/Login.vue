@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100vh;
     overflow: auto;
     background: #dee2e7;
@@ -42,6 +42,7 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 40px;
+      margin-top: 150px;
 
       &-logo {
         width: 44px;
