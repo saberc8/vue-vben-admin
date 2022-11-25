@@ -35,7 +35,7 @@
     components: { SvgIcon },
     props: {
       // icon name
-      icon: String,
+      icon: [String, undefined] as PropType<string | undefined>,
       // icon color
       color: String,
       // icon size
@@ -51,7 +51,6 @@
     },
     setup(props) {
       const elRef = ref<ElRef>(null)
-
       const isSvgIcon = computed(() => props.icon?.endsWith(SVG_END_WITH_FLAG))
       const getSvgIcon = computed(() => props.icon?.replace(SVG_END_WITH_FLAG, ''))
       const getIconRef = computed(() => `${props.prefix ? props.prefix + ':' : ''}${props.icon}`)
@@ -104,7 +103,6 @@
 <style lang="less">
   .app-iconify {
     display: inline-block;
-    // vertical-align: middle;
 
     &-spin {
       svg {

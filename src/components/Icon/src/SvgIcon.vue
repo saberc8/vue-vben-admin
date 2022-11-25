@@ -15,7 +15,7 @@
         default: 'icon',
       },
       name: {
-        type: String,
+        type: [String, undefined] as PropType<string | undefined>,
         required: true,
       },
       size: {
