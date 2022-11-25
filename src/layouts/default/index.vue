@@ -1,28 +1,42 @@
 <template>
-  <Layout>
-    <Layout>
-      <LayoutSideBar />
-      <Layout>
-        <LayoutMultipleHeader />
-        <LayoutContent />
-      </Layout>
-    </Layout>
-  </Layout>
+  <a-layout class="layout">
+    <LayoutSideBar />
+    <a-layout>
+      <a-layout-header class="layout-header"><LayoutHeader /></a-layout-header>
+      <a-layout-content class="layout-content"><LayoutContent /></a-layout-content>
+      <a-layout-footer class="layout-footer">Footer</a-layout-footer>
+    </a-layout>
+  </a-layout>
 </template>
 
 <script lang="ts">
   import { Layout } from 'ant-design-vue'
   import LayoutContent from './content/index.vue'
   import LayoutSideBar from './sider/index.vue'
-  import LayoutMultipleHeader from './header/MultipleHeader.vue'
+  import LayoutHeader from './header/index.vue'
   export default defineComponent({
     name: 'DefaultLayout',
     components: {
       LayoutContent,
       LayoutSideBar,
-      LayoutMultipleHeader,
-      Layout,
+      LayoutHeader,
+      ALayout: Layout,
     },
     setup() {},
   })
 </script>
+
+<style lang="less" scoped>
+  .layout {
+    height: 100%;
+
+    &-sider {
+      background: #fff;
+    }
+
+    &-header {
+      background: #fff;
+      padding: 10px;
+    }
+  }
+</style>

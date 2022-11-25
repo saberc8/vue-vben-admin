@@ -4,12 +4,10 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
 import purgeIcons from 'vite-plugin-purge-icons'
 import VitePluginCertificate from 'vite-plugin-mkcert'
-//import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { configHtmlPlugin } from './html'
 import { configPwaConfig } from './pwa'
 import { configMockPlugin } from './mock'
 import { configCompressPlugin } from './compress'
-// import { configStyleImportPlugin } from './styleImport'
 import { configVisualizerConfig } from './visualizer'
 import { configImageminPlugin } from './imagemin'
 import { configSvgIconsPlugin } from './svgSprite'
@@ -32,12 +30,15 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
     // have to
     vueJsx(),
     // support name
-    //vueSetupExtend(),
     VitePluginCertificate({
       source: 'coding',
     }),
     // Components({
-    //   resolvers: [AntDesignVueResolver()],
+    //   resolvers: [
+    //     AntDesignVueResolver({
+    //       importStyle: 'less',
+    //     }),
+    //   ],
     // }),
     AutoImport({
       dts: 'src/auto-imports.d.ts',

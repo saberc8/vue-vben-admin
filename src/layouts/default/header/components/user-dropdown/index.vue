@@ -79,3 +79,9 @@
     },
   })
 </script>
+
+<style lang="less" scoped>
+  .userdrop {
+    z-index: 999;
+  }
+</style>
