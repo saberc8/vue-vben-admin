@@ -4,7 +4,7 @@
   import { createBreakpointListen } from '@/hooks/event/useBreakpoint'
   import { prefixCls } from '@/settings/designSetting'
   import { useAppStore } from '@/store/modules/app'
-  import { MenuModeEnum, MenuTypeEnum } from '@/enums/menuEnum'
+  import { MenuModeEnum } from '@/enums/menuEnum'
 
   const props = {
     /**
@@ -45,29 +45,23 @@
           if (!unref(isSetState)) {
             isSetState.value = true
             const {
-              menuSetting: {
-                type: menuType,
-                mode: menuMode,
-                collapsed: menuCollapsed,
-                split: menuSplit,
-              },
+              menuSetting: { mode: menuMode, collapsed: menuCollapsed, split: menuSplit },
             } = appStore.getProjectConfig
             appStore.setProjectConfig({
               menuSetting: {
-                type: MenuTypeEnum.SIDEBAR,
+                type: 'sidebar',
                 mode: MenuModeEnum.INLINE,
                 split: false,
               },
             })
-            appStore.setBeforeMiniInfo({ menuMode, menuCollapsed, menuType, menuSplit })
+            appStore.setBeforeMiniInfo({ menuMode, menuCollapsed, menuSplit })
           }
         } else {
           if (unref(isSetState)) {
             isSetState.value = false
-            const { menuMode, menuCollapsed, menuType, menuSplit } = appStore.getBeforeMiniInfo
+            const { menuMode, menuCollapsed, menuSplit } = appStore.getBeforeMiniInfo
             appStore.setProjectConfig({
               menuSetting: {
-                type: menuType,
                 mode: menuMode,
                 collapsed: menuCollapsed,
                 split: menuSplit,

@@ -24,7 +24,7 @@
   import LayoutMenu from '../menu/index.vue'
   import LayoutTrigger from '@/layouts/default/trigger/index.vue'
 
-  import { MenuModeEnum, MenuSplitTyeEnum } from '@/enums/menuEnum'
+  import { MenuModeEnum } from '@/enums/menuEnum'
 
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { useTrigger, useSiderEvent } from './useLayoutSider'
@@ -54,10 +54,6 @@
 
       const getMode = computed(() => {
         return unref(getSplit) ? MenuModeEnum.INLINE : null
-      })
-
-      const getSplitType = computed(() => {
-        return unref(getSplit) ? MenuSplitTyeEnum.LEFT : MenuSplitTyeEnum.NONE
       })
 
       const showClassSideBarRef = computed(() => {
@@ -93,7 +89,6 @@
         getCollapsed,
         onBreakpointChange,
         getMode,
-        getSplitType,
         getShowTrigger,
         toggleCollapsed,
       }

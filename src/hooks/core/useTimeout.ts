@@ -1,24 +1,13 @@
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { tryOnUnmounted } from '@vueuse/core'
 import { isFunction } from '@/utils/is'
 
-export function useTimeoutFn(handle: Fn<any>, wait: number, native = false) {
+export function useTimeoutFn(handle: Fn<any>, wait: number) {
   if (!isFunction(handle)) {
     throw new Error('handle is not Function!')
   }
-
   const { readyRef, stop, start } = useTimeoutRef(wait)
-  if (native) {
-    handle()
-  } else {
-    watch(
-      readyRef,
-      (maturity) => {
-        maturity && handle()
-      },
-      { immediate: false },
-    )
-  }
+  handle()
   return { readyRef, stop, start }
 }
 

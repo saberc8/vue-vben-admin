@@ -1,5 +1,5 @@
 import type { ProjectConfig } from '/#/config'
-import { MenuTypeEnum, MenuModeEnum, TriggerEnum, MixSidebarTriggerEnum } from '@/enums/menuEnum'
+import { MenuModeEnum, TriggerEnum, MixSidebarTriggerEnum } from '@/enums/menuEnum'
 import { CacheTypeEnum } from '@/enums/cacheEnum'
 import {
   ContentEnum,
@@ -74,11 +74,9 @@ const setting: ProjectConfig = {
     // Menu mode
     mode: MenuModeEnum.INLINE,
     // Menu type
-    type: MenuTypeEnum.SIDEBAR,
+    type: 'sidebar',
     // Split menu
     split: false,
-    // Top menu layout
-    topMenuAlign: 'center',
     // Fold trigger position
     trigger: TriggerEnum.HEADER,
     // Turn on accordion mode, only show a menu

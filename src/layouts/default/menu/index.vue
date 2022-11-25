@@ -1,56 +1,18 @@
 <script lang="tsx">
-  import type { PropType } from 'vue'
-
-  import { computed, defineComponent, unref, toRef } from 'vue'
+  import { computed, defineComponent, unref } from 'vue'
   import { BasicMenu } from '@/components/Menu'
-  import { MenuModeEnum, MenuSplitTyeEnum } from '@/enums/menuEnum'
-
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { useGo } from '@/hooks/web/usePage'
   import { useSplitMenu } from './useLayoutMenu'
   import { openWindow } from '@/utils'
-  import { propTypes } from '@/utils/propTypes'
   import { isUrl } from '@/utils/is'
-  import { useRootSetting } from '@/hooks/setting/useRootSetting'
-  import { useAppInject } from '@/hooks/web/useAppInject'
-
   export default defineComponent({
     name: 'LayoutMenu',
-    props: {
-      splitType: {
-        type: Number as PropType<MenuSplitTyeEnum>,
-        default: MenuSplitTyeEnum.NONE,
-      },
-
-      isHorizontal: propTypes.bool,
-      // menu Mode
-      menuMode: {
-        type: [String] as PropType<Nullable<MenuModeEnum>>,
-        default: '',
-      },
-    },
-    setup(props) {
+    setup() {
       const go = useGo()
 
-      const {
-        getMenuMode,
-        getMenuType,
-        getCollapsed,
-        getCollapsedShowTitle,
-        getAccordion,
-        getIsSidebarType,
-      } = useMenuSetting()
-      const { getShowLogo } = useRootSetting()
-
-      const { menusRef } = useSplitMenu(toRef(props, 'splitType'))
-
-      const { getIsMobile } = useAppInject()
-
-      const getComputedMenuMode = computed(() =>
-        unref(getIsMobile) ? MenuModeEnum.INLINE : props.menuMode || unref(getMenuMode),
-      )
-      const getIsShowLogo = computed(() => unref(getShowLogo) && unref(getIsSidebarType))
-
+      const { getMenuType, getCollapsed, getCollapsedShowTitle, getAccordion } = useMenuSetting()
+      const { menusRef } = useSplitMenu()
       const getCommonProps = computed(() => {
         const menus = unref(menusRef)
         return {
@@ -90,16 +52,7 @@
         console.log(menus)
         if (!menus || !menus.length) return null
         console.log(menus)
-        return (
-          <BasicMenu
-            {...(menuProps as any)}
-            isHorizontal={props.isHorizontal}
-            type={unref(getMenuType)}
-            showLogo={unref(getIsShowLogo)}
-            mode={unref(getComputedMenuMode as any)}
-            items={menus}
-          />
-        )
+        return <BasicMenu {...(menuProps as any)} type={unref(getMenuType)} items={menus} />
       }
 
       return () => {

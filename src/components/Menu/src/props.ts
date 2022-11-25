@@ -1,7 +1,7 @@
 import type { Menu } from '@/router/types'
 import type { PropType } from 'vue'
 
-import { MenuModeEnum, MenuTypeEnum } from '@/enums/menuEnum'
+import { MenuModeEnum } from '@/enums/menuEnum'
 import { propTypes } from '@/utils/propTypes'
 import type { MenuMode } from 'ant-design-vue/lib/menu/src/interface'
 export const basicProps = {
@@ -19,13 +19,10 @@ export const basicProps = {
   },
 
   type: {
-    type: String as PropType<MenuTypeEnum>,
-    default: MenuTypeEnum.MIX,
+    type: String,
+    default: 'sidebar',
   },
   inlineCollapsed: propTypes.bool,
-  mixSider: propTypes.bool,
-
-  isHorizontal: propTypes.bool,
   accordion: propTypes.bool.def(true),
   beforeClickFn: {
     type: Function as PropType<(key: string) => Promise<boolean>>,
@@ -39,7 +36,6 @@ export const itemProps = {
   },
   level: propTypes.number,
   showTitle: propTypes.bool,
-  isHorizontal: propTypes.bool,
 }
 
 export const contentProps = {
@@ -49,5 +45,4 @@ export const contentProps = {
   },
   showTitle: propTypes.bool.def(true),
   level: propTypes.number.def(0),
-  isHorizontal: propTypes.bool.def(true),
 }

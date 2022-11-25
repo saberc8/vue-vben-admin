@@ -12,7 +12,7 @@
     components: { Sider },
     setup() {
       const { getIsMobile } = useAppInject()
-      const { setMenuSetting, getCollapsed, getMenuWidth, getIsMixSidebar } = useMenuSetting()
+      const { setMenuSetting, getCollapsed, getMenuWidth } = useMenuSetting()
 
       function handleClose() {
         setMenuSetting({
@@ -20,7 +20,7 @@
         })
       }
 
-      return { getIsMobile, getCollapsed, handleClose, getMenuWidth, getIsMixSidebar }
+      return { getIsMobile, getCollapsed, handleClose, getMenuWidth }
     },
   })
 </script>
