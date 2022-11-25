@@ -6,7 +6,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import PageLayout from '@/layouts/page/index.vue'
-
   import { useRootSetting } from '@/hooks/setting/useRootSetting'
   import { useTransitionSetting } from '@/hooks/setting/useTransitionSetting'
 

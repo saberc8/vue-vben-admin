@@ -28,8 +28,6 @@
 
   import { useUserStore } from '@/store/modules/user'
 
-  import { useModal } from '@/components/Modal'
-
   import headerImg from '@/assets/images/header.jpg'
   import { openWindow } from '@/utils'
 
@@ -52,8 +50,6 @@
         const { realName = '', avatar, desc } = userStore.getUserInfo || {}
         return { realName, avatar: avatar || headerImg, desc }
       })
-
-      const [register] = useModal()
 
       //  login out
       function handleLoginOut() {
@@ -79,7 +75,6 @@
       return {
         getUserInfo,
         handleMenuClick,
-        register,
       }
     },
   })
