@@ -2,16 +2,18 @@ import type { Menu } from '@/router/types'
 import type { PropType } from 'vue'
 
 import { MenuModeEnum } from '@/enums/menuEnum'
-import { propTypes } from '@/utils/propTypes'
 import type { MenuMode } from 'ant-design-vue/lib/menu/src/interface'
 export const basicProps = {
   items: {
     type: Array as PropType<Menu[]>,
     default: () => [],
   },
-  collapsedShowTitle: propTypes.bool,
+  collapsedShowTitle: Boolean,
   // 最好是4 倍数
-  inlineIndent: propTypes.number.def(20),
+  inlineIndent: {
+    type: Number,
+    default: 20,
+  },
   // 菜单组件的mode属性
   mode: {
     type: String as PropType<MenuMode>,
@@ -22,8 +24,11 @@ export const basicProps = {
     type: String,
     default: 'sidebar',
   },
-  inlineCollapsed: propTypes.bool,
-  accordion: propTypes.bool.def(true),
+  inlineCollapsed: Boolean,
+  accordion: {
+    type: Boolean,
+    default: true,
+  },
   beforeClickFn: {
     type: Function as PropType<(key: string) => Promise<boolean>>,
   },
@@ -34,8 +39,8 @@ export const itemProps = {
     type: Object as PropType<Menu>,
     default: {},
   },
-  level: propTypes.number,
-  showTitle: propTypes.bool,
+  level: Number,
+  showTitle: Boolean,
 }
 
 export const contentProps = {
@@ -43,6 +48,12 @@ export const contentProps = {
     type: Object as PropType<Menu>,
     default: null,
   },
-  showTitle: propTypes.bool.def(true),
-  level: propTypes.number.def(0),
+  showTitle: {
+    type: Boolean,
+    default: true,
+  },
+  level: {
+    type: Number,
+    default: 0,
+  },
 }

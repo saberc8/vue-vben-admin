@@ -17,25 +17,13 @@
           </template>
         </TabPane>
       </template>
-
-      <template #rightExtra v-if="getShowRedo || getShowQuick">
-        <TabRedo v-if="getShowRedo" />
-        <TabContent isExtra :tabItem="$route" v-if="getShowQuick" />
-        <FoldButton v-if="getShowFold" />
-      </template>
     </Tabs>
   </div>
 </template>
 <script lang="ts">
   import type { RouteLocationNormalized, RouteMeta } from 'vue-router'
-
-  import { defineComponent, computed, unref, ref } from 'vue'
-
   import { Tabs } from 'ant-design-vue'
   import TabContent from './components/TabContent.vue'
-  import FoldButton from './components/FoldButton.vue'
-  import TabRedo from './components/TabRedo.vue'
-
   import { useGo } from '@/hooks/web/usePage'
 
   import { useMultipleTabStore } from '@/store/modules/multipleTab'
@@ -53,8 +41,6 @@
   export default defineComponent({
     name: 'MultipleTabs',
     components: {
-      TabRedo,
-      FoldButton,
       Tabs,
       TabPane: Tabs.TabPane,
       TabContent,
@@ -68,7 +54,7 @@
       const userStore = useUserStore()
       const router = useRouter()
       const go = useGo()
-      const { getShowQuick, getShowRedo, getShowFold } = useMultipleTabSetting()
+      const { getShowQuick } = useMultipleTabSetting()
 
       const getTabsState = computed(() => {
         return tabStore.getTabList.filter((item) => !item.meta?.hideTab)
@@ -119,8 +105,6 @@
         activeKeyRef,
         getTabsState,
         getShowQuick,
-        getShowRedo,
-        getShowFold,
       }
     },
   })

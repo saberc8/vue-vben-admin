@@ -98,10 +98,6 @@ const setting: ProjectConfig = {
     canDrag: true,
     // Turn on quick actions
     showQuick: true,
-    // Whether to show the refresh button
-    showRedo: true,
-    // Whether to show the collapse button
-    showFold: true,
   },
 
   // Transition Setting

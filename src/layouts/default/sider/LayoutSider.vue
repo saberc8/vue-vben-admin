@@ -2,9 +2,7 @@
   <Sider
     v-show="showClassSideBarRef"
     ref="sideRef"
-    breakpoint="lg"
     collapsible
-    :width="getMenuWidth"
     :collapsed="getCollapsed"
     :collapsedWidth="getCollapsedWidth"
     @breakpoint="onBreakpointChange"
@@ -34,7 +32,6 @@
     components: { Sider: Layout.Sider, LayoutMenu, LayoutTrigger },
     setup() {
       const sideRef = ref<ElRef>(null)
-
       const {
         getCollapsed,
         getMenuWidth,

@@ -1,21 +1,19 @@
 <template>
-  <SiderTrigger v-if="sider" />
-  <HeaderTrigger v-else />
+  <SiderTrigger />
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import { createAsyncComponent } from '@/utils/factory/createAsyncComponent'
-  import { propTypes } from '@/utils/propTypes'
-  import HeaderTrigger from './HeaderTrigger.vue'
-
+  import SiderTrigger from './SiderTrigger.vue'
   export default defineComponent({
     name: 'LayoutTrigger',
     components: {
-      SiderTrigger: createAsyncComponent(() => import('./SiderTrigger.vue')),
-      HeaderTrigger: HeaderTrigger,
+      SiderTrigger,
     },
     props: {
-      sider: propTypes.bool.def(true),
+      sider: {
+        type: Boolean,
+        default: true,
+      },
     },
   })
 </script>

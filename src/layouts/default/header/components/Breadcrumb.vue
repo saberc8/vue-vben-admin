@@ -2,7 +2,6 @@
   <div class="breadcrumb">
     <a-breadcrumb :routes="routes">
       <template #itemRender="{ route, routes: routesMatched, paths }">
-        <Icon :icon="getIcon(route)" v-if="getShowBreadCrumbIcon && getIcon(route)" />
         <span v-if="!hasRedirect(routesMatched, route)">
           {{ route.name || route.meta.title }}
         </span>
@@ -21,9 +20,6 @@
   import { defineComponent, ref, watchEffect } from 'vue'
 
   import { Breadcrumb } from 'ant-design-vue'
-  import Icon from '@/components/Icon'
-
-  import { useRootSetting } from '@/hooks/setting/useRootSetting'
   import { useGo } from '@/hooks/web/usePage'
   import { isString } from '@/utils/is'
   import { filter } from '@/utils/helper/treeHelper'
@@ -34,11 +30,10 @@
 
   export default defineComponent({
     name: 'LayoutBreadcrumb',
-    components: { Icon, [Breadcrumb.name]: Breadcrumb },
+    components: { [Breadcrumb.name]: Breadcrumb },
     setup() {
       const routes = ref<RouteLocationMatched[]>([])
       const { currentRoute } = useRouter()
-      const { getShowBreadCrumbIcon } = useRootSetting()
       const go = useGo()
       watchEffect(async () => {
         if (currentRoute.value.name === REDIRECT_NAME) return
@@ -135,7 +130,7 @@
         return route.icon || route.meta?.icon
       }
 
-      return { routes, getIcon, getShowBreadCrumbIcon, handleClick, hasRedirect }
+      return { routes, getIcon, handleClick, hasRedirect }
     },
   })
 </script>

@@ -20,8 +20,6 @@ export function useRootSetting() {
 
   const getPermissionMode = computed(() => appStore.getProjectConfig.permissionMode)
 
-  const getShowLogo = computed(() => appStore.getProjectConfig.showLogo)
-
   const getContentMode = computed(() => appStore.getProjectConfig.contentMode)
 
   const getUseOpenBackTop = computed(() => appStore.getProjectConfig.useOpenBackTop)
@@ -30,10 +28,7 @@ export function useRootSetting() {
 
   const getUseErrorHandle = computed(() => appStore.getProjectConfig.useErrorHandle)
 
-  const getShowFooter = computed(() => appStore.getProjectConfig.showFooter)
-
   const getShowBreadCrumb = computed(() => appStore.getProjectConfig.showBreadCrumb)
-  const getShowBreadCrumbIcon = computed(() => appStore.getProjectConfig.showBreadCrumbIcon)
 
   const getFullContent = computed(() => appStore.getProjectConfig.fullContent)
 
@@ -56,13 +51,10 @@ export function useRootSetting() {
     getOpenKeepAlive,
     getCanEmbedIFramePage,
     getPermissionMode,
-    getShowLogo,
     getUseErrorHandle,
     getShowBreadCrumb,
-    getShowBreadCrumbIcon,
     getUseOpenBackTop,
     getShowSettingButton,
-    getShowFooter,
     getContentMode,
   }
 }

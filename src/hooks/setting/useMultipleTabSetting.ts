@@ -11,10 +11,6 @@ export function useMultipleTabSetting() {
 
   const getShowQuick = computed(() => appStore.getMultiTabsSetting.showQuick)
 
-  const getShowRedo = computed(() => appStore.getMultiTabsSetting.showRedo)
-
-  const getShowFold = computed(() => appStore.getMultiTabsSetting.showFold)
-
   function setMultipleTabSetting(multiTabsSetting: Partial<MultiTabsSetting>) {
     appStore.setProjectConfig({ multiTabsSetting })
   }
@@ -22,7 +18,5 @@ export function useMultipleTabSetting() {
     setMultipleTabSetting,
     getShowMultipleTab,
     getShowQuick,
-    getShowRedo,
-    getShowFold,
   }
 }

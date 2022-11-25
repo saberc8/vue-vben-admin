@@ -9,19 +9,15 @@
 
   import { useRootSetting } from '@/hooks/setting/useRootSetting'
   import { useTransitionSetting } from '@/hooks/setting/useTransitionSetting'
-  import { useContentViewHeight } from './useContentViewHeight'
 
   export default defineComponent({
     name: 'LayoutContent',
     components: { PageLayout },
     setup() {
       const { getOpenPageLoading } = useTransitionSetting()
-      const { getLayoutContentMode, getPageLoading } = useRootSetting()
-
-      useContentViewHeight()
+      const { getPageLoading } = useRootSetting()
       return {
         getOpenPageLoading,
-        getLayoutContentMode,
         getPageLoading,
       }
     },

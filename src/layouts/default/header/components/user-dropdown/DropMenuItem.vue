@@ -12,16 +12,15 @@
   import { computed, defineComponent, getCurrentInstance } from 'vue'
 
   import Icon from '@/components/Icon/index'
-  import { propTypes } from '@/utils/propTypes'
 
   export default defineComponent({
     name: 'DropdownMenuItem',
     components: { MenuItem: Menu.Item, Icon },
     props: {
       // eslint-disable-next-line
-      key: propTypes.string,
-      text: propTypes.string,
-      icon: propTypes.string,
+      key: String,
+      text: String,
+      icon: String,
     },
     setup(props) {
       const instance = getCurrentInstance()

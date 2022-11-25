@@ -33,9 +33,8 @@
   import headerImg from '@/assets/images/header.jpg'
   import { openWindow } from '@/utils'
 
-  import MenuItem from './DropMenuItem.vue'
   type MenuEvent = 'logout' | 'doc'
-
+  import MenuItem from './DropMenuItem.vue'
   export default defineComponent({
     name: 'UserDropdown',
     components: {

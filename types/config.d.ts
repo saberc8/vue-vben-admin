@@ -34,8 +34,6 @@ export interface MultiTabsSetting {
   show: boolean
   showQuick: boolean
   canDrag: boolean
-  showRedo: boolean
-  showFold: boolean
 }
 
 export interface HeaderSetting {

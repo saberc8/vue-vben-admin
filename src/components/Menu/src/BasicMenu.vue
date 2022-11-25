@@ -49,18 +49,13 @@
         collapsedOpenKeys: [],
       })
 
-      const { items, mode, accordion } = toRefs(props)
+      const { items } = toRefs(props)
 
       const { getCollapsed } = useMenuSetting()
 
       const { currentRoute } = useRouter()
 
-      const { handleOpenChange, setOpenKeys, getOpenKeys } = useOpenKeys(
-        menuState,
-        items,
-        mode as any,
-        accordion,
-      )
+      const { handleOpenChange, setOpenKeys, getOpenKeys } = useOpenKeys(menuState, items)
 
       const getInlineCollapseOptions = computed(() => {
         const isInline = props.mode === MenuModeEnum.INLINE
