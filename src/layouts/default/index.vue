@@ -28,15 +28,17 @@
 
 <style lang="less" scoped>
   .layout {
-    height: 100%;
+    min-height: 100vh;
 
     &-sider {
       background: #fff;
     }
 
     &-header {
-      background: #fff;
-      padding: 10px;
+      background: rgb(255, 255, 255);
+      height: 48px;
+      padding: 0;
+      box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
     }
   }
 </style>

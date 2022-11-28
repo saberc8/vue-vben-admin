@@ -1,7 +1,7 @@
 <template>
   <Dropdown placement="bottomLeft" overlayClassName="userdrop">
     <span>
-      <img :src="getUserInfo.avatar" />
+      <img class="avatar" :src="getUserInfo.avatar" />
       <span>
         <span>
           {{ getUserInfo.realName }}
@@ -83,5 +83,11 @@
 <style lang="less" scoped>
   .userdrop {
     z-index: 999;
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
   }
 </style>
