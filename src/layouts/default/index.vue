@@ -37,8 +37,13 @@
     &-header {
       background: rgb(255, 255, 255);
       height: 48px;
+      line-height: 48px;
       padding: 0;
-      box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
+    }
+
+    &-content {
+      margin-top: 32px;
+      padding: 16px;
     }
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div @click.stop="toggleCollapsed">
+  <div @click.stop="toggleCollapsed" class="trigger">
     <DoubleRightOutlined v-if="getCollapsed" />
     <DoubleLeftOutlined v-else />
   </div>
@@ -17,3 +17,12 @@
     },
   })
 </script>
+
+<style lang="less" scoped>
+  .trigger {
+    line-height: 48px;
+    padding-right: 16px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+</style>

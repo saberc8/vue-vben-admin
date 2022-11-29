@@ -8,32 +8,13 @@
       <FullScreen />
       <UserDropDown />
     </div>
-    <!-- <MultipleTabs class="header-tabs" /> -->
+    <MultipleTabs class="header-tabs" />
   </div>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
   import LayoutTrigger from '../trigger/index.vue'
-  import { useRootSetting } from '@/hooks/setting/useRootSetting'
   import { UserDropDown, LayoutBreadcrumb, FullScreen } from './components'
-  // import MultipleTabs from '../tabs/index.vue'
-  export default defineComponent({
-    name: 'LayoutHeader',
-    components: {
-      LayoutTrigger,
-      LayoutBreadcrumb,
-      UserDropDown,
-      FullScreen,
-      // MultipleTabs,
-    },
-    setup() {
-      const { getUseErrorHandle, getShowSettingButton } = useRootSetting()
-
-      return {
-        getUseErrorHandle,
-        getShowSettingButton,
-      }
-    },
-  })
+  import MultipleTabs from '../tabs/index.vue'
 </script>
 <style lang="less" scoped>
   .header {
@@ -42,7 +23,7 @@
     justify-content: space-between;
     background-color: rgb(255, 255, 255);
     height: 48px;
-    padding: 0;
+    padding: 0 16px;
 
     &-left {
       display: flex;

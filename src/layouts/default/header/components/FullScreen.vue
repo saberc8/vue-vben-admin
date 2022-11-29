@@ -1,6 +1,6 @@
 <template>
   <Tooltip :title="getTitle" placement="bottom" :mouseEnterDelay="0.5">
-    <span @click="toggle">
+    <span @click="toggle" class="tooltip">
       <FullscreenOutlined v-if="!isFullscreen" />
       <FullscreenExitOutlined v-else />
     </span>
@@ -32,3 +32,9 @@
     },
   })
 </script>
+
+<style lang="less" scoped>
+  .tooltip {
+    padding: 0 16px;
+  }
+</style>

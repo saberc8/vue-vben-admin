@@ -3,6 +3,7 @@
     :selectedKeys="selectedKeys"
     :defaultSelectedKeys="defaultSelectedKeys"
     :mode="mode"
+    theme="dark"
     :openKeys="getOpenKeys"
     :inlineIndent="inlineIndent"
     @open-change="handleOpenChange"
@@ -41,7 +42,6 @@
     setup(props, { emit }) {
       const isClickGo = ref(false)
       const currentActiveMenu = ref('')
-
       const menuState = reactive<MenuState>({
         defaultSelectedKeys: [],
         openKeys: [],

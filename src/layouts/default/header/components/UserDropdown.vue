@@ -78,3 +78,10 @@
     },
   })
 </script>
+
+<style>
+  .userdrop {
+    height: 48px;
+    background-color: blue;
+  }
+</style>
