@@ -25,10 +25,6 @@ export const basicProps = {
     default: 'sidebar',
   },
   inlineCollapsed: Boolean,
-  accordion: {
-    type: Boolean,
-    default: true,
-  },
   beforeClickFn: {
     type: Function as PropType<(key: string) => Promise<boolean>>,
   },

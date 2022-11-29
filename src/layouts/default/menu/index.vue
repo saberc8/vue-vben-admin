@@ -1,6 +1,6 @@
 <script lang="tsx">
   import { computed, defineComponent, unref } from 'vue'
-  import { BasicMenu } from '@/components/Menu'
+  import BasicMenu from './components/Menu/src/BasicMenu.vue'
   import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { useGo } from '@/hooks/web/usePage'
   import { useSplitMenu } from './useLayoutMenu'
@@ -11,7 +11,7 @@
     setup() {
       const go = useGo()
 
-      const { getMenuType, getCollapsed, getCollapsedShowTitle, getAccordion } = useMenuSetting()
+      const { getMenuType, getCollapsed, getCollapsedShowTitle } = useMenuSetting()
       const { menusRef } = useSplitMenu()
       const getCommonProps = computed(() => {
         const menus = unref(menusRef)
@@ -19,7 +19,6 @@
           menus,
           beforeClickFn: beforeMenuClickFn,
           items: menus,
-          accordion: unref(getAccordion),
           collapse: unref(getCollapsed),
           collapsedShowTitle: unref(getCollapsedShowTitle),
           onMenuClick: handleMenuClick,
