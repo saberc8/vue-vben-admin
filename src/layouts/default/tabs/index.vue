@@ -88,7 +88,7 @@
 <style lang="less" scoped>
   .tabs {
     z-index: 999;
-    background-color: rgb(235, 88, 88);
+    background-color: rgb(238, 247, 255);
     height: 32px;
   }
 
