@@ -1,7 +1,6 @@
 <script lang="tsx">
   import { computed, defineComponent, unref } from 'vue'
   import BasicMenu from './components/Menu/src/BasicMenu.vue'
-  import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { useGo } from '@/hooks/web/usePage'
   import { useSplitMenu } from './useLayoutMenu'
   import { openWindow } from '@/utils'
@@ -10,8 +9,6 @@
     name: 'LayoutMenu',
     setup() {
       const go = useGo()
-
-      const { getMenuType, getCollapsed, getCollapsedShowTitle } = useMenuSetting()
       const { menusRef } = useSplitMenu()
       const getCommonProps = computed(() => {
         const menus = unref(menusRef)
@@ -19,8 +16,6 @@
           menus,
           beforeClickFn: beforeMenuClickFn,
           items: menus,
-          collapse: unref(getCollapsed),
-          collapsedShowTitle: unref(getCollapsedShowTitle),
           onMenuClick: handleMenuClick,
         }
       })
@@ -39,6 +34,7 @@
        * @param menu
        */
       async function beforeMenuClickFn(path: string) {
+        console.log(path)
         if (!isUrl(path)) {
           return true
         }
@@ -51,7 +47,7 @@
         console.log(menus)
         if (!menus || !menus.length) return null
         console.log(menus)
-        return <BasicMenu {...(menuProps as any)} type={unref(getMenuType)} items={menus} />
+        return <BasicMenu {...(menuProps as any)} items={menus} />
       }
 
       return () => {

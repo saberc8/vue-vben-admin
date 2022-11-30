@@ -1,5 +1,4 @@
 import { ErrorTypeEnum } from '@/enums/exceptionEnum'
-import { MenuModeEnum } from '@/enums/menuEnum'
 import { RoleInfo } from '@/api/sys/model/userModel'
 
 // Error-log information
@@ -35,5 +34,4 @@ export interface UserInfo {
 export interface BeforeMiniState {
   menuCollapsed?: boolean
   menuSplit?: boolean
-  menuMode?: MenuModeEnum
 }

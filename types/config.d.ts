@@ -1,4 +1,4 @@
-import { MenuModeEnum, TriggerEnum, MixSidebarTriggerEnum } from '@/enums/menuEnum'
+import { TriggerEnum, MixSidebarTriggerEnum } from '@/enums/menuEnum'
 import {
   ContentEnum,
   PermissionModeEnum,
@@ -19,7 +19,6 @@ export interface MenuSetting {
   hidden: boolean
   split: boolean
   menuWidth: number
-  mode: MenuModeEnum
   type: String
   trigger: TriggerEnum
   accordion: boolean

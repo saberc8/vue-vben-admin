@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header-left">
-      <LayoutTrigger />
+      <!-- <LayoutTrigger /> -->
       <LayoutBreadcrumb />
     </div>
     <div class="header-right">
@@ -12,7 +12,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import LayoutTrigger from '../trigger/index.vue'
+  // import LayoutTrigger from '../trigger/index.vue'
   import { UserDropDown, LayoutBreadcrumb, FullScreen } from './components'
   import MultipleTabs from '../tabs/index.vue'
 </script>
@@ -38,7 +38,7 @@
     &-tabs {
       position: absolute;
       top: 48px;
-      left: 210px;
+      left: 0px;
       right: 0;
     }
   }

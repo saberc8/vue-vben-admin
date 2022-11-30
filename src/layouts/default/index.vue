@@ -38,6 +38,7 @@
       left: 0;
       z-index: 1000;
       overflow: scroll;
+      width: 210px;
       overflow-x: hidden;
     }
 
@@ -49,12 +50,13 @@
       position: fixed;
       top: 0;
       right: 0;
-      left: 350px;
+      left: 210px;
     }
 
     &-content {
-      margin-top: 32px;
+      margin-top: 80px;
       padding: 16px;
+      margin-left: 210px;
     }
   }
 </style>

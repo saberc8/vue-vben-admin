@@ -1,15 +1,13 @@
 <template>
   <Menu
+    mode="inline"
     :selectedKeys="selectedKeys"
     :defaultSelectedKeys="defaultSelectedKeys"
-    :mode="mode"
     theme="dark"
     :openKeys="getOpenKeys"
-    :inlineIndent="inlineIndent"
     @open-change="handleOpenChange"
     @click="handleMenuClick"
     :subMenuOpenDelay="0.2"
-    v-bind="getInlineCollapseOptions"
   >
     <template v-for="item in items" :key="item.path">
       <BasicSubMenuItem :item="item" />
@@ -20,12 +18,10 @@
   import type { MenuState } from './types'
   import { Menu } from 'ant-design-vue'
   import BasicSubMenuItem from './components/BasicSubMenuItem.vue'
-  import { MenuModeEnum } from '@/enums/menuEnum'
   import { useOpenKeys } from './useOpenKeys'
   import { RouteLocationNormalizedLoaded, useRouter } from 'vue-router'
   import { isFunction } from '@/utils/is'
   import { basicProps } from './props'
-  import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
   import { REDIRECT_NAME } from '@/router/constant'
   import { listenerRouteChange } from '@/logics/mitt/routeChange'
   import { getAllParentPath } from '@/router/helper/menuHelper'
@@ -43,30 +39,14 @@
       const isClickGo = ref(false)
       const currentActiveMenu = ref('')
       const menuState = reactive<MenuState>({
-        defaultSelectedKeys: [],
-        openKeys: [],
-        selectedKeys: [],
-        collapsedOpenKeys: [],
+        defaultSelectedKeys: ['/dashboard'],
+        openKeys: ['/dashboard'],
+        selectedKeys: ['/dashboard/workbench'],
       })
-
       const { items } = toRefs(props)
-
-      const { getCollapsed } = useMenuSetting()
-
       const { currentRoute } = useRouter()
-
       const { handleOpenChange, setOpenKeys, getOpenKeys } = useOpenKeys(menuState, items)
-
-      const getInlineCollapseOptions = computed(() => {
-        const isInline = props.mode === MenuModeEnum.INLINE
-
-        const inlineCollapseOptions: { inlineCollapsed?: boolean } = {}
-        if (isInline) {
-          inlineCollapseOptions.inlineCollapsed = unref(getCollapsed)
-        }
-        return inlineCollapseOptions
-      })
-
+      console.log(handleOpenChange, setOpenKeys, getOpenKeys)
       listenerRouteChange((route) => {
         if (route.name === REDIRECT_NAME) return
         handleMenuChange(route)
@@ -85,7 +65,6 @@
           if (!flag) return
         }
         emit('menuClick', key)
-
         isClickGo.value = true
         menuState.selectedKeys = [key]
       }
@@ -101,12 +80,12 @@
         setOpenKeys(path)
         if (unref(currentActiveMenu)) return
         const parentPaths = await getAllParentPath(props.items, path)
+        console.log(parentPaths)
         menuState.selectedKeys = parentPaths
       }
 
       return {
         handleMenuClick,
-        getInlineCollapseOptions,
         handleOpenChange,
         getOpenKeys,
         ...toRefs(menuState),

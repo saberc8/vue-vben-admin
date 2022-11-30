@@ -1,8 +1,5 @@
 import type { Menu } from '@/router/types'
 import type { PropType } from 'vue'
-
-import { MenuModeEnum } from '@/enums/menuEnum'
-import type { MenuMode } from 'ant-design-vue/lib/menu/src/interface'
 export const basicProps = {
   items: {
     type: Array as PropType<Menu[]>,
@@ -13,11 +10,6 @@ export const basicProps = {
   inlineIndent: {
     type: Number,
     default: 20,
-  },
-  // 菜单组件的mode属性
-  mode: {
-    type: String as PropType<MenuMode>,
-    default: MenuModeEnum.INLINE,
   },
 
   type: {

@@ -1,13 +1,10 @@
 import type { Menu as MenuType } from '@/router/types'
 import type { MenuState } from './types'
 import { computed, Ref, toRaw, unref } from 'vue'
-import { useMenuSetting } from '@/hooks/setting/useMenuSetting'
 import { getAllParentPath } from '@/router/helper/menuHelper'
 import { useTimeoutFn } from '@/hooks/core/useTimeout'
 
 export function useOpenKeys(menuState: MenuState, menus: Ref<MenuType[]>) {
-  const { getCollapsed } = useMenuSetting()
-
   async function setOpenKeys(path: string) {
     useTimeoutFn(() => {
       const menuList = toRaw(menus.value)
@@ -20,9 +17,7 @@ export function useOpenKeys(menuState: MenuState, menus: Ref<MenuType[]>) {
   }
 
   const getOpenKeys = computed(() => {
-    const collapse = unref(getCollapsed)
-
-    return collapse ? menuState.collapsedOpenKeys : menuState.openKeys
+    return menuState.openKeys
   })
 
   /**
@@ -40,15 +35,12 @@ export function useOpenKeys(menuState: MenuState, menus: Ref<MenuType[]>) {
         rootSubMenuKeys.push(path)
       }
     }
-    if (!unref(getCollapsed)) {
-      const latestOpenKey = openKeys.find((key) => menuState.openKeys.indexOf(key) === -1)
-      if (rootSubMenuKeys.indexOf(latestOpenKey as string) === -1) {
-        menuState.openKeys = openKeys
-      } else {
-        menuState.openKeys = latestOpenKey ? [latestOpenKey] : []
-      }
+
+    const latestOpenKey = openKeys.find((key) => menuState.openKeys.indexOf(key) === -1)
+    if (rootSubMenuKeys.indexOf(latestOpenKey as string) === -1) {
+      menuState.openKeys = openKeys
     } else {
-      menuState.collapsedOpenKeys = openKeys
+      menuState.openKeys = latestOpenKey ? [latestOpenKey] : []
     }
   }
   return { setOpenKeys, resetKeys, getOpenKeys, handleOpenChange }

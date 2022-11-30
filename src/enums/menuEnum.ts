@@ -13,13 +13,6 @@ export enum TriggerEnum {
 
 export type Mode = 'vertical' | 'vertical-right' | 'inline'
 
-// menu mode
-export enum MenuModeEnum {
-  VERTICAL = 'vertical',
-  VERTICAL_RIGHT = 'vertical-right',
-  INLINE = 'inline',
-}
-
 export enum MixSidebarTriggerEnum {
   HOVER = 'hover',
   CLICK = 'click',

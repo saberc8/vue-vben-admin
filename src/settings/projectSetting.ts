@@ -1,5 +1,5 @@
 import type { ProjectConfig } from '/#/config'
-import { MenuModeEnum, TriggerEnum, MixSidebarTriggerEnum } from '@/enums/menuEnum'
+import { TriggerEnum, MixSidebarTriggerEnum } from '@/enums/menuEnum'
 import { CacheTypeEnum } from '@/enums/cacheEnum'
 import {
   ContentEnum,
@@ -71,8 +71,6 @@ const setting: ProjectConfig = {
     hidden: false,
     // Menu width
     menuWidth: 210,
-    // Menu mode
-    mode: MenuModeEnum.INLINE,
     // Menu type
     type: 'sidebar',
     // Split menu
