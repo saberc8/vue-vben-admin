@@ -38,7 +38,7 @@
     &-tabs {
       position: absolute;
       top: 48px;
-      left: 0;
+      left: 210px;
       right: 0;
     }
   }

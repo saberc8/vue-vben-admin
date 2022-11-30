@@ -1,6 +1,6 @@
 <template>
   <a-layout class="layout">
-    <LayoutSideBar />
+    <LayoutSideBar class="layout-sidebar" />
     <a-layout>
       <a-layout-header class="layout-header"><LayoutHeader /></a-layout-header>
       <a-layout-content class="layout-content"><LayoutContent /></a-layout-content>
@@ -30,8 +30,15 @@
   .layout {
     min-height: 100vh;
 
-    &-sider {
-      background: #fff;
+    &-sidebar {
+      background: rgb(0, 21, 41);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+      overflow: scroll;
+      overflow-x: hidden;
     }
 
     &-header {
@@ -39,6 +46,10 @@
       height: 48px;
       line-height: 48px;
       padding: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 350px;
     }
 
     &-content {

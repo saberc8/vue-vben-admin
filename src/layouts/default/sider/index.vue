@@ -6,6 +6,7 @@
     :collapsedWidth="getCollapsedWidth"
     @breakpoint="onBreakpointChange"
     v-bind="getTriggerAttr"
+    style="width: 240px"
   >
     <LayoutMenu />
   </Sider>
@@ -35,3 +36,9 @@
     },
   })
 </script>
+
+<style lang="less" scoped>
+  .layout-sidebar {
+    width: 250px;
+  }
+</style>
