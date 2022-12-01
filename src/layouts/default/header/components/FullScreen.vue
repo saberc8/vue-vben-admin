@@ -6,30 +6,13 @@
     </span>
   </Tooltip>
 </template>
-<script lang="ts">
-  import { defineComponent, computed, unref } from 'vue'
+<script lang="ts" setup>
   import { Tooltip } from 'ant-design-vue'
-
   import { useFullscreen } from '@vueuse/core'
-
   import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons-vue'
-  export default defineComponent({
-    name: 'FullScreen',
-    components: { FullscreenExitOutlined, FullscreenOutlined, Tooltip },
-
-    setup() {
-      const { toggle, isFullscreen } = useFullscreen()
-
-      const getTitle = computed(() => {
-        return unref(isFullscreen) ? '还原' : '最大化'
-      })
-
-      return {
-        getTitle,
-        isFullscreen,
-        toggle,
-      }
-    },
+  const { toggle, isFullscreen } = useFullscreen()
+  const getTitle = computed(() => {
+    return unref(isFullscreen) ? '还原' : '最大化'
   })
 </script>
 
