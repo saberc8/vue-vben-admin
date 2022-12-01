@@ -2,7 +2,7 @@
   <div class="tabs">
     <Tabs
       type="editable-card"
-      size="small"
+      size="large"
       :animated="false"
       :hideAdd="true"
       :tabBarGutter="3"
@@ -46,6 +46,7 @@
   })
   const tabBarStyle = {
     margin: '0px',
+    background: '#fff',
   }
   const unClose = computed(() => unref(getTabsState).length === 1)
 
@@ -85,14 +86,18 @@
     tabStore.closeTabByKey(targetKey, router)
   }
 </script>
-<style lang="less" scoped>
+<style lang="less">
   .tabs {
     z-index: 999;
-    background-color: rgb(238, 247, 255);
     height: 32px;
   }
 
-  .ant-tabs-card.ant-tabs-small > .ant-tabs-nav .ant-tabs-tab {
-    padding: 0;
+  .ant-tabs-card.ant-tabs-large > .ant-tabs-nav .ant-tabs-tab {
+    padding: 2px;
+    font-size: 12px;
+  }
+
+  .ant-tabs-tab-remove {
+    margin-left: 1px;
   }
 </style>
