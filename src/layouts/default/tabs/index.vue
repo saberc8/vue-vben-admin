@@ -1,8 +1,8 @@
 <template>
-  <div class="tabs">
+  <div class="multiple-tabbar">
     <Tabs
       type="editable-card"
-      size="large"
+      size="small"
       :animated="false"
       :hideAdd="true"
       :tabBarGutter="3"
@@ -46,7 +46,6 @@
   })
   const tabBarStyle = {
     margin: '0px',
-    background: '#fff',
   }
   const unClose = computed(() => unref(getTabsState).length === 1)
 
@@ -87,17 +86,187 @@
   }
 </script>
 <style lang="less">
-  .tabs {
-    z-index: 999;
+  .multiple-tabbar {
+    z-index: 10;
     height: 32px;
+    line-height: 32px;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid #eee;
+
+    .ant-tabs-small {
+      height: 32px;
+    }
+
+    .ant-tabs.ant-tabs-card {
+      .ant-tabs-nav {
+        padding-top: 2px;
+        height: 32px;
+        margin: 0;
+        background-color: rgb(255, 255, 255);
+        border: 0;
+        box-shadow: none;
+
+        .ant-tabs-nav-container {
+          height: 32px;
+          padding-top: 2px;
+        }
+
+        .ant-tabs-tab {
+          height: calc(32 - 2px);
+          padding-right: 12px;
+          line-height: calc(32 - 2px);
+          color: #fff;
+          background-color: #1890ff;
+          transition: none;
+
+          &:hover {
+            .ant-tabs-tab-remove {
+              opacity: 1;
+            }
+          }
+
+          .ant-tabs-tab-remove {
+            width: 8px;
+            height: 28px;
+            font-size: 12px;
+            color: inherit;
+            opacity: 0;
+            transition: none;
+            margin-left: 2px;
+            margin-right: -4px;
+
+            &:hover {
+              svg {
+                width: 0.8em;
+              }
+            }
+          }
+
+          svg {
+            fill: #fff;
+          }
+        }
+
+        .ant-tabs-tab:not(.ant-tabs-tab-active) {
+          &:hover {
+            color: rgb(0, 0, 0);
+          }
+        }
+
+        .ant-tabs-tab-active {
+          position: relative;
+          padding-left: 18px;
+          background: #fff;
+          border: 0;
+          transition: none;
+
+          span {
+            color: rgb(0, 0, 0) !important;
+          }
+
+          .ant-tabs-tab-remove {
+            opacity: 1;
+          }
+
+          svg {
+            width: 0.7em;
+            fill: rgb(255, 255, 255);
+          }
+        }
+      }
+
+      .ant-tabs-nav > div:nth-child(1) {
+        padding: 0 6px;
+
+        .ant-tabs-tab {
+          margin-right: 3px !important;
+        }
+      }
+    }
+
+    .ant-tabs-tab:not(.ant-tabs-tab-active) {
+      .anticon-close {
+        font-size: 12px;
+
+        svg {
+          width: 0.6em;
+        }
+      }
+    }
+
+    .ant-dropdown-trigger {
+      display: inline-flex;
+    }
+
+    &--hide-close {
+      .ant-tabs-tab-remove {
+        opacity: 0 !important;
+      }
+    }
+
+    &-content {
+      &__extra-quick,
+      &__extra-redo,
+      &__extra-fold {
+        display: inline-block;
+        width: 36px;
+        height: 32px;
+        line-height: 32px;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
+        border-left: 1px solid #eee;
+
+        &:hover {
+          color: #fff;
+        }
+
+        span[role='img'] {
+          transform: rotate(90deg);
+        }
+      }
+
+      &__extra-redo {
+        span[role='img'] {
+          transform: rotate(0deg);
+        }
+      }
+
+      &__info {
+        display: inline-block;
+        width: 100%;
+        height: 30px;
+        padding-left: 0;
+        margin-left: -10px;
+        font-size: 12px;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
   }
 
-  .ant-tabs-card.ant-tabs-large > .ant-tabs-nav .ant-tabs-tab {
-    padding: 2px;
-    font-size: 12px;
+  .ant-tabs-dropdown-menu {
+    &-title-content {
+      display: flex;
+      align-items: center;
+
+      .multiple-tabbar {
+        &-content__info {
+          width: auto;
+          margin-left: 0;
+          line-height: 28px;
+        }
+      }
+    }
+
+    &-item-remove {
+      margin-left: auto;
+    }
   }
 
-  .ant-tabs-tab-remove {
-    margin-left: 1px;
+  .multiple-tabs__dropdown {
+    .ant-dropdown-content {
+      width: 172px;
+    }
   }
 </style>

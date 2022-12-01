@@ -33,7 +33,6 @@
     "gen:icon": "esno ./build/generate/icon/index.ts"
   },
   "dependencies": {
-    "@ant-design/colors": "^6.0.0",
     "@ant-design/icons-vue": "^6.1.0",
     "@iconify/iconify": "^3.0.0",
     "@logicflow/core": "^1.1.31",
