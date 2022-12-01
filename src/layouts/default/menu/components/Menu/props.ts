@@ -5,18 +5,6 @@ export const basicProps = {
     type: Array as PropType<Menu[]>,
     default: () => [],
   },
-  collapsedShowTitle: Boolean,
-  // 最好是4 倍数
-  inlineIndent: {
-    type: Number,
-    default: 20,
-  },
-
-  type: {
-    type: String,
-    default: 'sidebar',
-  },
-  inlineCollapsed: Boolean,
   beforeClickFn: {
     type: Function as PropType<(key: string) => Promise<boolean>>,
   },

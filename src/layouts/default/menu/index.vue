@@ -1,6 +1,6 @@
 <script lang="tsx">
   import { computed, defineComponent, unref } from 'vue'
-  import BasicMenu from './components/Menu/src/BasicMenu.vue'
+  import BasicMenu from './components/Menu/BasicMenu.vue'
   import { useGo } from '@/hooks/web/usePage'
   import { useSplitMenu } from './useLayoutMenu'
   import { openWindow } from '@/utils'
