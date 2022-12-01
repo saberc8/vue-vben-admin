@@ -1,8 +1,8 @@
 <template>
   <Menu
     mode="inline"
-    :selectedKeys="selectedKeys"
-    :defaultSelectedKeys="defaultSelectedKeys"
+    :selectedKeys="menuState.selectedKeys"
+    :defaultSelectedKeys="menuState.defaultSelectedKeys"
     theme="dark"
     :openKeys="getOpenKeys"
     @open-change="handleOpenChange"
@@ -14,7 +14,7 @@
     </template>
   </Menu>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
   import type { MenuState } from './types'
   import { Menu } from 'ant-design-vue'
   import BasicSubMenuItem from './components/BasicSubMenuItem.vue'
@@ -25,72 +25,56 @@
   import { REDIRECT_NAME } from '@/router/constant'
   import { listenerRouteChange } from '@/logics/mitt/routeChange'
   import { getAllParentPath } from '@/router/helper/menuHelper'
-
-  export default defineComponent({
-    name: 'BasicMenu',
-    components: {
-      // eslint-disable-next-line vue/no-reserved-component-names
-      Menu,
-      BasicSubMenuItem,
-    },
-    props: basicProps,
-    emits: ['menuClick'],
-    setup(props, { emit }) {
-      const isClickGo = ref(false)
-      const currentActiveMenu = ref('')
-      const menuState = reactive<MenuState>({
-        defaultSelectedKeys: ['/dashboard'],
-        openKeys: ['/dashboard'],
-        selectedKeys: ['/dashboard/workbench'],
-      })
-      const { items } = toRefs(props)
-      const { currentRoute } = useRouter()
-      const { handleOpenChange, setOpenKeys, getOpenKeys } = useOpenKeys(menuState, items)
-      console.log(handleOpenChange, setOpenKeys, getOpenKeys)
-      listenerRouteChange((route) => {
-        if (route.name === REDIRECT_NAME) return
-        handleMenuChange(route)
-        currentActiveMenu.value = route.meta?.currentActiveMenu as string
-
-        if (unref(currentActiveMenu)) {
-          menuState.selectedKeys = [unref(currentActiveMenu)]
-          setOpenKeys(unref(currentActiveMenu))
-        }
-      })
-
-      async function handleMenuClick(key) {
-        const { beforeClickFn } = props
-        if (beforeClickFn && isFunction(beforeClickFn)) {
-          const flag = await beforeClickFn(key)
-          if (!flag) return
-        }
-        emit('menuClick', key)
-        isClickGo.value = true
-        menuState.selectedKeys = [key]
-      }
-
-      async function handleMenuChange(route?: RouteLocationNormalizedLoaded) {
-        if (unref(isClickGo)) {
-          isClickGo.value = false
-          return
-        }
-        const path =
-          (route || unref(currentRoute)).meta?.currentActiveMenu ||
-          (route || unref(currentRoute)).path
-        setOpenKeys(path)
-        if (unref(currentActiveMenu)) return
-        const parentPaths = await getAllParentPath(props.items, path)
-        console.log(parentPaths)
-        menuState.selectedKeys = parentPaths
-      }
-
-      return {
-        handleMenuClick,
-        handleOpenChange,
-        getOpenKeys,
-        ...toRefs(menuState),
-      }
-    },
+  const props = defineProps({
+    ...basicProps,
   })
+  const emit = defineEmits(['menuClick'])
+
+  const isClickGo = ref(false)
+  const currentActiveMenu = ref('')
+  const menuState = reactive<MenuState>({
+    defaultSelectedKeys: [],
+    openKeys: [],
+    selectedKeys: [],
+  })
+  const { items } = toRefs(props)
+  const { currentRoute } = useRouter()
+  const { handleOpenChange, setOpenKeys, getOpenKeys } = useOpenKeys(menuState, items)
+  console.log(handleOpenChange, setOpenKeys, getOpenKeys)
+  listenerRouteChange((route) => {
+    if (route.name === REDIRECT_NAME) return
+    handleMenuChange(route)
+    currentActiveMenu.value = route.meta?.currentActiveMenu as string
+
+    if (unref(currentActiveMenu)) {
+      menuState.selectedKeys = [unref(currentActiveMenu)]
+      setOpenKeys(unref(currentActiveMenu))
+    }
+  })
+
+  async function handleMenuClick(key) {
+    const { beforeClickFn } = props
+    if (beforeClickFn && isFunction(beforeClickFn)) {
+      const flag = await beforeClickFn(key)
+      if (!flag) return
+    }
+    emit('menuClick', key)
+    isClickGo.value = true
+    menuState.selectedKeys = [key]
+  }
+
+  async function handleMenuChange(route?: RouteLocationNormalizedLoaded) {
+    if (unref(isClickGo)) {
+      isClickGo.value = false
+      return
+    }
+    const path =
+      (route || unref(currentRoute)).meta?.currentActiveMenu || (route || unref(currentRoute)).path
+    setOpenKeys(path)
+    if (unref(currentActiveMenu)) return
+    const parentPaths = await getAllParentPath(props.items, path)
+    console.log(parentPaths)
+    menuState.selectedKeys = parentPaths
+  }
 </script>
 <style lang="less"></style>

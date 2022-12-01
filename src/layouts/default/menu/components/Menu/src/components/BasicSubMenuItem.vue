@@ -1,10 +1,6 @@
 <template>
   <BasicMenuItem v-if="!menuHasChildren(item) && getShowMenu" v-bind="$props" />
-  <SubMenu
-    v-if="menuHasChildren(item) && getShowMenu"
-    :key="`submenu-${item.path}`"
-    popupClassName="app-top-menu-popup"
-  >
+  <SubMenu v-if="menuHasChildren(item) && getShowMenu" :key="`${item.path}`">
     <template #title>
       <MenuItemContent v-bind="$props" :item="item" />
     </template>
@@ -13,38 +9,23 @@
     </template>
   </SubMenu>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
   import type { Menu as MenuType } from '@/router/types'
-  import { defineComponent, computed } from 'vue'
   import { Menu } from 'ant-design-vue'
-
   import { itemProps } from '../props'
   import BasicMenuItem from './BasicMenuItem.vue'
   import MenuItemContent from './MenuItemContent.vue'
-
-  export default defineComponent({
-    name: 'BasicSubMenuItem',
-    isSubMenu: true,
-    components: {
-      BasicMenuItem,
-      SubMenu: Menu.SubMenu,
-      MenuItemContent,
-    },
-    props: itemProps,
-    setup(props) {
-      const getShowMenu = computed(() => !props.item.meta?.hideMenu)
-      function menuHasChildren(menuTreeItem: MenuType): boolean {
-        return (
-          !menuTreeItem.meta?.hideChildrenInMenu &&
-          Reflect.has(menuTreeItem, 'children') &&
-          !!menuTreeItem.children &&
-          menuTreeItem.children.length > 0
-        )
-      }
-      return {
-        menuHasChildren,
-        getShowMenu,
-      }
-    },
+  const SubMenu = Menu.SubMenu
+  const props = defineProps({
+    ...itemProps,
   })
+  const getShowMenu = computed(() => !props.item.meta?.hideMenu)
+  function menuHasChildren(menuTreeItem: MenuType): boolean {
+    return (
+      !menuTreeItem.meta?.hideChildrenInMenu &&
+      Reflect.has(menuTreeItem, 'children') &&
+      !!menuTreeItem.children &&
+      menuTreeItem.children.length > 0
+    )
+  }
 </script>

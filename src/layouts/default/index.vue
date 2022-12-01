@@ -51,6 +51,7 @@
       top: 0;
       right: 0;
       left: 210px;
+      z-index: 999;
     }
 
     &-content {
