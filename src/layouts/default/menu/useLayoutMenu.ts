@@ -5,16 +5,14 @@ import { useThrottleFn } from '@vueuse/core'
 import { getChildrenMenus, getCurrentParentPath, getMenus } from '@/router/menus'
 import { usePermissionStore } from '@/store/modules/permission'
 export function useSplitMenu() {
-  // Menu array
   const menusRef = ref<Menu[]>([])
   const { currentRoute } = useRouter()
   const permissionStore = usePermissionStore()
-
   const throttleHandleSplitLeftMenu = useThrottleFn(handleSplitLeftMenu, 50)
-
   watch(
     () => unref(currentRoute).path,
     async ([path]: [string]) => {
+      console.log(path, 'unref(currentRoute).path')
       const { meta } = unref(currentRoute)
       const currentActiveMenu = meta.currentActiveMenu as string
       let parentPath = await getCurrentParentPath(path)
@@ -32,6 +30,7 @@ export function useSplitMenu() {
   watch(
     [() => permissionStore.getLastBuildMenuTime, () => permissionStore.getBackMenuList],
     () => {
+      console.log('Menu changes')
       genMenus()
     },
     {
@@ -43,12 +42,10 @@ export function useSplitMenu() {
   async function handleSplitLeftMenu(parentPath: string) {
     // spilt mode left
     const children = await getChildrenMenus(parentPath)
-
     if (!children || !children.length) {
       menusRef.value = []
       return
     }
-
     menusRef.value = children
   }
 

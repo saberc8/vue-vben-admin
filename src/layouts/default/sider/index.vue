@@ -3,14 +3,8 @@
     <LayoutMenu />
   </Sider>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
   import { Layout } from 'ant-design-vue'
   import LayoutMenu from '../menu/index.vue'
-  export default defineComponent({
-    name: 'SiderWrapper',
-    components: { Sider: Layout.Sider, LayoutMenu },
-    setup() {},
-  })
+  const Sider = Layout.Sider
 </script>
-
-<style lang="less" scoped></style>

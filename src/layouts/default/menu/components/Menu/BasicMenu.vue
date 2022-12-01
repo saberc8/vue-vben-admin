@@ -60,7 +60,7 @@
     }
     emit('menuClick', key)
     isClickGo.value = true
-    menuState.selectedKeys = [key]
+    menuState.selectedKeys = [key.key]
   }
 
   async function handleMenuChange(route?: RouteLocationNormalizedLoaded) {
