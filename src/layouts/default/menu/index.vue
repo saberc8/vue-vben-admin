@@ -25,7 +25,6 @@
        */
 
       function handleMenuClick(path: any) {
-        console.log(path, 111)
         go(path)
       }
 
@@ -34,7 +33,6 @@
        * @param menu
        */
       async function beforeMenuClickFn(path) {
-        console.log(path, '--------')
         if (!isUrl(path.key)) {
           return true
         }
@@ -44,9 +42,7 @@
 
       function renderMenu() {
         const { menus, ...menuProps } = unref(getCommonProps)
-        console.log(menus)
         if (!menus || !menus.length) return null
-        console.log(menus)
         return <BasicMenu {...(menuProps as any)} items={menus} />
       }
 

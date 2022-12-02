@@ -31,7 +31,6 @@ export default [
     method: 'get',
     response: ({ query }) => {
       const { keyword } = query
-      console.log(keyword)
       return resultSuccess(demoTreeList(keyword))
     },
   },

@@ -1,10 +1,8 @@
 <template>
-  <Sider width="210">
+  <a-layout-sider width="210">
     <LayoutMenu />
-  </Sider>
+  </a-layout-sider>
 </template>
 <script lang="ts" setup>
-  import { Layout } from 'ant-design-vue'
   import LayoutMenu from '../menu/index.vue'
-  const Sider = Layout.Sider
 </script>

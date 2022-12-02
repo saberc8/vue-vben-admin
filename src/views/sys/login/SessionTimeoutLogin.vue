@@ -24,7 +24,6 @@
   onMounted(() => {
     // 记录当前的UserId
     userId.value = userStore.getUserInfo?.userId
-    console.log('Mounted', userStore.getUserInfo)
   })
 
   onBeforeUnmount(() => {

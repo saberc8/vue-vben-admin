@@ -12,7 +12,6 @@ export function useSplitMenu() {
   watch(
     () => unref(currentRoute).path,
     async ([path]: [string]) => {
-      console.log(path, 'unref(currentRoute).path')
       const { meta } = unref(currentRoute)
       const currentActiveMenu = meta.currentActiveMenu as string
       let parentPath = await getCurrentParentPath(path)
@@ -30,7 +29,6 @@ export function useSplitMenu() {
   watch(
     [() => permissionStore.getLastBuildMenuTime, () => permissionStore.getBackMenuList],
     () => {
-      console.log('Menu changes')
       genMenus()
     },
     {

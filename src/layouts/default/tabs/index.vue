@@ -1,6 +1,6 @@
 <template>
   <div class="multiple-tabbar">
-    <Tabs
+    <a-tabs
       type="editable-card"
       size="small"
       :animated="false"
@@ -12,19 +12,18 @@
       :tabBarStyle="tabBarStyle"
     >
       <template v-for="item in getTabsState" :key="item.query ? item.fullPath : item.path">
-        <TabPane :closable="!(item && item.meta && item.meta.affix)">
+        <a-tab-pane :closable="!(item && item.meta && item.meta.affix)">
           <template #tab>
             <div>{{ item.meta?.title }}</div>
           </template>
-        </TabPane>
+        </a-tab-pane>
       </template>
-    </Tabs>
+    </a-tabs>
   </div>
 </template>
 
 <script lang="ts" setup>
   import type { RouteLocationNormalized, RouteMeta } from 'vue-router'
-  import { Tabs, TabPane } from 'ant-design-vue'
   import { useGo } from '@/hooks/web/usePage'
   import { useMultipleTabStore } from '@/store/modules/multipleTab'
   import { useUserStore } from '@/store/modules/user'

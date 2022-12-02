@@ -40,7 +40,6 @@
   const { items } = toRefs(props)
   const { currentRoute } = useRouter()
   const { handleOpenChange, setOpenKeys, getOpenKeys } = useOpenKeys(menuState, items)
-  console.log(handleOpenChange, setOpenKeys, getOpenKeys)
   listenerRouteChange((route) => {
     if (route.name === REDIRECT_NAME) return
     handleMenuChange(route)
@@ -73,7 +72,6 @@
     setOpenKeys(path)
     if (unref(currentActiveMenu)) return
     const parentPaths = await getAllParentPath(props.items, path)
-    console.log(parentPaths)
     menuState.selectedKeys = parentPaths
   }
 </script>

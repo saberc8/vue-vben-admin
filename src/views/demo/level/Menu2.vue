@@ -11,13 +11,11 @@
   const times: any = 99
   let list: any = reactive([])
   for (let i = 0; i < times; i++) {
-    console.log(i)
     list.push({
       name: '菜单' + i,
       path: '/demo/level/menu' + i,
     })
   }
-  console.log(list, 1111)
 </script>
 
 <style lang="less" scoped>

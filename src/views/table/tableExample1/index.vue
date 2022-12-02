@@ -2,9 +2,9 @@
   <div>
     <vxe-grid v-bind="gridOptions1">
       <template #toolbar_buttons>
-        <Button @click="gridOptions1.align = 'left'">居左</Button>
-        <Button @click="gridOptions1.align = 'center'">居中</Button>
-        <Button @click="gridOptions1.align = 'right'">居右</Button>
+        <a-button @click="gridOptions1.align = 'left'">居左</a-button>
+        <a-button @click="gridOptions1.align = 'center'">居中</a-button>
+        <a-button @click="gridOptions1.align = 'right'">居右</a-button>
       </template>
     </vxe-grid>
   </div>
@@ -12,7 +12,6 @@
 
 <script lang="ts" setup>
   import { VxeGridProps } from 'vxe-table'
-  import { Button } from 'ant-design-vue'
   const gridOptions1 = reactive<VxeGridProps>({
     border: true,
     height: 300,

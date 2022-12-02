@@ -1,11 +1,10 @@
 <template>
-  <ConfigProvider :locale="locale">
+  <a-configProvider :locale="locale">
     <RouterView />
-  </ConfigProvider>
+  </a-configProvider>
 </template>
 
 <script lang="ts" setup>
-  import { ConfigProvider } from 'ant-design-vue'
   import { useTitle } from '@/hooks/web/useTitle'
   import zhCN from 'ant-design-vue/es/locale/zh_CN'
   import dayjs from 'dayjs'

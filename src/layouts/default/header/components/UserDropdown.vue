@@ -42,7 +42,6 @@
   }
 
   function handleMenuClick(e) {
-    console.log(e)
     switch (e) {
       case 1:
         handleLoginOut()

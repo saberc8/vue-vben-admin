@@ -5,7 +5,7 @@
     :style="[background ? `background-color: ${background}` : '']"
     v-show="loading"
   >
-    <Spin v-bind="$attrs" :tip="tip" :size="size" :spinning="loading" />
+    <a-spin v-bind="$attrs" :tip="tip" :size="size" :spinning="loading" />
   </section>
 </template>
 <script lang="ts">
@@ -15,7 +15,7 @@
 
   export default defineComponent({
     name: 'Loading',
-    components: { Spin },
+    components: { ASpin: Spin },
     props: {
       tip: {
         type: String as PropType<string>,
