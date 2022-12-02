@@ -22,6 +22,15 @@ const table: AppRouteModule = {
         title: '表格',
       },
     },
+    {
+      path: 'tableExample2',
+      name: 'TableExample2',
+      component: () => import('@/views/table/tableExample2/index.vue'),
+      meta: {
+        // affix: true,
+        title: 'ProTable组件',
+      },
+    },
   ],
 }
 

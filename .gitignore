@@ -33,4 +33,3 @@ pnpm-lock.yaml
 
 components.d.ts
 /src/auto-imports.d.ts
-/src/components/ProTable
