@@ -58,7 +58,7 @@
       const flag = await beforeClickFn(key)
       if (!flag) return
     }
-    emit('menuClick', key)
+    emit('menuClick', key.key)
     isClickGo.value = true
     menuState.selectedKeys = [key.key]
   }

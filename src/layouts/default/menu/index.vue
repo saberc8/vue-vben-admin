@@ -26,19 +26,19 @@
 
       function handleMenuClick(path: any) {
         console.log(path, 111)
-        go(path.key)
+        go(path)
       }
 
       /**
        * before click menu
        * @param menu
        */
-      async function beforeMenuClickFn(path: string) {
-        console.log(path)
-        if (!isUrl(path)) {
+      async function beforeMenuClickFn(path) {
+        console.log(path, '--------')
+        if (!isUrl(path.key)) {
           return true
         }
-        openWindow(path)
+        openWindow(path.key)
         return false
       }
 
