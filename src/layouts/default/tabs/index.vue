@@ -46,6 +46,7 @@
   })
   const tabBarStyle = {
     margin: '0px',
+    border: 'none',
   }
   const unClose = computed(() => unref(getTabsState).length === 1)
 
@@ -99,6 +100,8 @@
     }
 
     .ant-tabs.ant-tabs-card {
+      border: #ffffff 1px solid;
+
       .ant-tabs-nav {
         height: 28px;
         margin: 0;
@@ -108,17 +111,18 @@
 
         .ant-tabs-nav-container {
           height: 28px;
+          border: 0;
         }
 
         .ant-tabs-tab {
-          height: 30px;
-          line-height: 30px;
+          height: 26px;
+          line-height: 26px;
           color: rgb(0, 0, 0);
           background-color: #ffffff;
           transition: none;
           border: 1px solid #eee;
           font-size: 10px;
-          padding: 2px 4px;
+          padding: 1px 6px;
 
           &:hover {
             .ant-tabs-tab-remove {
