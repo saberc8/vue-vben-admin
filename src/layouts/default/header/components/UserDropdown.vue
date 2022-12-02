@@ -3,6 +3,7 @@
     <template #content>
       <div @click="handleMenuClick(1)" class="popover">退出系统</div>
       <div @click="handleMenuClick(2)" class="popover">文档</div>
+      <div @click="handleMenuClick(3)" class="popover">github</div>
     </template>
     <span>
       <img class="avatar" :src="getUserInfo.avatar" />
@@ -15,7 +16,7 @@
   </a-popover>
 </template>
 <script lang="ts" setup>
-  import { DOC_URL } from '@/settings/siteSetting'
+  import { DOC_URL, GITHUB_URL } from '@/settings/siteSetting'
 
   import { useUserStore } from '@/store/modules/user'
 
@@ -39,6 +40,11 @@
     openWindow(DOC_URL)
   }
 
+  // open doc
+  function openGithub() {
+    openWindow(GITHUB_URL)
+  }
+
   function handleMenuClick(e) {
     switch (e) {
       case 1:
@@ -46,6 +52,9 @@
         break
       case 2:
         openDoc()
+        break
+      case 3:
+        openGithub()
         break
     }
   }
