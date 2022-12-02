@@ -1,26 +1,21 @@
 <template>
-  <Dropdown placement="bottomLeft" overlayClassName="userdrop">
+  <Popover>
+    <template #content>
+      <div @click="handleMenuClick(1)" class="popover">退出系统</div>
+      <div @click="handleMenuClick(2)" class="popover">文档</div>
+    </template>
     <span>
-      <img :src="getUserInfo.avatar" />
+      <img class="avatar" :src="getUserInfo.avatar" />
       <span>
         <span>
           {{ getUserInfo.realName }}
         </span>
       </span>
     </span>
-
-    <template #overlay>
-      <Menu @click="handleMenuClick">
-        <MenuItem key="doc" text="文档" icon="ion:document-text-outline" />
-        <MenuDivider />
-        <MenuItem key="logout" text="退出系统" icon="ion:power-outline" />
-      </Menu>
-    </template>
-  </Dropdown>
+  </Popover>
 </template>
 <script lang="ts">
-  import { Dropdown, Menu } from 'ant-design-vue'
-  import type { MenuInfo } from 'ant-design-vue/lib/menu/src/interface'
+  import { Popover } from 'ant-design-vue'
 
   import { DOC_URL } from '@/settings/siteSetting'
 
@@ -29,16 +24,10 @@
   import headerImg from '@/assets/images/header.jpg'
   import { openWindow } from '@/utils'
 
-  type MenuEvent = 'logout' | 'doc'
-  import MenuItem from './DropMenuItem.vue'
   export default defineComponent({
     name: 'UserDropdown',
     components: {
-      Dropdown,
-      // eslint-disable-next-line vue/no-reserved-component-names
-      Menu,
-      MenuItem,
-      MenuDivider: Menu.Divider,
+      Popover,
     },
     setup() {
       const userStore = useUserStore()
@@ -58,12 +47,13 @@
         openWindow(DOC_URL)
       }
 
-      function handleMenuClick(e: MenuInfo) {
-        switch (e.key as MenuEvent) {
-          case 'logout':
+      function handleMenuClick(e) {
+        console.log(e)
+        switch (e) {
+          case 1:
             handleLoginOut()
             break
-          case 'doc':
+          case 2:
             openDoc()
             break
         }
@@ -77,9 +67,20 @@
   })
 </script>
 
-<style>
+<style lang="less" scoped>
   .userdrop {
-    height: 48px;
-    background-color: blue;
+    z-index: 999;
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  .popover {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #e8e8e8;
   }
 </style>
