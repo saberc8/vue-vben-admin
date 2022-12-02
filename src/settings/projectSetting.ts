@@ -1,20 +1,12 @@
 import type { ProjectConfig } from '/#/config'
-import { TriggerEnum, MixSidebarTriggerEnum } from '@/enums/menuEnum'
 import { CacheTypeEnum } from '@/enums/cacheEnum'
 import {
-  ContentEnum,
   PermissionModeEnum,
   RouterTransitionEnum,
-  SettingButtonPositionEnum,
   SessionTimeoutProcessingEnum,
 } from '@/enums/appEnum'
 // ! You need to clear the browser cache after the change
 const setting: ProjectConfig = {
-  // Whether to show the configuration button
-  showSettingButton: true,
-  // `Settings` button position
-  settingButtonPosition: SettingButtonPositionEnum.AUTO,
-
   // Permission mode
   permissionMode: PermissionModeEnum.ROUTE_MAPPING,
 
@@ -27,66 +19,6 @@ const setting: ProjectConfig = {
   // Whether to cancel the menu, the top, the multi-tab page display, for possible embedded in other systems
   fullContent: false,
 
-  // content mode
-  contentMode: ContentEnum.FULL,
-
-  // Whether to display the logo
-  showLogo: true,
-
-  // Whether to show footer
-  showFooter: false,
-
-  // Header configuration
-  headerSetting: {
-    // header bg color
-    bgColor: '#000',
-    // Fixed at the top
-    fixed: true,
-    // Whether to show top
-    show: true,
-    // Whether to show the full screen button
-    showFullScreen: true,
-    // Whether to show the document button
-    showDoc: true,
-  },
-
-  // Menu configuration
-  menuSetting: {
-    // sidebar menu bg color
-    bgColor: '#fff',
-    //  Whether to fix the left menu
-    fixed: true,
-    // Menu collapse
-    collapsed: false,
-    // When sider hide because of the responsive layout
-    siderHidden: false,
-    // Whether to display the menu name when folding the menu
-    collapsedShowTitle: false,
-    // Whether it can be dragged
-    // Only limited to the opening of the left menu, the mouse has a drag bar on the right side of the menu
-    canDrag: false,
-    // Whether to show no dom
-    show: true,
-    // Whether to show dom
-    hidden: false,
-    // Menu width
-    menuWidth: 210,
-    // Menu type
-    type: 'sidebar',
-    // Split menu
-    split: false,
-    // Fold trigger position
-    trigger: TriggerEnum.HEADER,
-    // Turn on accordion mode, only show a menu
-    accordion: true,
-    // Switch page to close menu
-    closeMixSidebarOnChange: false,
-    // Module opening method ‘click’ |'hover'
-    mixSideTrigger: MixSidebarTriggerEnum.CLICK,
-    // Fixed expanded menu
-    mixSideFixed: false,
-  },
-
   // Multi-label
   multiTabsSetting: {
     cache: false,
@@ -94,8 +26,6 @@ const setting: ProjectConfig = {
     show: true,
     // Is it possible to drag and drop sorting tabs
     canDrag: true,
-    // Turn on quick actions
-    showQuick: true,
   },
 
   // Transition Setting
@@ -117,28 +47,6 @@ const setting: ProjectConfig = {
 
   // Whether to enable KeepAlive cache is best to close during development, otherwise the cache needs to be cleared every time
   openKeepAlive: true,
-
-  // Whether to show breadcrumbs
-  showBreadCrumb: true,
-
-  // Whether to show the breadcrumb icon
-  showBreadCrumbIcon: false,
-
-  // Use error-handler-plugin
-  useErrorHandle: false,
-
-  // Whether to open back to top
-  useOpenBackTop: true,
-
-  //  Is it possible to embed iframe pages
-  canEmbedIFramePage: true,
-
-  // Whether to delete unclosed messages and notify when switching the interface
-  closeMessageOnSwitch: true,
-
-  // Whether to cancel the http request that has been sent but not responded when switching the interface.
-  // If it is enabled, I want to overwrite a single interface. Can be set in a separate interface
-  removeAllHttpPending: false,
 }
 
 export default setting

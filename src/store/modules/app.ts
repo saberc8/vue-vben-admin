@@ -1,11 +1,4 @@
-import type {
-  ProjectConfig,
-  HeaderSetting,
-  MenuSetting,
-  TransitionSetting,
-  MultiTabsSetting,
-} from '/#/config'
-import type { BeforeMiniState } from '/#/store'
+import type { ProjectConfig, MenuSetting, TransitionSetting, MultiTabsSetting } from '/#/config'
 
 import { defineStore } from 'pinia'
 import { store } from '@/store'
@@ -19,8 +12,6 @@ interface AppState {
   pageLoading: boolean
   // project config
   projectConfig: ProjectConfig | null
-  // When the window shrinks, remember some states, and restore these states when the window is restored
-  beforeMiniInfo: BeforeMiniState
 }
 let timeId: TimeoutHandle
 export const useAppStore = defineStore({
@@ -28,24 +19,16 @@ export const useAppStore = defineStore({
   state: (): AppState => ({
     pageLoading: false,
     projectConfig: Persistent.getLocal(PROJ_CFG_KEY),
-    beforeMiniInfo: {},
   }),
   getters: {
     getPageLoading(): boolean {
       return this.pageLoading
     },
 
-    getBeforeMiniInfo(): BeforeMiniState {
-      return this.beforeMiniInfo
-    },
-
     getProjectConfig(): ProjectConfig {
       return this.projectConfig || ({} as ProjectConfig)
     },
 
-    getHeaderSetting(): HeaderSetting {
-      return this.getProjectConfig.headerSetting
-    },
     getMenuSetting(): MenuSetting {
       return this.getProjectConfig.menuSetting
     },
@@ -59,10 +42,6 @@ export const useAppStore = defineStore({
   actions: {
     setPageLoading(loading: boolean): void {
       this.pageLoading = loading
-    },
-
-    setBeforeMiniInfo(state: BeforeMiniState): void {
-      this.beforeMiniInfo = state
     },
 
     setProjectConfig(config: DeepPartial<ProjectConfig>): void {

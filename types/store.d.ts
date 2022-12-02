@@ -30,8 +30,3 @@ export interface UserInfo {
   homePath?: string
   roles: RoleInfo[]
 }
-
-export interface BeforeMiniState {
-  menuCollapsed?: boolean
-  menuSplit?: boolean
-}
