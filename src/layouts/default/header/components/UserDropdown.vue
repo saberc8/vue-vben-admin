@@ -14,7 +14,7 @@
     </span>
   </Popover>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
   import { Popover } from 'ant-design-vue'
 
   import { DOC_URL } from '@/settings/siteSetting'
@@ -24,47 +24,34 @@
   import headerImg from '@/assets/images/header.jpg'
   import { openWindow } from '@/utils'
 
-  export default defineComponent({
-    name: 'UserDropdown',
-    components: {
-      Popover,
-    },
-    setup() {
-      const userStore = useUserStore()
+  const userStore = useUserStore()
 
-      const getUserInfo = computed(() => {
-        const { realName = '', avatar, desc } = userStore.getUserInfo || {}
-        return { realName, avatar: avatar || headerImg, desc }
-      })
-
-      //  login out
-      function handleLoginOut() {
-        userStore.confirmLoginOut()
-      }
-
-      // open doc
-      function openDoc() {
-        openWindow(DOC_URL)
-      }
-
-      function handleMenuClick(e) {
-        console.log(e)
-        switch (e) {
-          case 1:
-            handleLoginOut()
-            break
-          case 2:
-            openDoc()
-            break
-        }
-      }
-
-      return {
-        getUserInfo,
-        handleMenuClick,
-      }
-    },
+  const getUserInfo = computed(() => {
+    const { realName = '', avatar, desc } = userStore.getUserInfo || {}
+    return { realName, avatar: avatar || headerImg, desc }
   })
+
+  //  login out
+  function handleLoginOut() {
+    userStore.confirmLoginOut()
+  }
+
+  // open doc
+  function openDoc() {
+    openWindow(DOC_URL)
+  }
+
+  function handleMenuClick(e) {
+    console.log(e)
+    switch (e) {
+      case 1:
+        handleLoginOut()
+        break
+      case 2:
+        openDoc()
+        break
+    }
+  }
 </script>
 
 <style lang="less" scoped>

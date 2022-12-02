@@ -6,7 +6,10 @@ import { router, setupRouter } from '@/router'
 import { setupRouterGuard } from '@/router/guard'
 import { setupStore } from '@/store'
 import { setupGlobDirectives } from '@/directives'
+
 import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
+
 import VXETable from 'vxe-table'
 import XEUtils from 'xe-utils'
 import {
@@ -52,13 +55,14 @@ import {
   Table,
 } from 'vxe-table'
 import zhCN from 'vxe-table/es/locale/lang/zh-CN'
-import 'ant-design-vue/dist/antd.css'
+
 VXETable.setup({
   i18n: (key, args) => XEUtils.toFormatString(XEUtils.get(zhCN, key), args),
 })
 
 async function bootstrap() {
   const app = createApp(App)
+  app.use(Antd)
   // 引入vxe-table
   // app.use(VXETable)
   //可选组件
@@ -91,11 +95,9 @@ async function bootstrap() {
 
     // 安装表格
     .use(Table)
-  app.use(Antd)
   // Configure store
   // 配置 store
   setupStore(app)
-
   // Initialize internal system configuration
   // 初始化内部系统配置
   initAppConfigStore()
@@ -111,7 +113,6 @@ async function bootstrap() {
   // Register global directive
   // 注册全局指令
   setupGlobDirectives(app)
-
   // Configure global error handling
 
   // https://next.router.vuejs.org/api/#isready
