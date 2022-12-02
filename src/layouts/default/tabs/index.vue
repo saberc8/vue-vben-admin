@@ -88,36 +88,37 @@
 <style lang="less">
   .multiple-tabbar {
     z-index: 10;
-    height: 32px;
-    line-height: 32px;
+    height: 30px;
+    line-height: 28px;
     background-color: rgb(255, 255, 255);
-    border-bottom: 1px solid #eee;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 3%), 0 1px 6px -1px rgb(0 0 0 / 2%),
+      0 2px 4px 0 rgb(0 0 0 / 2%);
 
     .ant-tabs-small {
-      height: 32px;
+      height: 28px;
     }
 
     .ant-tabs.ant-tabs-card {
       .ant-tabs-nav {
-        padding-top: 2px;
-        height: 32px;
+        height: 28px;
         margin: 0;
         background-color: rgb(255, 255, 255);
         border: 0;
         box-shadow: none;
 
         .ant-tabs-nav-container {
-          height: 32px;
-          padding-top: 2px;
+          height: 28px;
         }
 
         .ant-tabs-tab {
-          height: calc(32 - 2px);
-          padding-right: 12px;
-          line-height: calc(32 - 2px);
-          color: #fff;
-          background-color: #1890ff;
+          height: 30px;
+          line-height: 30px;
+          color: rgb(0, 0, 0);
+          background-color: #ffffff;
           transition: none;
+          border: 1px solid #eee;
+          font-size: 10px;
+          padding: 2px 4px;
 
           &:hover {
             .ant-tabs-tab-remove {
@@ -126,14 +127,13 @@
           }
 
           .ant-tabs-tab-remove {
-            width: 8px;
-            height: 28px;
+            width: 4px;
             font-size: 12px;
             color: inherit;
             opacity: 0;
             transition: none;
-            margin-left: 2px;
-            margin-right: -4px;
+            margin-right: 4px;
+            margin-left: 0px;
 
             &:hover {
               svg {
@@ -143,25 +143,31 @@
           }
 
           svg {
-            fill: #fff;
+            fill: rgb(133, 133, 133);
           }
         }
 
         .ant-tabs-tab:not(.ant-tabs-tab-active) {
           &:hover {
             color: rgb(0, 0, 0);
+            font-size: 10px;
           }
         }
 
         .ant-tabs-tab-active {
           position: relative;
-          padding-left: 18px;
-          background: #fff;
+          background: #0050b3;
           border: 0;
           transition: none;
+          color: #fff;
+          font-size: 10px;
+
+          .ant-tabs-tab-btn {
+            color: rgb(255, 255, 255);
+          }
 
           span {
-            color: rgb(0, 0, 0) !important;
+            color: rgb(255, 255, 255) !important;
           }
 
           .ant-tabs-tab-remove {
@@ -186,7 +192,7 @@
 
     .ant-tabs-tab:not(.ant-tabs-tab-active) {
       .anticon-close {
-        font-size: 12px;
+        font-size: 10px;
 
         svg {
           width: 0.6em;
@@ -201,46 +207,6 @@
     &--hide-close {
       .ant-tabs-tab-remove {
         opacity: 0 !important;
-      }
-    }
-
-    &-content {
-      &__extra-quick,
-      &__extra-redo,
-      &__extra-fold {
-        display: inline-block;
-        width: 36px;
-        height: 32px;
-        line-height: 32px;
-        color: #fff;
-        text-align: center;
-        cursor: pointer;
-        border-left: 1px solid #eee;
-
-        &:hover {
-          color: #fff;
-        }
-
-        span[role='img'] {
-          transform: rotate(90deg);
-        }
-      }
-
-      &__extra-redo {
-        span[role='img'] {
-          transform: rotate(0deg);
-        }
-      }
-
-      &__info {
-        display: inline-block;
-        width: 100%;
-        height: 30px;
-        padding-left: 0;
-        margin-left: -10px;
-        font-size: 12px;
-        cursor: pointer;
-        user-select: none;
       }
     }
   }
