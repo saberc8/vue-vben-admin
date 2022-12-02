@@ -1,5 +1,5 @@
 <template>
-  <Form
+  <a-form
     class="login-form"
     :model="formData"
     :rules="getFormRules"
@@ -7,48 +7,43 @@
     v-show="getShow"
     @keypress.enter="handleLogin"
   >
-    <FormItem name="account" class="enter-x">
-      <Input
+    <a-form-item name="account" class="enter-x">
+      <a-input
         size="large"
         v-model:value="formData.account"
         placeholder="账号"
         class="fix-auto-fill"
       />
-    </FormItem>
-    <FormItem name="password" class="enter-x">
-      <InputPassword
+    </a-form-item>
+    <a-form-item name="password" class="enter-x">
+      <a-input-password
         size="large"
         visibilityToggle
         v-model:value="formData.password"
         placeholder="密码"
       />
-    </FormItem>
+    </a-form-item>
 
-    <ARow class="enter-x">
-      <ACol :span="12">
-        <FormItem>
+    <a-row class="enter-x">
+      <a-col :span="12">
+        <a-form-item>
           <!-- No logic, you need to deal with it yourself -->
-          <Checkbox v-model:checked="rememberMe" size="small"> 记住我 </Checkbox>
-        </FormItem>
-      </ACol>
-    </ARow>
+          <a-checkbox v-model:checked="rememberMe" size="small"> 记住我 </a-checkbox>
+        </a-form-item>
+      </a-col>
+    </a-row>
 
-    <FormItem class="enter-x">
+    <a-form-item class="enter-x">
       <a-button type="primary" size="large" block @click="handleLogin" :loading="loading">
         登录
       </a-button>
-    </FormItem>
-  </Form>
+    </a-form-item>
+  </a-form>
 </template>
 <script lang="ts" setup>
-  import { Checkbox, Form, Input, Row, Col } from 'ant-design-vue'
   import { useMessage } from '@/hooks/web/useMessage'
   import { useUserStore } from '@/store/modules/user'
   import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './useLogin'
-  const ACol = Col
-  const ARow = Row
-  const FormItem = Form.Item
-  const InputPassword = Input.Password
 
   const { notification, createErrorModal } = useMessage()
   const userStore = useUserStore()

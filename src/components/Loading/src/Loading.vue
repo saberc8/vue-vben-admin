@@ -8,37 +8,33 @@
     <a-spin v-bind="$attrs" :tip="tip" :size="size" :spinning="loading" />
   </section>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
   import { PropType } from 'vue'
   import { Spin } from 'ant-design-vue'
   import { SizeEnum } from '@/enums/sizeEnum'
-
-  export default defineComponent({
-    name: 'Loading',
-    components: { ASpin: Spin },
-    props: {
-      tip: {
-        type: String as PropType<string>,
-        default: '',
+  const ASpin = Spin
+  defineProps({
+    tip: {
+      type: String as PropType<string>,
+      default: '',
+    },
+    size: {
+      type: String as PropType<SizeEnum>,
+      default: SizeEnum.LARGE,
+      validator: (v: SizeEnum): boolean => {
+        return [SizeEnum.DEFAULT, SizeEnum.SMALL, SizeEnum.LARGE].includes(v)
       },
-      size: {
-        type: String as PropType<SizeEnum>,
-        default: SizeEnum.LARGE,
-        validator: (v: SizeEnum): boolean => {
-          return [SizeEnum.DEFAULT, SizeEnum.SMALL, SizeEnum.LARGE].includes(v)
-        },
-      },
-      absolute: {
-        type: Boolean as PropType<boolean>,
-        default: false,
-      },
-      loading: {
-        type: Boolean as PropType<boolean>,
-        default: false,
-      },
-      background: {
-        type: String as PropType<string>,
-      },
+    },
+    absolute: {
+      type: Boolean as PropType<boolean>,
+      default: false,
+    },
+    loading: {
+      type: Boolean as PropType<boolean>,
+      default: false,
+    },
+    background: {
+      type: String as PropType<string>,
     },
   })
 </script>

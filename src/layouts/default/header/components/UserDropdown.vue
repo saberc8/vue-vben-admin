@@ -1,5 +1,5 @@
 <template>
-  <Popover>
+  <a-popover>
     <template #content>
       <div @click="handleMenuClick(1)" class="popover">退出系统</div>
       <div @click="handleMenuClick(2)" class="popover">文档</div>
@@ -12,11 +12,9 @@
         </span>
       </span>
     </span>
-  </Popover>
+  </a-popover>
 </template>
 <script lang="ts" setup>
-  import { Popover } from 'ant-design-vue'
-
   import { DOC_URL } from '@/settings/siteSetting'
 
   import { useUserStore } from '@/store/modules/user'

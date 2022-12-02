@@ -9,21 +9,10 @@
   </a-layout>
 </template>
 
-<script lang="ts">
-  import { Layout } from 'ant-design-vue'
+<script lang="ts" setup>
   import LayoutContent from './content/index.vue'
   import LayoutSideBar from './sider/index.vue'
   import LayoutHeader from './header/index.vue'
-  export default defineComponent({
-    name: 'DefaultLayout',
-    components: {
-      LayoutContent,
-      LayoutSideBar,
-      LayoutHeader,
-      ALayout: Layout,
-    },
-    setup() {},
-  })
 </script>
 
 <style lang="less" scoped>

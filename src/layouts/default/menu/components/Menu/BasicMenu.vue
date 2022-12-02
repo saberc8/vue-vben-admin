@@ -1,5 +1,5 @@
 <template>
-  <Menu
+  <a-menu
     mode="inline"
     :selectedKeys="menuState.selectedKeys"
     :defaultSelectedKeys="menuState.defaultSelectedKeys"
@@ -12,11 +12,10 @@
     <template v-for="item in items" :key="item.path">
       <BasicSubMenuItem :item="item" />
     </template>
-  </Menu>
+  </a-menu>
 </template>
 <script lang="ts" setup>
   import type { MenuState } from './types'
-  import { Menu } from 'ant-design-vue'
   import BasicSubMenuItem from './components/BasicSubMenuItem.vue'
   import { useOpenKeys } from './useOpenKeys'
   import { RouteLocationNormalizedLoaded } from 'vue-router'
