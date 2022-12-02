@@ -19,7 +19,7 @@
   import { Menu } from 'ant-design-vue'
   import BasicSubMenuItem from './components/BasicSubMenuItem.vue'
   import { useOpenKeys } from './useOpenKeys'
-  import { RouteLocationNormalizedLoaded, useRouter } from 'vue-router'
+  import { RouteLocationNormalizedLoaded } from 'vue-router'
   import { isFunction } from '@/utils/is'
   import { basicProps } from './props'
   import { REDIRECT_NAME } from '@/router/constant'

@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive } from 'vue'
   import { VxeGridProps } from 'vxe-table'
   const gridOptions1 = reactive<VxeGridProps>({
     border: true,

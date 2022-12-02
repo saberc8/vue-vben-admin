@@ -32,8 +32,6 @@
   import { REDIRECT_NAME } from '@/router/constant'
   import { listenerRouteChange } from '@/logics/mitt/routeChange'
 
-  import { useRouter } from 'vue-router'
-
   const affixTextList = initAffixTabs()
   const activeKeyRef = ref('')
   useTabsDrag(affixTextList)

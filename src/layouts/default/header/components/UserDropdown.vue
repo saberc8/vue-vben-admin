@@ -22,8 +22,6 @@
   import { Dropdown, Menu } from 'ant-design-vue'
   import type { MenuInfo } from 'ant-design-vue/lib/menu/src/interface'
 
-  import { defineComponent, computed } from 'vue'
-
   import { DOC_URL } from '@/settings/siteSetting'
 
   import { useUserStore } from '@/store/modules/user'

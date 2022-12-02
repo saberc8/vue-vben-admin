@@ -23,21 +23,20 @@
   }
 
   body *::-webkit-scrollbar-track {
-    background: #fff;
+    background: transparent;
     border-radius: 2px;
   }
 
   body *::-webkit-scrollbar-thumb {
-    background: rgb(205, 206, 206);
-
-    border-radius: 10px;
+    background: rgb(224, 224, 224);
+    border-radius: 2px;
   }
 
   body *::-webkit-scrollbar-thumb:hover {
-    background: #333;
+    background: rgb(175, 175, 175);
   }
 
   body *::-webkit-scrollbar-corner {
-    background: #fff;
+    background: rgb(255, 255, 255);
   }
 </style>

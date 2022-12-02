@@ -16,9 +16,6 @@
   import type { RouteLocationMatched } from 'vue-router'
   import { useRouter } from 'vue-router'
   import type { Menu } from '@/router/types'
-
-  import { defineComponent, ref, watchEffect } from 'vue'
-
   import { Breadcrumb } from 'ant-design-vue'
   import { useGo } from '@/hooks/web/usePage'
   import { isString } from '@/utils/is'

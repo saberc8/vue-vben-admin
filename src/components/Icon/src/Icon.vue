@@ -15,17 +15,7 @@
 </template>
 
 <script lang="ts">
-  import type { PropType } from 'vue'
-  import {
-    defineComponent,
-    ref,
-    watch,
-    onMounted,
-    nextTick,
-    unref,
-    computed,
-    CSSProperties,
-  } from 'vue'
+  import type { PropType, CSSProperties } from 'vue'
   import SvgIcon from './SvgIcon.vue'
   import Iconify from '@purge-icons/generated'
   import { isString } from '@/utils/is'
