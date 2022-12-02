@@ -8,14 +8,89 @@ import { setupStore } from '@/store'
 import { setupGlobDirectives } from '@/directives'
 import Antd from 'ant-design-vue'
 import VXETable from 'vxe-table'
-import 'vxe-table/lib/style.css'
+import XEUtils from 'xe-utils'
+import {
+  // 全局对象
+  VXETable,
+
+  // 表格功能
+  // Filter,
+  // Edit,
+  // Menu,
+  // Export,
+  // Keyboard,
+  // Validator,
+
+  // 可选组件
+  Icon,
+  Column,
+  // Colgroup,
+  Grid,
+  // Tooltip,
+  Toolbar,
+  // Pager,
+  // Form,
+  // FormItem,
+  // FormGather,
+  // Checkbox,
+  // CheckboxGroup,
+  // Radio,
+  // RadioGroup,
+  // RadioButton,
+  // Switch,
+  // Input,
+  // Select,
+  // Optgroup,
+  // Option,
+  // Textarea,
+  // Button,
+  // Modal,
+  // List,
+  // Pulldown,
+
+  // 表格
+  Table,
+} from 'vxe-table'
+import zhCN from 'vxe-table/es/locale/lang/zh-CN'
 import 'ant-design-vue/dist/antd.css'
+VXETable.setup({
+  i18n: (key, args) => XEUtils.toFormatString(XEUtils.get(zhCN, key), args),
+})
 
 async function bootstrap() {
   const app = createApp(App)
   // 引入vxe-table
-  app.use(VXETable)
+  // app.use(VXETable)
+  //可选组件
+  app
+    .use(Icon)
+    .use(Column)
+    // .use(Colgroup)
+    .use(Grid)
+    // .use(Tooltip)
+    .use(Toolbar)
+    // .use(Pager)
+    // .use(Form)
+    // .use(FormItem)
+    // .use(FormGather)
+    // .use(Checkbox)
+    // .use(CheckboxGroup)
+    // .use(Radio)
+    // .use(RadioGroup)
+    // .use(RadioButton)
+    // .use(Switch)
+    // .use(Input)
+    // .use(Select)
+    // .use(Optgroup)
+    // .use(Option)
+    // .use(Textarea)
+    // .use(Button)
+    // .use(Modal)
+    // .use(List)
+    // .use(Pulldown)
 
+    // 安装表格
+    .use(Table)
   app.use(Antd)
   // Configure store
   // 配置 store

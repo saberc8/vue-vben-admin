@@ -15,6 +15,7 @@ import { configSvgIconsPlugin } from './svgSprite'
 // import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 
+import { createStyleImportPlugin, VxeTableResolve } from 'vite-plugin-style-import'
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   const {
     VITE_USE_IMAGEMIN,
@@ -48,6 +49,9 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
         'vue-router',
         'pinia',
       ],
+    }),
+    createStyleImportPlugin({
+      resolves: [VxeTableResolve()],
     }),
   ]
   // @vitejs/plugin-legacy
