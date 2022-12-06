@@ -4,7 +4,6 @@
 <script lang="ts" setup>
   import ProTable from '@/components/ProTable/index.vue'
   import { demoListApi } from '@/api/demo/table'
-  import { DemoListItem } from '@/api/demo/model/tableModel'
   console.log(typeof demoListApi)
   const columns = [
     { type: 'seq', width: 50 },
@@ -13,14 +12,9 @@
     { field: 'name2', title: 'Address', showOverflow: true },
   ]
 
-  const params: DemoListItem = {
-    id: '',
-    beginTime: '',
-    endTime: '',
-    address: '',
-    name: '1',
-    no: 0,
-    status: 1,
+  const params = {
+    page: 1,
+    pageSize: 10,
   }
   let dataSource: any = ref([])
   const t = async (params) => {
