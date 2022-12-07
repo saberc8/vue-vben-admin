@@ -21,6 +21,8 @@ export function resultPageSuccess<T = any>(
   return {
     ...resultSuccess({
       items: pageData,
+      page,
+      pageSize,
       total: list.length,
     }),
     message,
