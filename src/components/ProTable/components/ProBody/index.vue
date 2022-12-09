@@ -1,6 +1,14 @@
+<!--
+ * @Author: yusenlin
+ * @Date: 2022-12-02 16:41:23
+ * @LastEditTime: 2022-12-09 10:50:15
+ * @LastEditors: yusenlin
+ * @Description: proTable的table渲染组件
+ * @FilePath: \vben-thin-next-1122\src\components\ProTable\components\ProBody\index.vue
+ * 可以输入预定的版权声明、个性签名、空行等
+-->
 <template>
   <div>
-    table-body
     <vxe-grid v-bind="gridOptions">
       <template #toolbar_buttons>
         <a-button @click="gridOptions.align = 'left'">居左</a-button>

@@ -1,5 +1,10 @@
 <template>
-  <ProTable :dataSource="dataSource" :columns="columns" />
+  <ProTable
+    :dataSource="dataSource"
+    :columns="columns"
+    :searchForm="searchForm"
+    :showForm="showForm"
+  />
 </template>
 <script lang="ts" setup>
   import ProTable from '@/components/ProTable/index.vue'
@@ -10,6 +15,19 @@
     { field: 'name', title: 'name' },
     { field: 'name1', title: 'sex', showHeaderOverflow: true },
     { field: 'name2', title: 'Address', showOverflow: true },
+  ]
+
+  const showForm = true
+  // 搜索区域
+  const searchForm = [
+    {
+      label: '姓名',
+      field: 'name',
+      type: 'input',
+      componentProps: {
+        placeholder: '请输入',
+      },
+    },
   ]
 
   const params = {

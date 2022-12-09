@@ -91,3 +91,7 @@ pnpm build
 ## License
 
 [MIT © Vben-2020](./LICENSE)
+
+## ProTable 组件
+
+跳转到 [ProTable](./doucument.pro_table.md)
