@@ -83,14 +83,14 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       __INTLIFY_PROD_DEVTOOLS__: false,
       __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
-    // 启动less后生效 默认不生效
+    // 全局启用less引入后生效
     css: {
       preprocessorOptions: {
         less: {
           modifyVars: {
-            'primary-color': '#F00',
+            'primary-color': '#1677ff',
             'link-color': '#1DA57A',
-            'border-radius-base': '2px',
+            'border-radius-base': '4px',
           },
           javascriptEnabled: true,
         },

@@ -157,7 +157,7 @@
 
         .ant-tabs-tab-active {
           position: relative;
-          background: #0050b3;
+          background: #1677ff;
           border: 0;
           transition: none;
           color: #fff;

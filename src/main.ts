@@ -8,7 +8,7 @@ import { setupStore } from '@/store'
 import { setupGlobDirectives } from '@/directives'
 
 import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
+import 'ant-design-vue/dist/antd.less'
 
 import VXETable from 'vxe-table'
 import XEUtils from 'xe-utils'

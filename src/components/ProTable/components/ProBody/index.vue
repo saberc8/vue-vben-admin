@@ -1,7 +1,7 @@
 <!--
  * @Author: yusenlin
  * @Date: 2022-12-02 16:41:23
- * @LastEditTime: 2022-12-09 10:50:15
+ * @LastEditTime: 2022-12-10 12:06:32
  * @LastEditors: yusenlin
  * @Description: proTable的table渲染组件
  * @FilePath: \vben-thin-next-1122\src\components\ProTable\components\ProBody\index.vue
@@ -35,16 +35,13 @@
   watch(
     () => props.dataSource,
     (val: any) => {
-      console.log(val, 'watch')
       data = val
-      console.log(data, 'dataSource')
       gridOptions.data = data
     },
   )
   watch(
     () => props.columns,
     (val) => {
-      console.log(val, 'watch')
       gridOptions.columns = val
     },
   )
