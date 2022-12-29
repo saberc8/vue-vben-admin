@@ -2,7 +2,7 @@
   <ProTable
     :dataSource="dataSource"
     :columns="columns"
-    :searchForm="searchForm"
+    :searchFormList="searchFormList"
     :showForm="showForm"
   />
 </template>
@@ -19,14 +19,12 @@
 
   const showForm = true
   // 搜索区域
-  const searchForm = [
+  const searchFormList = [
     {
       label: '姓名',
       field: 'name',
       type: 'input',
-      componentProps: {
-        placeholder: '请输入',
-      },
+      placeholder: '请输入',
     },
   ]
 

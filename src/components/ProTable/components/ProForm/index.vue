@@ -1,10 +1,10 @@
 <!--
  * @Author: saberc8
  * @Date: 2022-12-02 16:41:30
- * @LastEditTime: 2022-12-09 16:15:10
+ * @LastEditTime: 2022-12-29 18:14:31
  * @LastEditors: yusenlin
  * @Description: ProTable 的筛选部分
- * @FilePath: \vben-thin-next-1122\src\components\ProTable\components\ProForm\index.vue
+ * @FilePath: \vue-vben-admin\src\components\ProTable\components\ProForm\index.vue
 -->
 <template>
   <a-form
@@ -47,9 +47,33 @@
 </template>
 <script lang="ts" setup>
   import { DownOutlined, UpOutlined } from '@ant-design/icons-vue'
+  const props = defineProps<{
+    searchFormList: Array<any>
+  }>()
+  console.log(props.searchFormList, 'searchFormList')
   const expand = ref(false)
   const proFromRef = ref()
   const formState = reactive({})
+  // const FormType = {
+  //   Input: 'Input',
+  //   Select: 'Select',
+  //   DatePicker: 'DatePicker',
+  //   RangePicker: 'RangePicker',
+  //   InputNumber: 'InputNumber',
+  // }
+  // 'select',
+  //     'multi-select',
+  //     'group-select',
+  //     'group-multi-select',
+  //     'date-time',
+  //     'cascader',
+  //     'dynamic-cascader',
+  //     'date-range',
+  //     'date-time-range',
+  //     'remote-search-select',
+  //     'select-user',
+  //     'remote-multi-search-select',
+
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values)
     console.log('formState: ', formState)

@@ -1,5 +1,5 @@
 <template>
-  <a-card><ProForm /></a-card>
+  <a-card><ProForm :searchFormList="searchFormList" /></a-card>
   <a-card class="margin-top-10"><ProBody :columns="columns" :dataSource="dataSource" /></a-card>
 </template>
 
@@ -12,11 +12,10 @@
       default: {}
     }
     columns: Array<any>
-    searchForm: Array<any>
+    searchFormList: Array<any>
     showForm: Boolean
   }>()
-  console.log(props, 'pro-table')
-  // console.log(props.dataSource, 'pro-table-dataSource')
+  console.log(props.dataSource, 'pro-table-dataSource')
   // console.log(props.columns, 'pro-table-columns')
 </script>
 
