@@ -22,8 +22,8 @@ const dashboardRoute = {
         hideMenu: true,
         hideBreadcrumb: true,
         title: 'routes.dashboard.workbench',
-        currentActiveMenu: '/dashboard',
         icon: 'bx:bx-home',
+        currentActiveMenu: '/dashboard',
       },
     },
   ],
@@ -62,7 +62,7 @@ const authRoute = {
   component: 'LAYOUT',
   redirect: '/permission/front/page',
   meta: {
-    icon: 'carbon:user-role',
+    icon: 'carbon:user',
     title: 'routes.demo.permission.permission',
   },
   children: [backRoute],
