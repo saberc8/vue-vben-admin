@@ -1,9 +1,13 @@
 <template>
   <ProTable
+    ref="proTable"
     :dataSource="dataSource"
     :columns="columns"
+    :params="params"
     :searchForm="searchForm"
     :showForm="showForm"
+    :getListFunc="getListFunc"
+    :gridOptions="gridOptions"
   >
     <template #toolbar_title>
       <span style="font-weight: bold; font-size: 20px; color: #000">系统菜单表单</span>
@@ -22,10 +26,18 @@
   import { VxeGridPropTypes } from 'vxe-table'
   import { createVNode } from 'vue'
   import { PlusOutlined } from '@ant-design/icons-vue'
+  const proTable = ref()
+  console.log(proTable.value, 'proTable')
   const visible = ref<Boolean>(false)
-
+  const getListFunc = demoListApi
   const columns: VxeGridPropTypes.Columns = [
-    { type: 'seq', width: 50 },
+    {
+      type: 'seq',
+      width: 60,
+      treeNode: true, // 开启树图表
+    },
+    { field: 'id', title: 'ID', width: 80 },
+    { field: 'pid', title: 'PID', width: 80 },
     { field: 'title', title: '标题' },
     { field: 'name', title: '名称' },
     { field: 'path', title: '路由' },
@@ -34,26 +46,39 @@
     { field: 'orderNo', title: '排序' },
     { field: 'icon', title: '图标' },
     { field: 'frameSrc', title: '内嵌iframe' },
-    { field: 'ignoreKeepAlive', title: '是否缓存' },
     {
-      field: 'address',
-      title: 'Address',
+      field: 'ignoreKeepAlive',
+      title: '是否缓存',
       showOverflow: true,
       showHeaderOverflow: true,
-      width: 200,
+      width: 100,
+      align: 'center',
       slots: {
         default: ({ row }) => {
           return createVNode(
             resolveComponent('a-tag'),
             {
-              color: 'pink',
+              color: row.ignoreKeepAlive ? 'pink' : 'green',
             },
-            () => row.title,
+            () => (row.ignoreKeepAlive ? '否' : '是'),
           )
         },
       },
     },
   ]
+  // 树状图表的示例
+  const gridOptions = {
+    treeConfig: {
+      transform: true,
+      rowField: 'id',
+      parentField: 'pid',
+    },
+    seqConfig: {
+      seqMethod: ({ row, rowIndex }) => {
+        return row.pid === 0 ? rowIndex + 1 : ''
+      },
+    },
+  }
 
   const showForm = true
   // 搜索区域
@@ -100,18 +125,11 @@
     },
   ]
 
-  const params = {
+  const params = ref({
     page: 1,
-    size: 10,
-  }
+    size: 50,
+  })
   let dataSource = ref<any>([])
-  const renderMenuList = async (params) => {
-    const res = await demoListApi(params)
-    console.log(res, '--')
-    dataSource.value = res.items
-  }
-  renderMenuList(params)
-
   const addMenuData = () => {
     console.log('addMenuData')
     visible.value = true
