@@ -1,26 +1,26 @@
-<!--
- * @Author: yusenlin
- * @Date: 2022-12-02 16:41:23
- * @LastEditTime: 2022-12-10 12:06:32
- * @LastEditors: yusenlin
- * @Description: proTable的table渲染组件
- * @FilePath: \vben-thin-next-1122\src\components\ProTable\components\ProBody\index.vue
- * 可以输入预定的版权声明、个性签名、空行等
--->
 <template>
   <div>
-    <vxe-grid v-bind="gridOptions">
+    <vxe-grid ref="xGrid" v-bind="gridOptions">
       <template #toolbar_buttons>
-        <a-button @click="gridOptions.align = 'left'">居左</a-button>
-        <a-button @click="gridOptions.align = 'center'">居中</a-button>
-        <a-button @click="gridOptions.align = 'right'">居右</a-button>
+        <slot name="toolbar_title"></slot>
+      </template>
+      <template #toolbar_tools>
+        <slot name="toolbar_buttons"></slot>
+        <a-tooltip>
+          <template #title>刷新</template>
+          <redo-outlined
+            :style="{ cursor: 'pointer', 'margin-left': '15px' }"
+            @click="reloadData"
+          />
+        </a-tooltip>
       </template>
     </vxe-grid>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { VxeGridProps } from 'vxe-table'
+  import { RedoOutlined } from '@ant-design/icons-vue'
+  import { VxeGridInstance, VxeGridProps } from 'vxe-table'
   const props = defineProps<{
     dataSource: {
       type: Object
@@ -31,20 +31,8 @@
   console.log(props, 'pro-body')
   console.log(props.dataSource, 'pro-body-dataSource')
   console.log(props.columns, 'pro-body-columns')
+  const xGrid = ref<VxeGridInstance>()
   let data: any = []
-  watch(
-    () => props.dataSource,
-    (val: any) => {
-      data = val
-      gridOptions.data = data
-    },
-  )
-  watch(
-    () => props.columns,
-    (val) => {
-      gridOptions.columns = val
-    },
-  )
   const gridOptions = reactive<VxeGridProps>({
     border: true,
     align: null,
@@ -55,8 +43,35 @@
     toolbarConfig: {
       slots: {
         buttons: 'toolbar_buttons',
+        tools: 'toolbar_tools',
       },
     },
     data,
   })
+
+  watch(
+    () => props.dataSource,
+    (val: any) => {
+      console.log('val', val)
+      data = val
+      gridOptions.data = data
+    },
+    { immediate: true },
+  )
+  watch(
+    () => props.columns,
+    (val) => {
+      gridOptions.columns = val
+    },
+  )
+
+  const reloadData = () => {
+    console.log('redo')
+    const $grid = xGrid.value
+    if ($grid) {
+      $grid.reloadData(data)
+    }
+  }
 </script>
+
+<style scoped></style>

@@ -1,6 +1,15 @@
 <template>
-  <a-card><ProForm :searchFormList="searchFormList" /></a-card>
-  <a-card class="margin-top-10"><ProBody :columns="columns" :dataSource="dataSource" /></a-card>
+  <a-card><ProForm :searchForm="searchForm" /></a-card>
+  <a-card class="margin-top-10">
+    <ProBody :columns="columns" :dataSource="dataSource">
+      <template #toolbar_buttons>
+        <slot name="toolbar_buttons"></slot>
+      </template>
+      <template #toolbar_title>
+        <slot name="toolbar_title"></slot>
+      </template>
+    </ProBody>
+  </a-card>
 </template>
 
 <script lang="ts" setup>
@@ -8,14 +17,15 @@
   import ProBody from './components/ProBody/index.vue'
   const props = defineProps<{
     dataSource: {
-      type: Object
-      default: {}
+      type: Array<any>
+      default: []
     }
     columns: Array<any>
-    searchFormList: Array<any>
+    searchForm: Array<any>
     showForm: Boolean
   }>()
-  console.log(props.dataSource, 'pro-table-dataSource')
+  console.log(props, 'pro-table')
+  // console.log(props.dataSource, 'pro-table-dataSource')
   // console.log(props.columns, 'pro-table-columns')
 </script>
 

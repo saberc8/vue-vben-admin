@@ -1,11 +1,3 @@
-<!--
- * @Author: saberc8
- * @Date: 2022-12-02 16:41:30
- * @LastEditTime: 2023-01-06 15:07:45
- * @LastEditors: yusenlin
- * @Description: ProTable 的筛选部分
- * @FilePath: \vue-vben-admin\src\components\ProTable\components\ProForm\index.vue
--->
 <template>
   <a-form
     ref="proFromRef"
@@ -15,14 +7,14 @@
     @finish="onFinish"
   >
     <a-row :gutter="24">
-      <template v-for="i in 14" :key="i">
-        <a-col v-show="expand || i <= 3" :xxl="6" :xl="8" :sm="12" :xs="24">
-          <a-form-item :name="`field-${i}`" :label="`field-${i}`">
+      <template v-for="(item, index) in searchForm" :key="index">
+        <a-col v-show="expand || index <= 3" :xxl="6" :xl="8" :sm="12" :xs="24">
+          <a-form-item :name="item.field" :label="item.label">
             <a-input
-              v-model:value="formState[`field-${i}`]"
-              placeholder="placeholder"
+              v-model:value="formState[`${item.field}`]"
+              :placeholder="item.componentProps.placeholder"
               :allowClear="true"
-            ></a-input>
+            />
           </a-form-item>
         </a-col>
       </template>
@@ -47,36 +39,20 @@
 </template>
 <script lang="ts" setup>
   import { DownOutlined, UpOutlined } from '@ant-design/icons-vue'
+
   const props = defineProps<{
-    searchFormList: Array<any>
+    searchForm: Array<any>
   }>()
-  console.log(props.searchFormList, 'searchFormList')
+  const emit = defineEmits(['searchData'])
+  console.log(props, 'pro-form')
   const expand = ref(false)
   const proFromRef = ref()
   const formState = reactive({})
-  // const FormType = {
-  //   Input: 'Input',
-  //   Select: 'Select',
-  //   DatePicker: 'DatePicker',
-  //   RangePicker: 'RangePicker',
-  //   InputNumber: 'InputNumber',
-  // }
-  // 'select',
-  //     'multi-select',
-  //     'group-select',
-  //     'group-multi-select',
-  //     'date-time',
-  //     'cascader',
-  //     'dynamic-cascader',
-  //     'date-range',
-  //     'date-time-range',
-  //     'remote-search-select',
-  //     'select-user',
-  //     'remote-multi-search-select',
-
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values)
     console.log('formState: ', formState)
+    emit('searchData', values)
+    inject(values)
   }
 </script>
 <style>
