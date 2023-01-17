@@ -22,15 +22,11 @@
   import { RedoOutlined } from '@ant-design/icons-vue'
   import { VxeGridInstance, VxeGridProps } from 'vxe-table'
   const props = defineProps<{
-    dataSource: {
-      type: Object
-      default: {}
-    }
+    dataSource: Array<any>
     columns: Array<any>
+    gridOtherOptions: Object
   }>()
-  console.log(props, 'pro-body')
-  console.log(props.dataSource, 'pro-body-dataSource')
-  console.log(props.columns, 'pro-body-columns')
+  const emit = defineEmits(['reloadData'])
   const xGrid = ref<VxeGridInstance>()
   let data: any = []
   const gridOptions = reactive<VxeGridProps>({
@@ -47,6 +43,7 @@
       },
     },
     data,
+    ...props.gridOtherOptions,
   })
 
   watch(
@@ -67,10 +64,14 @@
 
   const reloadData = () => {
     console.log('redo')
-    const $grid = xGrid.value
-    if ($grid) {
-      $grid.reloadData(data)
-    }
+    emit('reloadData')
+    // data.map((item) => {
+    //   item.children = []
+    // })
+    // const $grid = xGrid.value
+    // if ($grid) {
+    //   $grid.reloadData(data)
+    // }
   }
 </script>
 
